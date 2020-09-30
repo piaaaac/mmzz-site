@@ -1,12 +1,6 @@
 <?php
 snippet("header");
 
-// images1
-// tetx1
-// mood
-// tetx2
-// images2
-
 $cover = $page->cover()->toFile();
 $images1 = $page->images1()->toFiles();
 $mood = $page->mood()->toFile();
@@ -14,16 +8,21 @@ $images2 = $page->images2()->toFiles();
 ?>
 
 <main id="collection">
+
+  <section class="collection-opening" style="background-image: url(<?= $cover->url() ?>">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+      		<h1 class="font-huge"><?= $page->title() ?></h1>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section>
     <div class="container-fluid">
       <div class="row">
-
-        <div class="col-12">
-        	<div class="collection-opening" style="background-image: url(<?= $cover->url() ?>">
-        		<h1 class="font-huge"><?= $page->title() ?></h1>
-        	</div>
-        </div>
-
+        
         <!-- intro text -->
 
         <div class="col-12">
@@ -63,9 +62,9 @@ $images2 = $page->images2()->toFiles();
         		<img class="img-fluid" src="<?= $img->url() ?>" />
         	<?php endforeach ?>
         </div>
-        	
 
       </div>
     </div>
   </section>
+
 </main>

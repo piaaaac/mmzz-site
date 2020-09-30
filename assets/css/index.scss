@@ -75,12 +75,41 @@ $double-margin: $margin*2;
 // PAGES
 // ------------------------------------------------------------------------
 
-main {
-	&#collection {
-		section.collection-opening {
-			height: 90vh;
-			background-size: cover;
-			background-position: center center;
+.gradient-bknd {
+	position: relative;
+	&:before {
+		content:'';
+		display: inline-block;
+		position: absolute;
+		top: 0;
+		left:0;
+		height: 75vh;
+		width: 100%;
+		@include linearGradientV($cyan, white);
+	}
+}
+
+.img-container {
+	margin-top: 25vw + 8vw;
+	.portrait-img {
+		width: calc(50% - 16vw);
+	  height: 0;
+	  padding-bottom: 50%;
+	  margin: 8vw;
+	  display:inline-block;
+	  float: left;
+	  background-size: cover;
+		background-position: center center;
+		&:nth-of-type(2n+1) {
+			margin-top: -10vw;
 		}
+	}
+}
+
+#collection {
+	section.collection-opening {
+		height: 90vh;
+		background-size: cover;
+		background-position: center center;
 	}
 }

@@ -31,7 +31,7 @@ $images2 = $page->images2()->toFiles();
 
         <!-- 2 cols images -->
 
-        <div class="col-12">
+        <div class="col-12 img-container">
         	<?php foreach ($images1 as $img): ?>
         		<div class="portrait-img" style="background-image: url(<?= $img->url() ?>);"><br/><br/><br/></div>
         	<?php endforeach ?>

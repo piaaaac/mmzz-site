@@ -39,13 +39,13 @@ $images2 = $page->images2()->toFiles();
         
         <!-- smaller text 1 -->
 
-        <div class="col-12">
+        <div class="col-6 text-container">
         	<div class="font-large"><?= $page->text1()->kt() ?></div>
         </div>
 
         <!-- moodboard -->
 
-        <div class="col-12">
+        <div class="col-12 moodboard-container">
         	<div class="moodboard" style="background-image: url(<?= $mood->url() ?>"><br/><br/><br/></div>
         </div>
 
@@ -59,7 +59,7 @@ $images2 = $page->images2()->toFiles();
         	
         <div class="col-lg-4 offset-lg-2">
         	<?php foreach ($images2 as $img): ?>
-        		<img class="img-fluid" src="<?= $img->url() ?>" />
+        		<img class="img-fluid w-100 mb-5" src="<?= $img->url() ?>" />
         	<?php endforeach ?>
         </div>
 

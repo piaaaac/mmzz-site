@@ -14,14 +14,14 @@ fields:
   images1:
     type: files
   
-  tetx1:
+  text1:
     label: Text 1
     type: textarea
 
   mood:
     type: files
 
-  tetx2:
+  text2:
     label: Text 2
     type: textarea
 

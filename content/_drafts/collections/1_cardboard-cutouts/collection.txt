@@ -21,7 +21,7 @@ Images1:
 
 ----
 
-Tetx1:
+Text1:
 
 In a kind of reversed alchemy that uses resin, her work creates a state-change; the end product is an entirely new substance.
 Putting nature against machine, she hardens paper so that is feels like rock yet looks like driftwood. By breaking down the industrial structure, the material begins to return to its original form.
@@ -36,7 +36,7 @@ Mood:
 
 ----
 
-Tetx2:
+Text2:
 
 TRANSFORMATION
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sed turpis sed ipsum vehicula bibendum imperdiet in orci. In vel vestibulum nisi. Donec sagittis nunc id erat aliquam blandit. Ut in sapien magna.
@@ -48,3 +48,11 @@ Images2:
 
 - bitmap-2a.png
 - bitmap-2b.png
+
+----
+
+Tetx2: 
+
+----
+
+Tetx1: 

@@ -1,0 +1,59 @@
+@charset "UTF-8";
+
+// ------------------------------------------------------------------------
+// Variables
+// ------------------------------------------------------------------------
+
+$color-p1: #8DECF4;
+$color-p2: #7AEC9F;
+$color-p3: #F2E880;
+$color-p4: #EEB8A0;
+
+
+// ------------------------------------------------------------------------
+// External files import
+// ------------------------------------------------------------------------
+
+@import 'bootstrap-scss/_functions';
+@import 'bootstrap-scss/_variables';
+@import 'bootstrap-scss/mixins/_breakpoints';
+@import '_reset';
+@import '_typography';
+@import '_mixins';
+
+
+// ------------------------------------------------------------------------
+// General tags & classes
+// ------------------------------------------------------------------------
+
+* {
+  font-family: Hatton, serif;
+  color: black;
+}
+
+
+
+
+
+
+// ------------------------------------------------------------------------
+// Utilities
+// ------------------------------------------------------------------------
+
+.color-white { color: white; }
+
+// ------------------------------------------------------------------------
+// BOOTSTRAP BREAKPOINTS
+// ------------------------------------------------------------------------
+
+// xs ---                 Portrait phones
+// sm ---  576px and up   Small devices (landscape phones)
+// md ---  768px and up   Medium devices (tablets)
+// lg ---  992px and up   Large devices (desktops)
+// xl --- 1200px and up   Extra large devices (large desktops)
+
+// No media query necessary for xs breakpoint as it's effectively `@media (min-width: 0) { ... }`
+// @include media-breakpoint-up(sm) { ... }
+// @include media-breakpoint-only(md) { ... }
+// @include media-breakpoint-between(md, xl) { ... }
+// @include media-breakpoint-down(lg) { ... }

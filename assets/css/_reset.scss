@@ -1,0 +1,77 @@
+
+// ------------------------------------------------------------------------
+// Reset & Normalization
+// ------------------------------------------------------------------------
+
+*:not(i){
+  &, &::before, &::after {
+    margin: 0;
+    padding: 0;
+    border: none;
+    box-sizing: border-box;
+  }
+}
+
+html {
+  -webkit-text-size-adjust: 100%; /* Prevent font scaling in landscape while allowing user zoom */
+}
+
+article, aside, details, figcaption, figure,
+footer, header, main, menu, nav, section, summary {
+  // Add correct display for IE 9- and some newer browsers */
+  display: block;
+}
+
+::-moz-selection {
+  background: lighten($color-p1, 5%);
+  color: black;
+}
+
+::selection {
+  background: lighten($color-p1, 5%);
+  color: black;
+}
+
+body:not(.user-is-tabbing) button:focus,
+body:not(.user-is-tabbing) input:focus,
+body:not(.user-is-tabbing) select:focus,
+body:not(.user-is-tabbing) textarea:focus {
+  outline: none;
+}
+
+// --- Reset inputs
+
+// --- A --- via https://stackoverflow.com/a/33477611/2501713
+button,
+input,
+optgroup,
+select,
+textarea,html input[type="button"],
+input[type="reset"],
+input[type="submit"],button[disabled],
+html input[disabled],button::-moz-focus-inner,
+input::-moz-focus-inner, input[type="checkbox"],
+input[type="radio"], input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button, input[type="search"], input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  border: none;
+  background-image: none;
+  background-color: transparent !important;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+// --- B --- custom
+html body input:-internal-autofill-selected {
+  background-color: transparent !important;
+  background-image: none !important;
+  color: -internal-light-dark-color(black, white) !important;
+}
+
+
+
+
+
+
+

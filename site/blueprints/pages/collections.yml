@@ -1,0 +1,7 @@
+title: Collections
+
+sections:
+
+  draftItems:
+    type: pages
+    templates: collection

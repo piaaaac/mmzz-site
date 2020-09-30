@@ -1,0 +1,50 @@
+Title: Cardboard Cutouts
+
+----
+
+Cover:
+
+- bitmap.jpg
+
+----
+
+Introtext: Using layers of industrial cardboard tubing, Matilde transforms a man-made material into an organic form.
+
+----
+
+Images1:
+
+- bitmapss.jpg
+- bitmapw.jpg
+- bitmap-copy.jpg
+- bitmap-copy-12.jpg
+
+----
+
+Tetx1:
+
+In a kind of reversed alchemy that uses resin, her work creates a state-change; the end product is an entirely new substance.
+Putting nature against machine, she hardens paper so that is feels like rock yet looks like driftwood. By breaking down the industrial structure, the material begins to return to its original form.
+Preciousness is added through veins of recycled silver: the resulting pieces are as light as air and eminently wearable.
+Ellie Higgins
+
+----
+
+Mood:
+
+- bitmap-mood.jpg
+
+----
+
+Tetx2:
+
+TRANSFORMATION
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sed turpis sed ipsum vehicula bibendum imperdiet in orci. In vel vestibulum nisi. Donec sagittis nunc id erat aliquam blandit. Ut in sapien magna.
+Mauris lacus ex, pretium nec odio sit amet, gravida faucibus nisi. Fusce vel nisi scelerisque, gravida purus at, hendrerit purus. Nulla efficitur lorem sit amet scelerisque sagittis.
+
+----
+
+Images2:
+
+- bitmap-2a.png
+- bitmap-2b.png

@@ -1,0 +1,140 @@
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500&display=swap");
+*:not(i), *:not(i)::before, *:not(i)::after {
+  margin: 0;
+  padding: 0;
+  border: none;
+  box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  /* Prevent font scaling in landscape while allowing user zoom */ }
+
+article, aside, details, figcaption, figure,
+footer, header, main, menu, nav, section, summary {
+  display: block; }
+
+::-moz-selection {
+  background: #a4f0f6;
+  color: black; }
+
+::selection {
+  background: #a4f0f6;
+  color: black; }
+
+body:not(.user-is-tabbing) button:focus,
+body:not(.user-is-tabbing) input:focus,
+body:not(.user-is-tabbing) select:focus,
+body:not(.user-is-tabbing) textarea:focus {
+  outline: none; }
+
+button,
+input,
+optgroup,
+select,
+textarea, html input[type="button"],
+input[type="reset"],
+input[type="submit"], button[disabled],
+html input[disabled], button::-moz-focus-inner,
+input::-moz-focus-inner, input[type="checkbox"],
+input[type="radio"], input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button, input[type="search"], input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  border: none;
+  background-image: none;
+  background-color: transparent !important;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none; }
+
+html body input:-internal-autofill-selected {
+  background-color: transparent !important;
+  background-image: none !important;
+  color: -internal-light-dark-color(black, white) !important; }
+
+@font-face {
+  font-family: "Hatton";
+  src: url("../fonts/Hatton-Regular.woff") format("woff"); }
+.font-huge {
+  font-family: "Hatton", serif;
+  font-size: 5.4vw;
+  letter-spacing: 0;
+  line-height: 1.3em;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal; }
+  @media (min-width: 576px) {
+    .font-huge {
+      font-size: 5.4vw; } }
+  @media (min-width: 768px) {
+    .font-huge {
+      font-size: 5.4vw; } }
+  @media (min-width: 992px) {
+    .font-huge {
+      font-size: 5.4vw; } }
+  @media (min-width: 1200px) {
+    .font-huge {
+      font-size: 5.4vw; } }
+
+.font-large {
+  font-family: "Hatton", serif;
+  font-size: 2.81vw;
+  letter-spacing: 0;
+  line-height: 1.3em;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal; }
+  @media (min-width: 576px) {
+    .font-large {
+      font-size: 2.81vw; } }
+  @media (min-width: 768px) {
+    .font-large {
+      font-size: 2.81vw; } }
+  @media (min-width: 992px) {
+    .font-large {
+      font-size: 2.81vw; } }
+  @media (min-width: 1200px) {
+    .font-large {
+      font-size: 2.81vw; } }
+
+.font-m {
+  font-family: "Hatton", serif;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: 1.3em;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal; }
+  @media (min-width: 576px) {
+    .font-m {
+      font-size: 18px; } }
+  @media (min-width: 768px) {
+    .font-m {
+      font-size: 18px; } }
+  @media (min-width: 992px) {
+    .font-m {
+      font-size: 18px; } }
+  @media (min-width: 1200px) {
+    .font-m {
+      font-size: 18px; } }
+
+/* USAGE 
+@include keyframes(slide-down) {
+  0% { opacity: 1; }
+  90% { opacity: 0; }
+}
+
+.element {
+  width: 100px;
+  height: 100px;
+  background: black;
+  @include animation('slide-down 5s 3');
+}
+*/
+* {
+  font-family: Hatton, serif;
+  color: black; }
+
+.color-white {
+  color: white; }
+
+/*# sourceMappingURL=index.css.map */

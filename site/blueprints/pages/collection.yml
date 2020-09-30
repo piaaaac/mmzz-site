@@ -1,0 +1,29 @@
+title: Collection
+preset: page
+pages: false
+fields:
+  
+  cover:
+    type: files
+    max: 1
+  
+  introText:
+    label: Intro text
+    type: textarea
+  
+  images1:
+    type: files
+  
+  tetx1:
+    label: Text 1
+    type: textarea
+
+  mood:
+    type: files
+
+  tetx2:
+    label: Text 2
+    type: textarea
+
+  images2:
+    type: files

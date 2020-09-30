@@ -19,7 +19,7 @@ $images2 = $page->images2()->toFiles();
     </div>
   </section>
 
-  <section>
+  <section class="gradient-bknd">
     <div class="container-fluid">
       <div class="row">
         
@@ -31,7 +31,7 @@ $images2 = $page->images2()->toFiles();
 
         <!-- 2 cols images -->
 
-        <div class="col-12">
+        <div class="col-12 img-container">
         	<?php foreach ($images1 as $img): ?>
         		<div class="portrait-img" style="background-image: url(<?= $img->url() ?>);"><br/><br/><br/></div>
         	<?php endforeach ?>
@@ -39,13 +39,13 @@ $images2 = $page->images2()->toFiles();
         
         <!-- smaller text 1 -->
 
-        <div class="col-12">
+        <div class="col-6 text-container">
         	<div class="font-large"><?= $page->text1()->kt() ?></div>
         </div>
 
         <!-- moodboard -->
 
-        <div class="col-12">
+        <div class="col-12 moodboard-container">
         	<div class="moodboard" style="background-image: url(<?= $mood->url() ?>"><br/><br/><br/></div>
         </div>
 
@@ -59,7 +59,7 @@ $images2 = $page->images2()->toFiles();
         	
         <div class="col-lg-4 offset-lg-2">
         	<?php foreach ($images2 as $img): ?>
-        		<img class="img-fluid" src="<?= $img->url() ?>" />
+        		<img class="img-fluid w-100 mb-5" src="<?= $img->url() ?>" />
         	<?php endforeach ?>
         </div>
 

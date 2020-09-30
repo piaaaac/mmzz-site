@@ -4,11 +4,11 @@
 // Variables
 // ------------------------------------------------------------------------
 
-$color-p1: #8DECF4;
-$color-p2: #7AEC9F;
-$color-p3: #F2E880;
-$color-p4: #EEB8A0;
+$cyan: #6eebde;
+$pink: #ffdada;
 
+$margin: 30px;
+$double-margin: $margin*2;
 
 // ------------------------------------------------------------------------
 // External files import
@@ -44,7 +44,6 @@ $color-p4: #EEB8A0;
 
 // ------------------------------------------------------------------------
 // BOOTSTRAP BREAKPOINTS
-// ------------------------------------------------------------------------
 
 // xs ---                 Portrait phones
 // sm ---  576px and up   Small devices (landscape phones)
@@ -57,3 +56,70 @@ $color-p4: #EEB8A0;
 // @include media-breakpoint-only(md) { ... }
 // @include media-breakpoint-between(md, xl) { ... }
 // @include media-breakpoint-down(lg) { ... }
+
+
+// ------------------------------------------------------------------------
+// GRID
+// ------------------------------------------------------------------------
+
+.container-fluid {
+	padding-left: $double-margin;
+	padding-right: $double-margin;
+	.row {
+		padding-top: $double-margin;
+		padding-bottom: $double-margin;
+	}
+}
+
+// ------------------------------------------------------------------------
+// PAGES
+// ------------------------------------------------------------------------
+
+.gradient-bknd {
+	position: relative;
+	&:before {
+		content:'';
+		display: inline-block;
+		position: absolute;
+		top: 0;
+		left:0;
+		height: 100vh;
+		width: 100%;
+		@include linearGradientV($cyan, white);
+	}
+}
+
+.img-container {
+	margin-top: 25vw;
+	.portrait-img {
+		width: calc(50% - 16vw);
+	  height: 0;
+	  padding-bottom: 50%;
+	  margin: 8vw;
+	  display:inline-block;
+	  float: left;
+	  background-size: cover;
+		background-position: center center;
+		&:nth-of-type(2n+1) {
+			margin-top: -10vw;
+		}
+	}
+}
+
+#collection {
+	section.collection-opening {
+		height: 90vh;
+		background-size: cover;
+		background-position: center center;
+	}
+	.text-container {
+		margin-top: -10vw;
+	}
+	.moodboard {
+		margin:$double-margin -#{$double-margin};
+		height: 0;
+	  padding-bottom: 100%;
+		background-size: cover;
+		background-position: center center;
+	}
+}

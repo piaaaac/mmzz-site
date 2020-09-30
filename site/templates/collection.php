@@ -19,7 +19,7 @@ $images2 = $page->images2()->toFiles();
     </div>
   </section>
 
-  <section>
+  <section class="gradient-bknd">
     <div class="container-fluid">
       <div class="row">
         

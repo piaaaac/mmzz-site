@@ -7,6 +7,8 @@
 $cyan: #6eebde;
 $pink: #ffdada;
 
+$margin: 20px;
+$double-margin: $margin*2;
 
 // ------------------------------------------------------------------------
 // External files import
@@ -42,7 +44,6 @@ $pink: #ffdada;
 
 // ------------------------------------------------------------------------
 // BOOTSTRAP BREAKPOINTS
-// ------------------------------------------------------------------------
 
 // xs ---                 Portrait phones
 // sm ---  576px and up   Small devices (landscape phones)
@@ -55,3 +56,31 @@ $pink: #ffdada;
 // @include media-breakpoint-only(md) { ... }
 // @include media-breakpoint-between(md, xl) { ... }
 // @include media-breakpoint-down(lg) { ... }
+
+
+// ------------------------------------------------------------------------
+// GRID
+// ------------------------------------------------------------------------
+
+.container-fluid {
+	padding-left: $double-margin;
+	padding-right: $double-margin;
+	.row {
+		padding-top: $double-margin;
+		padding-bottom: $double-margin;
+	}
+}
+
+// ------------------------------------------------------------------------
+// PAGES
+// ------------------------------------------------------------------------
+
+main {
+	&#collection {
+		section.collection-opening {
+			height: 90vh;
+			background-size: cover;
+			background-position: center center;
+		}
+	}
+}

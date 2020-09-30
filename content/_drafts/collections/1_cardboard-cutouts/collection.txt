@@ -8,6 +8,12 @@ Cover:
 
 ----
 
+Cyanimage:
+
+- cyan-cardboard-cutouts.jpg
+
+----
+
 Introtext: Using layers of industrial cardboard tubing, Matilde transforms a man-made material into an organic form.
 
 ----

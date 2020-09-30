@@ -1,0 +1,18 @@
+title: Home
+preset: page
+pages: false
+fields:
+  
+  images:
+    type: files
+    max: 1
+  
+  blogPosts:
+    label: Blog posts
+    type: pages
+    max: 2
+    query: site.find('blog').children.listed
+  
+  text:
+    label: Large text
+    type: textarea

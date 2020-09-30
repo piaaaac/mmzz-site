@@ -2,6 +2,6 @@ title: Collections
 
 sections:
 
-  draftItems:
+  pages:
     type: pages
     templates: collection

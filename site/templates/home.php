@@ -1,69 +1,57 @@
+<?php snippet("header") ?>
+
 <?php
-snippet("header");
-
-// images1
-// tetx1
-// mood
-// tetx2
-// images2
-
-$cover = $page->cover()->toFile();
-$images1 = $page->images1()->toFiles();
-$mood = $page->mood()->toFile();
-$images2 = $page->images2()->toFiles();
+$cyanImages = new Files();
+foreach (page("collections")->children()->listed() as $collection) {
+	$cyanImages->add($collection->files()->filterBy("template", "cyan")/*->toFile()*/);
+}
+$cyanImages = $cyanImages->shuffle();
+$images = $page->images()->sortBy("sort");
+$blogPosts = $page->blogPosts()->toPages();
 ?>
 
-<section class="">
-  <div class="container-fluid">
-    <div class="row">
+<main id="home">
 
-      <div class="col-12">
-      	<div class="collection-opening" style="background-image: url(<?= $cover->url() ?>">
-      		<h1 class="font-huge"><?= $page->title() ?></h1>
-      	</div>
-      </div>
+	<section class="home-opening">
+	  <div class="container-fluid">
+	    <div class="row">
+	    	<div class="col">
+	    		<img class="logo w-100" src="<?= kirby()->url('assets') ?>/images/logo.svg" />
+	    	</div>
+	  	</div>
+		</div>
+	</section>
 
-      <!-- intro text -->
+	<section>
+	  <div class="container-fluid">
+	    <div class="row">
+      	<?php $i = -3; ?>
+      	<?php $ci = 0; ?>
+      	<?php foreach ($images as $img): ?>
+	      	<div class="col-md-4">
+        		<div class="portrait-img" style="background-image: url(<?= $img->url() ?>);"><br/><br/><br/></div>
+	      	</div>
+      		
+      		<?php if ($i%3 == 0): ?>
+      			<?php
+      			if ($ci >= $cyanImages->count()) {
+      				$cyanImages = $cyanImages->shuffle();
+      				$ci = 0;
+      			}
+      			$cyan = $cyanImages->nth($ci);
+      			$ci++;
+      			?>
+    				<div class="col-md-4">
+      				<div class="cyan-img" style="background-image: url(<?= $cyan->url() ?>);"><br/><br/><br/></div>
+      			</div>
+      		<?php endif ?>
 
-      <div class="col-12">
-      	<p class="font-huge"><?= $page->introText()->kti() ?></p>
-      </div>
-
-      <!-- 2 cols images -->
-
-      <div class="col-12">
-      	<?php foreach ($images1 as $img): ?>
-      		<div class="portrait-img" style="background-image: url(<?= $img->url() ?>);"><br/><br/><br/></div>
+      		<?php $i++; ?>
       	<?php endforeach ?>
-      </div>
-      
-      <!-- smaller text 1 -->
+	    </div>
+	  </div>
+	</section>
 
-      <div class="col-12">
-      	<div class="font-large"><?= $page->text1()->kt() ?></div>
-      </div>
+</div>
 
-      <!-- moodboard -->
-
-      <div class="col-12">
-      	<div class="moodboard" style="background-image: url(<?= $mood->url() ?>"><br/><br/><br/></div>
-      </div>
-
-      <!-- smaller text 2 -->
-
-      <div class="col-lg-6">
-      	<div class="font-large"><?= $page->text2()->kt() ?></div>
-      </div>
-
-      <!-- last images -->
-      	
-      <div class="col-lg-4 offset-lg-2">
-      	<?php foreach ($images2 as $img): ?>
-      		<img class="img-fluid" src="<?= $img->url() ?>" />
-      	<?php endforeach ?>
-      </div>
-      	
-
-    </div>
-  </div>
-</section>
+<?php snippet("footer") ?>

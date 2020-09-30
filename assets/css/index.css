@@ -59,7 +59,7 @@ html body input:-internal-autofill-selected {
   font-size: 5.4vw;
   letter-spacing: 0;
   line-height: 1.3em;
-  font-weight: 600;
+  font-weight: 400;
   font-style: normal;
   font-stretch: normal; }
   @media (min-width: 576px) {
@@ -80,7 +80,7 @@ html body input:-internal-autofill-selected {
   font-size: 2.81vw;
   letter-spacing: 0;
   line-height: 1.3em;
-  font-weight: 600;
+  font-weight: 400;
   font-style: normal;
   font-stretch: normal; }
   @media (min-width: 576px) {
@@ -101,7 +101,7 @@ html body input:-internal-autofill-selected {
   font-size: 18px;
   letter-spacing: 0;
   line-height: 1.3em;
-  font-weight: 600;
+  font-weight: 400;
   font-style: normal;
   font-stretch: normal; }
   @media (min-width: 576px) {
@@ -116,6 +116,27 @@ html body input:-internal-autofill-selected {
   @media (min-width: 1200px) {
     .font-m {
       font-size: 18px; } }
+
+.font-sans-l {
+  font-family: "Work Sans", sans-serif;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: 1.3em;
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal; }
+  @media (min-width: 576px) {
+    .font-sans-l {
+      font-size: 20px; } }
+  @media (min-width: 768px) {
+    .font-sans-l {
+      font-size: 20px; } }
+  @media (min-width: 992px) {
+    .font-sans-l {
+      font-size: 20px; } }
+  @media (min-width: 1200px) {
+    .font-sans-l {
+      font-size: 20px; } }
 
 /* USAGE 
 @include keyframes(slide-down) {

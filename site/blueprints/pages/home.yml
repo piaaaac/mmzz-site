@@ -5,7 +5,8 @@ fields:
   
   images:
     type: files
-    max: 1
+    layout: cards
+    size: tiny
   
   blogPosts:
     label: Blog posts

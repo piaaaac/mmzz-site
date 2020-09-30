@@ -1,0 +1,25 @@
+Title: Home
+
+----
+
+Images:
+
+- home-4.jpg
+- home-2.jpg
+- home-7.jpg
+- home-10.jpg
+- home-12.jpg
+- home-1.jpg
+- home-5.jpg
+- home-9.jpg
+- home-3.jpg
+- home-11.jpg
+- home-8.jpg
+
+----
+
+Blogposts: 
+
+----
+
+Text: Matilde Mozzanega is a jewellery designer from Milan currently based in Florence. Her work sits within the context of sustainability and recycling. (link: about text: READ MORE)

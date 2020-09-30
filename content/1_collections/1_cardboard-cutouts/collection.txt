@@ -8,9 +8,7 @@ Cover:
 
 ----
 
-Cyanimage:
-
-- cyan-cardboard-cutouts.jpg
+Cyanimage: 
 
 ----
 

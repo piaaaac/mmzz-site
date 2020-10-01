@@ -17,3 +17,9 @@ fields:
     label: Text
     type: textarea
     required: true
+
+  tags:
+    label: Tags
+    type: tags
+    options: query
+    query: site.find('post').childrenAndDrafts.pluck("tags", ",", true)

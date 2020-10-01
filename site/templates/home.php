@@ -25,14 +25,19 @@ $blogPosts = $page->blogPosts()->toPages();
 	<section class="home-img-container">
 	  <div class="container-fluid">
 	    <div class="row">
-      	<?php $i = -3; ?>
+      	<?php $i = 0; ?>
       	<?php $ci = 0; ?>
       	<?php foreach ($images as $img): ?>
 	      	<div class="col-md-4">
         		<div class="portrait-img" style="background-image: url(<?= $img->url() ?>);"><br/><br/><br/></div>
 	      	</div>
       		
-      		<?php if ($i%3 == 0): ?>
+      		<?php if (
+      			$i == 0
+      			|| $i == 4
+      			|| $i == 5
+      			|| $i == 12
+      		): ?>
       			<?php
       			if ($ci >= $cyanImages->count()) {
       				$cyanImages = $cyanImages->shuffle();
@@ -63,7 +68,9 @@ $blogPosts = $page->blogPosts()->toPages();
 	    </div>
 	    <div class="row">
       	<?php foreach ($blogPosts as $post): ?>
-      		<?php snippet("post-preview-home", ["post" => $post]) ?>
+	    		<div class="col-lg-6">
+      			<?php snippet("post-preview-home", ["post" => $post]) ?>
+      		</div>
       	<?php endforeach ?>
 	  	</div>
 		</div>

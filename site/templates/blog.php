@@ -22,9 +22,19 @@ $blogPosts = $page->children()->listed()->sortBy("postDate", "desc");
 	<section>
 	  <div class="container-fluid">
 	    <div class="row">
-      	<?php foreach ($blogPosts as $post): ?>
-      		<?php snippet("post-preview", ["post" => $post]) ?>
-      	<?php endforeach ?>
+
+	    	<div class="col-lg-6">
+	      	<?php for ($i = 0; $i < $blogPosts->count(); $i++): ?>
+	      		<?php if ($i%2 == 0) { snippet("post-preview", ["post" => $blogPosts->nth($i)]); } ?>
+	      	<?php endfor ?>
+	  		</div>
+
+	    	<div class="col-lg-6">
+	      	<?php for ($i = 0; $i < $blogPosts->count(); $i++): ?>
+	      		<?php if ($i%2 == 1) { snippet("post-preview", ["post" => $blogPosts->nth($i)]); } ?>
+	      	<?php endfor ?>
+	  		</div>
+	  		
 	  	</div>
 		</div>
 	</section>

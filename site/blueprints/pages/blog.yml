@@ -1,0 +1,7 @@
+title: Blog
+
+sections:
+
+  pages:
+    type: pages
+    templates: post

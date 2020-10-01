@@ -1,0 +1,19 @@
+title: Blog Post
+preset: page
+pages: false
+
+fields:
+  
+  cover:
+    type: files
+    min: 1
+    max: 1
+
+  images:
+    type: files
+    required: true
+  
+  text:
+    label: Text
+    type: textarea
+    required: true

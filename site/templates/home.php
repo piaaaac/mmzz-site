@@ -22,7 +22,7 @@ $blogPosts = $page->blogPosts()->toPages();
 		</div>
 	</section>
 
-	<section>
+	<section class="home-img-container">
 	  <div class="container-fluid">
 	    <div class="row">
       	<?php $i = -3; ?>

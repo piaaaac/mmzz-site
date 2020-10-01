@@ -22,4 +22,4 @@ fields:
     label: Tags
     type: tags
     options: query
-    query: site.find('post').childrenAndDrafts.pluck("tags", ",", true)
+    query: site.find('blog').childrenAndDrafts.pluck("tags", ",", true)

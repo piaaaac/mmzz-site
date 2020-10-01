@@ -149,3 +149,18 @@ $double-padding: $padding*2;
 		background-position: center center;
 	}
 }
+
+.footer {
+	position: relative;
+	&:before {
+		content:'';
+		display: inline-block;
+		position: absolute;
+		bottom: 0;
+		left:0;
+		height: 100vh;
+		width: 100%;
+		@include linearGradientV(white, $cyan);
+		z-index: -1;
+	}
+}

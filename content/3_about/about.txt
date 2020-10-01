@@ -1,0 +1,54 @@
+Title: About
+
+----
+
+Introtext: Matilde Mozzanega is a jewellery designer from Milan. Her work sits within the context of sustainability and recycling. She is in fact interested in the qualities of non-precious materials, how to transform and repurpose them.
+
+----
+
+Profileimage:
+
+- matilde-mozzanega.jpg
+
+----
+
+Text:
+
+Matilde Mozzanega is a jewellery designer from Milan currently based in Florence. Recently graduated from Central Saint Martins, BA Jewellery Design, she is now attending her MFA in Contemporary Jewellery & Body ornament in Alchimia, Contemporary Jewellery School. 
+
+Her work sits within the context of sustainability and recycling. She is in fact interested in the qualities of non-precious materials, how to transform and repurpose them.
+
+Her graduate collection from CSM, Cardboard Cutouts, is exploration of the uncanny transformative and magical properties of industrial cardboard tubing.
+
+Specifically, through an upcycling process, she mimics natural materials out of the same cardboard tube, taking what is conventional far afield: driftwood, stone, marble, bamboo and ceramic are the main features which this polymorphic material assumes.
+
+The material goes back to ‘what it used to be’ as in an alchemical cycle for where matter goes back to its primordial state. 
+
+The tension between a ubiquitous, everyday seen/used material and its physical transformation, by going beyond its limits, are the aspects that fascinate her the most about working with what can be defined the most non-precious of the non-precious materials.
+
+----
+
+Textsmall:
+
+## Exhibitions
+
+2020
+Lorem ipsum dolor sit amet
+(link: https://lalala.mo text: lalala.mo)
+
+2019
+Lorem ipsum dolor sit amet
+(link: https://lalala.mo text: lalala.mo)
+
+2019
+Lorem ipsum sed turpis sed ipsum vehicula bibendum imperdiet in orci in vel
+(link: https://vestibulum-nisi.mo text: vestibulum-nisi.mo)
+
+
+## Interviews
+
+Lorem ipsum sed turpis sed ipsum vehicula bibendum
+(link: https://lalala.mo text: lalala.mo)
+
+Lorem ipsum sed turpis sed ipsum vehicula bibendum
+(link: https://lalala.mo text: lalala.mo)

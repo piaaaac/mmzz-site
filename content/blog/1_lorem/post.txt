@@ -8,7 +8,7 @@ Cover:
 
 ----
 
-Images:
+postImages:
 
 - 1050.jpg
 
@@ -16,9 +16,13 @@ Images:
 
 Text:
 
-t was just before term time at Central Saint Martins in London, giving Caroline Broadhead a rare moment of calm from her busy role as course leader on the college’s BA Jewellery Design course. With work benches empty, and nothing to distract her besides the distant hum of an industrial extractor fan, she prepares for exhibitions in the spring.
+It was just before term time at Central Saint Martins in London, giving Caroline Broadhead a rare moment of calm from her busy role as course leader on the college’s BA Jewellery Design course. With work benches empty, and nothing to distract her besides the distant hum of an industrial extractor fan, she prepares for exhibitions in the spring.
 
 A renowned jewelry designer in her own right, Broadhead’s more than 40-year career is being recognized with a retrospective show opening in the Netherlands in February. She is deftly juggling this with the curation of works from students and staff for CSM’s annual inclusion at Munich Jewellery Week at Vitsœ in March.
+
+----
+
+Postdate: 2020-10-01
 
 ----
 

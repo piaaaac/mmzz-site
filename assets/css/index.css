@@ -119,7 +119,7 @@ html body input:-internal-autofill-selected {
 
 .font-sans-m {
   font-family: "Work Sans", sans-serif;
-  font-size: 18px;
+  font-size: 20px;
   letter-spacing: 0;
   line-height: 1.3em;
   font-weight: 400;
@@ -127,16 +127,37 @@ html body input:-internal-autofill-selected {
   font-stretch: normal; }
   @media (min-width: 576px) {
     .font-sans-m {
-      font-size: 18px; } }
+      font-size: 20px; } }
   @media (min-width: 768px) {
     .font-sans-m {
-      font-size: 18px; } }
+      font-size: 20px; } }
   @media (min-width: 992px) {
     .font-sans-m {
-      font-size: 18px; } }
+      font-size: 20px; } }
   @media (min-width: 1200px) {
     .font-sans-m {
-      font-size: 18px; } }
+      font-size: 20px; } }
+
+.font-sans-s {
+  font-family: "Work Sans", sans-serif;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: 1.3em;
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal; }
+  @media (min-width: 576px) {
+    .font-sans-s {
+      font-size: 14px; } }
+  @media (min-width: 768px) {
+    .font-sans-s {
+      font-size: 14px; } }
+  @media (min-width: 992px) {
+    .font-sans-s {
+      font-size: 14px; } }
+  @media (min-width: 1200px) {
+    .font-sans-s {
+      font-size: 14px; } }
 
 /* USAGE 
 @include keyframes(slide-down) {
@@ -166,6 +187,9 @@ a {
 .color-white {
   color: white; }
 
+.font-600 {
+  font-weight: 600; }
+
 .container-fluid {
   padding-left: 50px;
   padding-right: 50px; }
@@ -182,7 +206,7 @@ nav#menu {
   height: 60px; }
   nav#menu a.menu-item {
     font-family: "Work Sans", sans-serif;
-    font-size: 18px;
+    font-size: 20px;
     letter-spacing: 0;
     line-height: 1.3em;
     font-weight: 400;
@@ -192,16 +216,19 @@ nav#menu {
     margin-left: 15px; }
     @media (min-width: 576px) {
       nav#menu a.menu-item {
-        font-size: 18px; } }
+        font-size: 20px; } }
     @media (min-width: 768px) {
       nav#menu a.menu-item {
-        font-size: 18px; } }
+        font-size: 20px; } }
     @media (min-width: 992px) {
       nav#menu a.menu-item {
-        font-size: 18px; } }
+        font-size: 20px; } }
     @media (min-width: 1200px) {
       nav#menu a.menu-item {
-        font-size: 18px; } }
+        font-size: 20px; } }
+
+.link[data-url] {
+  cursor: pointer; }
 
 .gradient-bknd {
   position: relative; }

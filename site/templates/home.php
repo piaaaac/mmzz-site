@@ -58,10 +58,13 @@ $blogPosts = $page->blogPosts()->toPages();
 	  <div class="container-fluid">
 	    <div class="row">
 	    	<div class="col">
-	      	<?php foreach ($blogPosts as $post): ?>
-	      		<?php snippet("blog-post-prev", ["post" => $post]) ?>
-	      	<?php endforeach ?>
+	    		<h2 class="font-sans-m font-600">FROM THE BLOG</h2>
 	    	</div>
+	    </div>
+	    <div class="row">
+      	<?php foreach ($blogPosts as $post): ?>
+      		<?php snippet("post-preview-home", ["post" => $post]) ?>
+      	<?php endforeach ?>
 	  	</div>
 		</div>
 	</section>
@@ -78,6 +81,6 @@ $blogPosts = $page->blogPosts()->toPages();
 		</div>
 	</section>
 
-</div>
+</main>
 
 <?php snippet("footer") ?>

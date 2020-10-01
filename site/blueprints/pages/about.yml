@@ -1,0 +1,24 @@
+title: About
+preset: page
+pages: false
+
+fields:
+  
+  introText:
+    label: Intro text
+    type: textarea
+    required: true
+  
+  profileImage:
+    type: files
+    min: 1
+    max: 1
+
+  text:
+    label: Text
+    type: textarea
+    required: true
+
+  textSmall:
+    label: Small text
+    type: textarea

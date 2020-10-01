@@ -1,19 +1,29 @@
 title: Home
 preset: page
 pages: false
-fields:
-  
-  images:
+
+sections:
+
+  meta1:
+    headline: images
     type: files
     layout: cards
     size: tiny
-  
-  blogPosts:
-    label: Blog posts
-    type: pages
-    max: 2
-    query: site.find('blog').children.listed
-  
-  text:
-    label: Large text
-    type: textarea
+    template: home
+    image:
+      cover: true
+      ratio: 2/3
+      
+  meta2:
+    type: fields
+    fields:
+      
+      blogPosts:
+        label: Blog posts
+        type: pages
+        max: 2
+        query: site.find('blog').children.listed
+      
+      text:
+        label: Large text
+        type: textarea

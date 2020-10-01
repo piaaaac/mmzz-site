@@ -50,7 +50,8 @@ a {
 // Utilities
 // ------------------------------------------------------------------------
 
-.color-white { color: white; }
+.color-white	{ color: white; }
+.font-600   	{ font-weight: 600; }
 
 
 // ------------------------------------------------------------------------
@@ -82,6 +83,10 @@ nav#menu {
 		display: inline-block;
 		margin-left: 15px;
 	}
+}
+
+.link[data-url] {
+	cursor: pointer;
 }
 
 

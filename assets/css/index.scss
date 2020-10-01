@@ -108,8 +108,8 @@ nav#menu {
 	.home-opening {
 		.container-fluid {
 			.row {
-				padding-top: 0;
-				padding-bottom: 0;
+				padding-top: $padding;
+				padding-bottom: $padding;
 			}
 		}
 	}
@@ -179,6 +179,21 @@ nav#menu {
 	}
 }
 
+.footer {
+	position: relative;
+	&:before {
+		content:'';
+		display: inline-block;
+		position: absolute;
+		bottom: 0;
+		left:0;
+		height: 100vh;
+		width: 100%;
+		@include linearGradientV(white, $cyan);
+		z-index: -1;
+	}
+}
+
 // ------------------------------------------------------------------------
 // BOOTSTRAP BREAKPOINTS
 
@@ -193,5 +208,4 @@ nav#menu {
 // @include media-breakpoint-only(md) { ... }
 // @include media-breakpoint-between(md, xl) { ... }
 // @include media-breakpoint-down(lg) { ... }
-
 

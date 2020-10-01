@@ -231,8 +231,8 @@ nav#menu {
     /* IE6-9 */ }
 
 #home .home-opening .container-fluid .row {
-  padding-top: 0;
-  padding-bottom: 0; }
+  padding-top: 25px;
+  padding-bottom: 25px; }
 #home .home-img-container {
   margin-top: 10vw; }
   #home .home-img-container .col-md-4 {
@@ -282,5 +282,33 @@ nav#menu {
   padding-bottom: 100%;
   background-size: cover;
   background-position: center center; }
+
+.footer {
+  position: relative; }
+  .footer:before {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    background: white;
+    /* Old browsers */
+    background: -moz-linear-gradient(top, white 0%, #6eebde 100%);
+    /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, white), color-stop(100%, #6eebde));
+    /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, white 0%, #6eebde 100%);
+    /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, white 0%, #6eebde 100%);
+    /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, white 0%, #6eebde 100%);
+    /* IE10+ */
+    background: linear-gradient(to bottom, white 0%, #6eebde 100%);
+    /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#000000',GradientType=0 );
+    /* IE6-9 */
+    z-index: -1; }
 
 /*# sourceMappingURL=index.css.map */

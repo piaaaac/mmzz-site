@@ -10,6 +10,9 @@ $pink: #ffdada;
 $margin: 30px;
 $double-margin: $margin*2;
 
+$header-h: 60px;
+
+
 // ------------------------------------------------------------------------
 // External files import
 // ------------------------------------------------------------------------
@@ -31,9 +34,16 @@ $double-margin: $margin*2;
   color: black;
 }
 
+main {
+	padding-top: $header-h;
+}
 
-
-
+a {
+	text-decoration: none;
+	&.active, &:hover {
+		text-decoration: underline;
+	}
+}
 
 
 // ------------------------------------------------------------------------
@@ -41,21 +51,6 @@ $double-margin: $margin*2;
 // ------------------------------------------------------------------------
 
 .color-white { color: white; }
-
-// ------------------------------------------------------------------------
-// BOOTSTRAP BREAKPOINTS
-
-// xs ---                 Portrait phones
-// sm ---  576px and up   Small devices (landscape phones)
-// md ---  768px and up   Medium devices (tablets)
-// lg ---  992px and up   Large devices (desktops)
-// xl --- 1200px and up   Extra large devices (large desktops)
-
-// No media query necessary for xs breakpoint as it's effectively `@media (min-width: 0) { ... }`
-// @include media-breakpoint-up(sm) { ... }
-// @include media-breakpoint-only(md) { ... }
-// @include media-breakpoint-between(md, xl) { ... }
-// @include media-breakpoint-down(lg) { ... }
 
 
 // ------------------------------------------------------------------------
@@ -70,6 +65,25 @@ $double-margin: $margin*2;
 		padding-bottom: $double-margin;
 	}
 }
+
+
+// ------------------------------------------------------------------------
+// COMPONENTS
+// ------------------------------------------------------------------------
+
+nav#menu {
+	position: fixed;
+	z-index: 10;
+	top: 0; left: 0; right: 0;
+	height: $header-h;
+	// background-color: white;
+	a.menu-item {
+		@include font-sans-m;
+		display: inline-block;
+		margin-left: 15px;
+	}
+}
+
 
 // ------------------------------------------------------------------------
 // PAGES
@@ -152,3 +166,20 @@ $double-margin: $margin*2;
 		background-position: center center;
 	}
 }
+
+// ------------------------------------------------------------------------
+// BOOTSTRAP BREAKPOINTS
+
+// xs ---                 Portrait phones
+// sm ---  576px and up   Small devices (landscape phones)
+// md ---  768px and up   Medium devices (tablets)
+// lg ---  992px and up   Large devices (desktops)
+// xl --- 1200px and up   Extra large devices (large desktops)
+
+// No media query necessary for xs breakpoint as it's effectively `@media (min-width: 0) { ... }`
+// @include media-breakpoint-up(sm) { ... }
+// @include media-breakpoint-only(md) { ... }
+// @include media-breakpoint-between(md, xl) { ... }
+// @include media-breakpoint-down(lg) { ... }
+
+

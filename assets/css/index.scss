@@ -10,6 +10,9 @@ $pink: #ffdada;
 $padding: 25px;
 $double-padding: $padding*2;
 
+$header-h: 60px;
+
+
 // ------------------------------------------------------------------------
 // External files import
 // ------------------------------------------------------------------------
@@ -31,9 +34,16 @@ $double-padding: $padding*2;
   color: black;
 }
 
+main {
+	padding-top: $header-h;
+}
 
-
-
+a {
+	text-decoration: none;
+	&.active, &:hover {
+		text-decoration: underline;
+	}
+}
 
 
 // ------------------------------------------------------------------------
@@ -55,6 +65,25 @@ $double-padding: $padding*2;
 		padding-bottom: $double-padding;
 	}
 }
+
+
+// ------------------------------------------------------------------------
+// COMPONENTS
+// ------------------------------------------------------------------------
+
+nav#menu {
+	position: fixed;
+	z-index: 10;
+	top: 0; left: 0; right: 0;
+	height: $header-h;
+	// background-color: white;
+	a.menu-item {
+		@include font-sans-m;
+		display: inline-block;
+		margin-left: 15px;
+	}
+}
+
 
 // ------------------------------------------------------------------------
 // PAGES
@@ -79,8 +108,8 @@ $double-padding: $padding*2;
 	.home-opening {
 		.container-fluid {
 			.row {
-				padding-top: 0;
-				padding-bottom: 0;
+				padding-top: $padding;
+				padding-bottom: $padding;
 			}
 		}
 	}
@@ -164,3 +193,19 @@ $double-padding: $padding*2;
 		z-index: -1;
 	}
 }
+
+// ------------------------------------------------------------------------
+// BOOTSTRAP BREAKPOINTS
+
+// xs ---                 Portrait phones
+// sm ---  576px and up   Small devices (landscape phones)
+// md ---  768px and up   Medium devices (tablets)
+// lg ---  992px and up   Large devices (desktops)
+// xl --- 1200px and up   Extra large devices (large desktops)
+
+// No media query necessary for xs breakpoint as it's effectively `@media (min-width: 0) { ... }`
+// @include media-breakpoint-up(sm) { ... }
+// @include media-breakpoint-only(md) { ... }
+// @include media-breakpoint-between(md, xl) { ... }
+// @include media-breakpoint-down(lg) { ... }
+

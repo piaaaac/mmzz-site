@@ -52,6 +52,32 @@ $blogPosts = $page->blogPosts()->toPages();
 	  </div>
 	</section>
 
+	<!-- blog preview -->
+
+	<section>
+	  <div class="container-fluid">
+	    <div class="row">
+	    	<div class="col">
+	      	<?php foreach ($blogPosts as $post): ?>
+	      		<?php snippet("blog-post-prev", ["post" => $post]) ?>
+	      	<?php endforeach ?>
+	    	</div>
+	  	</div>
+		</div>
+	</section>
+
+	<!-- intro sentence -->
+
+	<section>
+	  <div class="container-fluid">
+	    <div class="row">
+	    	<div class="col">
+	    		<h2 class="font-huge"><?= $page->text()->kti() ?></h2>
+	    	</div>
+	  	</div>
+		</div>
+	</section>
+
 </div>
 
 <?php snippet("footer") ?>

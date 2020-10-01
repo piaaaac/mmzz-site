@@ -7,8 +7,8 @@
 $cyan: #6eebde;
 $pink: #ffdada;
 
-$margin: 30px;
-$double-margin: $margin*2;
+$padding: 25px;
+$double-padding: $padding*2;
 
 $header-h: 60px;
 
@@ -58,11 +58,11 @@ a {
 // ------------------------------------------------------------------------
 
 .container-fluid {
-	padding-left: $double-margin;
-	padding-right: $double-margin;
+	padding-left: $double-padding;
+	padding-right: $double-padding;
 	.row {
-		padding-top: $double-margin;
-		padding-bottom: $double-margin;
+		padding-top: $double-padding;
+		padding-bottom: $double-padding;
 	}
 }
 
@@ -103,23 +103,6 @@ nav#menu {
 	}
 }
 
-.img-container {
-	margin-top: 25vw;
-	.portrait-img {
-		width: calc(50% - 16vw);
-	  height: 0;
-	  padding-bottom: 50%;
-	  margin: 8vw;
-	  display:inline-block;
-	  float: left;
-	  background-size: cover;
-		background-position: center center;
-		&:nth-of-type(2n+1) {
-			margin-top: -10vw;
-		}
-	}
-}
-
 
 #home {
 	.home-opening {
@@ -135,15 +118,22 @@ nav#menu {
 		.col-md-4 {
 			margin-top: 10vw;
 			.cyan-img, .portrait-img {
-		    width: 100%;
+		    width: 80%;
 				height: 0;
+				margin: 0 auto;
 			  padding-bottom: 110%;
-			  background-size: contain;
+			  background-size: cover;
 		    background-position: center center;
 		    background-repeat: no-repeat;
 			}
-			&:nth-of-type(3n+2) {
-				margin-top: -10vw;
+			.cyan-img {
+				width: 100%;
+				background-size: contain;
+			}
+			@include media-breakpoint-up(md) {
+				&:nth-of-type(3n+2) {
+					margin-top: -10vw;
+				}
 			}
 		}
 	}
@@ -155,11 +145,33 @@ nav#menu {
 		background-size: cover;
 		background-position: center center;
 	}
+	.img-container {
+		margin-top: 25vw;
+		.portrait-img {
+			width: 80%;
+		  height: 0;
+		  padding-bottom: 110%;
+		  margin: 10%;
+		  display:inline-block;
+		  float: left;
+		  background-size: cover;
+			background-position: center center;
+			@include media-breakpoint-up(md) {
+				width: 30%;
+				padding-bottom: 50%;
+				&:nth-of-type(2n+1) {
+					margin-top: -10vw;
+				}
+			}
+		}
+	}
 	.text-container {
-		margin-top: -10vw;
+		@include media-breakpoint-up(md) {
+			margin-top: -10vw;
+		}
 	}
 	.moodboard {
-		margin:$double-margin -#{$double-margin};
+		margin:$double-padding -#{$double-padding};
 		height: 0;
 	  padding-bottom: 100%;
 		background-size: cover;

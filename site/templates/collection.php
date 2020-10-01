@@ -40,7 +40,7 @@ $images2 = $page->images2()->toFiles();
         
         <!-- smaller text 1 -->
 
-        <div class="col-6 text-container">
+        <div class="col-md-6 text-container">
         	<div class="font-large"><?= $page->text1()->kt() ?></div>
         </div>
 
@@ -52,7 +52,7 @@ $images2 = $page->images2()->toFiles();
 
         <!-- smaller text 2 -->
 
-        <div class="col-lg-6">
+        <div class="col-lg-6 mb-5">
         	<div class="font-large"><?= $page->text2()->kt() ?></div>
         </div>
 

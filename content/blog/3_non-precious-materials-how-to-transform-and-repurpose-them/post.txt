@@ -2,11 +2,16 @@ Title: Non-precious materials, how to transform and repurpose them
 
 ----
 
-Cover: - home-6.jpg
+Cover:
+
+- bitmap.jpg
 
 ----
 
-Postimages: 
+Postimages:
+
+- bitmap.png
+- cardb.jpg
 
 ----
 
@@ -14,7 +19,7 @@ Text: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sed turpis
 
 ----
 
-Postdate: 2020-09-24
+Postdate: 2020-09-10
 
 ----
 

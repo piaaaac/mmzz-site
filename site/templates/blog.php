@@ -17,7 +17,7 @@ $blogPosts = $page->children()->listed()->sortBy("postDate", "desc");
     </div>
   </section>
 
-	<!-- blog previews -->
+	<!-- post previews -->
 
 	<section>
 	  <div class="container-fluid">

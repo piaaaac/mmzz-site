@@ -1,6 +1,6 @@
-<?php
-snippet("header");
+<?php snippet("header") ?>
 
+<?php 
 $cover = $page->cover()->toFile();
 $images1 = $page->images1()->toFiles();
 $mood = $page->mood()->toFile();
@@ -68,3 +68,5 @@ $images2 = $page->images2()->toFiles();
   </section>
 
 </main>
+
+<?php snippet("footer") ?>

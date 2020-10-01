@@ -104,7 +104,7 @@ $double-padding: $padding*2;
 		.col-md-4 {
 			margin-top: 10vw;
 			.cyan-img, .portrait-img {
-		    max-width: 75%;
+		    width: 80%;
 				height: 0;
 				margin: 0 auto;
 			  padding-bottom: 110%;
@@ -113,7 +113,8 @@ $double-padding: $padding*2;
 		    background-repeat: no-repeat;
 			}
 			.cyan-img {
-				max-width: 100%;
+				width: 100%;
+				background-size: contain;
 			}
 			@include media-breakpoint-up(md) {
 				&:nth-of-type(3n+2) {
@@ -133,16 +134,16 @@ $double-padding: $padding*2;
 	.img-container {
 		margin-top: 25vw;
 		.portrait-img {
-			width: 75%;
+			width: 80%;
 		  height: 0;
 		  padding-bottom: 110%;
-		  margin: 12.5%;
+		  margin: 10%;
 		  display:inline-block;
 		  float: left;
 		  background-size: cover;
 			background-position: center center;
 			@include media-breakpoint-up(md) {
-				width: calc(50% - 16vw);
+				width: 30%;
 				padding-bottom: 50%;
 				&:nth-of-type(2n+1) {
 					margin-top: -10vw;

@@ -200,7 +200,7 @@ html body input:-internal-autofill-selected {
   #home .home-img-container .col-md-4 {
     margin-top: 10vw; }
     #home .home-img-container .col-md-4 .cyan-img, #home .home-img-container .col-md-4 .portrait-img {
-      max-width: 75%;
+      width: 80%;
       height: 0;
       margin: 0 auto;
       padding-bottom: 110%;
@@ -208,7 +208,8 @@ html body input:-internal-autofill-selected {
       background-position: center center;
       background-repeat: no-repeat; }
     #home .home-img-container .col-md-4 .cyan-img {
-      max-width: 100%; }
+      width: 100%;
+      background-size: contain; }
     @media (min-width: 768px) {
       #home .home-img-container .col-md-4:nth-of-type(3n+2) {
         margin-top: -10vw; } }
@@ -220,17 +221,17 @@ html body input:-internal-autofill-selected {
 #collection .img-container {
   margin-top: 25vw; }
   #collection .img-container .portrait-img {
-    width: 75%;
+    width: 80%;
     height: 0;
     padding-bottom: 110%;
-    margin: 12.5%;
+    margin: 10%;
     display: inline-block;
     float: left;
     background-size: cover;
     background-position: center center; }
     @media (min-width: 768px) {
       #collection .img-container .portrait-img {
-        width: calc(50% - 16vw);
+        width: 30%;
         padding-bottom: 50%; }
         #collection .img-container .portrait-img:nth-of-type(2n+1) {
           margin-top: -10vw; } }

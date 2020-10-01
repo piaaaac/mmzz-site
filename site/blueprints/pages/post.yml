@@ -18,8 +18,13 @@ fields:
     type: textarea
     required: true
 
+  postDate:
+    label: Date
+    type: text
+    required: true
+
   tags:
     label: Tags
     type: tags
     options: query
-    query: site.find('post').childrenAndDrafts.pluck("tags", ",", true)
+    query: site.find('blog').childrenAndDrafts.pluck("tags", ",", true)

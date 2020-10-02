@@ -74,7 +74,7 @@ $blogPosts = $page->blogPosts()->toPages();
 
 	<!-- blog preview -->
 
-	<section>
+	<section class="blog-preview">
 	  <div class="container-fluid">
 	    <div class="row">
 	    	<div class="col">

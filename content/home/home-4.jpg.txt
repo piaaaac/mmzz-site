@@ -1,6 +1,6 @@
 Collection:
 
-- collections/collection-2
+- collections/cardboard-remineral
 
 ----
 

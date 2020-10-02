@@ -30,12 +30,12 @@
 	<section>
 	  <div class="container-fluid">
 	    <div class="row">
-	    	<div class="col-lg-6">
+	    	<div class="col-lg-6 mb-5">
 	    		<div class="font-large"><?= $page->text()->kt() ?></div>
 	    	</div>
 	    	<div class="col-lg-4 offset-lg-2">
 	    		<img class="img-fluid mb-3" src="<?= $page->profileImage()->toFile()->url() ?>" />
-	    		<div class="font-sans-m"><?= $page->textSmall()->kt() ?></div>
+	    		<div class="bio-lists"><?= $page->textSmall()->kt() ?></div>
 	    	</div>
 	    </div>
 		</div>

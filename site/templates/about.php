@@ -30,7 +30,7 @@
 	<section>
 	  <div class="container-fluid">
 	    <div class="row">
-	    	<div class="col-lg-6">
+	    	<div class="col-lg-6 mb-5">
 	    		<div class="font-large"><?= $page->text()->kt() ?></div>
 	    	</div>
 	    	<div class="col-lg-4 offset-lg-2">

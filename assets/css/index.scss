@@ -110,6 +110,10 @@ nav#menu, #home {
 	}
 }
 
+.tall-page-title {
+	height: 50vh;
+}
+
 
 #home {
 	.home-opening {
@@ -144,6 +148,39 @@ nav#menu, #home {
 				&:nth-of-type(3n+2) {
 					margin-top: -10vw;
 				}
+			}
+		}
+	}
+}
+
+#collections {
+	.collections-list {
+		.collection-list-item {
+			padding: $padding 0;
+			border-top: 1px solid black;
+			position: relative;
+			z-index:2;
+			&:hover + .collection-prev {
+				opacity: 1;
+			}
+		}
+		.collection-prev {
+			position: fixed;
+	    top: 0;
+	    left: 0;
+	    width: 100%;
+	    height: 100%;
+	    display: flex;
+	    justify-content: center;
+	    opacity: 0;
+	    z-index:1;
+	    @include transition(opacity .2s linear);
+			.img-cover {
+		    width: 50%;
+		    height: 100vh;
+		    background-size: 60%;
+		    background-repeat: no-repeat;
+		    background-position: center;
 			}
 		}
 	}

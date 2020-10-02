@@ -1,0 +1,11 @@
+Collection:
+
+- collections/cardboard-cutouts
+
+----
+
+Template: home
+
+----
+
+Sort: 5

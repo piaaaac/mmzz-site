@@ -1,0 +1,15 @@
+Collection:
+
+- collections/collection-2
+
+----
+
+Text: 
+
+----
+
+Template: home
+
+----
+
+Sort: 11

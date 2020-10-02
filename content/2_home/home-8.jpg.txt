@@ -1,5 +1,0 @@
-Template: home
-
-----
-
-Sort: 12

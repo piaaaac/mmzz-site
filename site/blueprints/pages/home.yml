@@ -10,6 +10,8 @@ sections:
     layout: cards
     size: tiny
     template: home
+    min: 12
+    max: 12
     image:
       cover: true
       ratio: 2/3

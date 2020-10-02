@@ -62,8 +62,10 @@ a {
 // ------------------------------------------------------------------------
 
 .container-fluid {
-	padding-left: $double-padding;
-	padding-right: $double-padding;
+	@include media-breakpoint-up(sm) {
+		padding-left: $double-padding;
+		padding-right: $double-padding;
+	}	
 	.row {
 		padding-top: $double-padding;
 		padding-bottom: $double-padding;
@@ -148,14 +150,27 @@ nav#menu, nav#menu-home {
 		margin-top: 10vw;
 		.col-md-4 {
 			margin-top: 10vw;
-			.cyan-img, .portrait-img {
+			.cyan-img, .portrait-img, .empty {
 		    width: 80%;
 				height: 0;
 				margin: 0 auto;
+				position: relative;
 			  padding-bottom: 110%;
 			  background-size: cover;
 		    background-position: center center;
 		    background-repeat: no-repeat;
+		    .hover-text {
+					position: absolute;
+					top: calc(100% + 20px);
+					text-align: center;
+					width: 100%;
+					left: 0;
+					opacity: 0;
+					@include transition(opacity 400ms);
+		    }
+		    &:hover .hover-text {
+		    	opacity: 1;
+		    }
 			}
 			.cyan-img {
 				width: 100%;

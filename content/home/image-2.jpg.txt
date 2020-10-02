@@ -1,0 +1,15 @@
+Collection:
+
+- collections/cardboard-cutouts
+
+----
+
+Text: Cardboard Necklaces
+
+----
+
+Template: home
+
+----
+
+Sort: 2

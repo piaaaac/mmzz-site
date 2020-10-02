@@ -1,0 +1,15 @@
+Collection:
+
+- collections/cardboard-cutouts
+
+----
+
+Text: 
+
+----
+
+Template: home
+
+----
+
+Sort: 12

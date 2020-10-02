@@ -15,8 +15,13 @@ $blogPosts = $page->blogPosts()->toPages();
 	<section class="home-opening">
 	  <div class="container-fluid">
 	    <div class="row">
-	    	<div class="col">
+	    	<div class="col-12">
 	    		<img class="logo w-100" src="<?= kirby()->url('assets') ?>/images/logo.svg" />
+	    	</div>
+	    	<div class="col-12 d-flex justify-content-end">
+					<a class="menu-item" href="<?= page("collections")->url() ?>"><?= page("collections")->title() ?></a>
+					<a class="menu-item" href="<?= page("about")->url() ?>"><?= page("about")->title() ?></a>
+					<a class="menu-item" href="<?= page("blog")->url() ?>"><?= page("blog")->title() ?></a>
 	    	</div>
 	  	</div>
 		</div>
@@ -25,14 +30,19 @@ $blogPosts = $page->blogPosts()->toPages();
 	<section class="home-img-container">
 	  <div class="container-fluid">
 	    <div class="row">
-      	<?php $i = -3; ?>
+      	<?php $i = 0; ?>
       	<?php $ci = 0; ?>
       	<?php foreach ($images as $img): ?>
 	      	<div class="col-md-4">
         		<div class="portrait-img" style="background-image: url(<?= $img->url() ?>);"><br/><br/><br/></div>
 	      	</div>
       		
-      		<?php if ($i%3 == 0): ?>
+      		<?php if (
+      			$i == 0
+      			|| $i == 4
+      			|| $i == 5
+      			|| $i == 12
+      		): ?>
       			<?php
       			if ($ci >= $cyanImages->count()) {
       				$cyanImages = $cyanImages->shuffle();
@@ -63,7 +73,9 @@ $blogPosts = $page->blogPosts()->toPages();
 	    </div>
 	    <div class="row">
       	<?php foreach ($blogPosts as $post): ?>
-      		<?php snippet("post-preview-home", ["post" => $post]) ?>
+	    		<div class="col-lg-6">
+      			<?php snippet("post-preview-home", ["post" => $post]) ?>
+      		</div>
       	<?php endforeach ?>
 	  	</div>
 		</div>

@@ -34,7 +34,7 @@ $header-h: 60px;
   color: black;
 }
 
-main {
+main:not(#home) {
 	padding-top: $header-h;
 }
 
@@ -78,6 +78,8 @@ nav#menu {
 	top: 0; left: 0; right: 0;
 	height: $header-h;
 	// background-color: white;
+}
+nav#menu, #home {
 	a.menu-item {
 		@include font-sans-m;
 		display: inline-block;
@@ -111,6 +113,9 @@ nav#menu {
 
 #home {
 	.home-opening {
+		position: relative;
+		z-index: 9;
+		// @include transition(top 10ms);
 		.container-fluid {
 			.row {
 				padding-top: $padding;

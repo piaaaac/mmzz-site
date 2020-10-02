@@ -4,8 +4,8 @@
 	    <div class="row">
 	    	<div class="col d-flex align-items-end justify-content-start">
 
-	    		<p class="font-sans-s">&copy; Matilde Mozzanega 2020</p>
-    			<a class="font-sans-s d-inline-block ml-3" href="">Privacy</a>
+	    		<p class="font-sans-m">&copy; Matilde Mozzanega 2020</p>
+    			<a class="font-sans-m d-inline-block ml-3" href="">Privacy</a>
 
 	    	</div>
 	  	</div>

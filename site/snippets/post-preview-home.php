@@ -6,7 +6,7 @@
 
 ?>
 
-<div class="col-lg-6 post-preview link" data-url="<?= $post->url() ?>">
+<div class="post-preview link" data-url="<?= $post->url() ?>">
 	<div class="row">
 		<div class="col-6">
 			<img class="img-fluid" src="<?= $post->cover()->toFile()->url() ?>" />

@@ -176,7 +176,7 @@ html body input:-internal-autofill-selected {
   font-family: Hatton, serif;
   color: black; }
 
-main {
+main:not(#home) {
   padding-top: 60px; }
 
 a {
@@ -204,28 +204,29 @@ nav#menu {
   left: 0;
   right: 0;
   height: 60px; }
-  nav#menu a.menu-item {
-    font-family: "Work Sans", sans-serif;
-    font-size: 20px;
-    letter-spacing: 0;
-    line-height: 1.3em;
-    font-weight: 400;
-    font-style: normal;
-    font-stretch: normal;
-    display: inline-block;
-    margin-left: 15px; }
-    @media (min-width: 576px) {
-      nav#menu a.menu-item {
-        font-size: 20px; } }
-    @media (min-width: 768px) {
-      nav#menu a.menu-item {
-        font-size: 20px; } }
-    @media (min-width: 992px) {
-      nav#menu a.menu-item {
-        font-size: 20px; } }
-    @media (min-width: 1200px) {
-      nav#menu a.menu-item {
-        font-size: 20px; } }
+
+nav#menu a.menu-item, #home a.menu-item {
+  font-family: "Work Sans", sans-serif;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: 1.3em;
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal;
+  display: inline-block;
+  margin-left: 15px; }
+  @media (min-width: 576px) {
+    nav#menu a.menu-item, #home a.menu-item {
+      font-size: 20px; } }
+  @media (min-width: 768px) {
+    nav#menu a.menu-item, #home a.menu-item {
+      font-size: 20px; } }
+  @media (min-width: 992px) {
+    nav#menu a.menu-item, #home a.menu-item {
+      font-size: 20px; } }
+  @media (min-width: 1200px) {
+    nav#menu a.menu-item, #home a.menu-item {
+      font-size: 20px; } }
 
 .link[data-url] {
   cursor: pointer; }
@@ -257,9 +258,12 @@ nav#menu {
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#000000',GradientType=0 );
     /* IE6-9 */ }
 
-#home .home-opening .container-fluid .row {
-  padding-top: 25px;
-  padding-bottom: 25px; }
+#home .home-opening {
+  position: relative;
+  z-index: 9; }
+  #home .home-opening .container-fluid .row {
+    padding-top: 25px;
+    padding-bottom: 25px; }
 #home .home-img-container {
   margin-top: 10vw; }
   #home .home-img-container .col-md-4 {

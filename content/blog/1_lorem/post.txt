@@ -1,16 +1,12 @@
-Title: Lorem
+Title: The value of mistakes
 
 ----
 
-Cover:
-
-- 710.jpg
+Cover: - 710.jpg
 
 ----
 
-postImages:
-
-- 1050.jpg
+Postimages: - 1050.jpg
 
 ----
 

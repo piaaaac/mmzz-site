@@ -48,7 +48,9 @@ $otehrPosts = $page->siblings()->not($page)->listed()->sortBy("postDate", "desc"
 	  <div class="container-fluid">
 	    <div class="row">
       	<?php foreach ($otehrPosts as $post): ?>
-      		<?php snippet("post-preview", ["post" => $post]) ?>
+			    <div class="col-lg-6">
+	      		<?php snippet("post-preview", ["post" => $post]) ?>
+			  	</div>
       	<?php endforeach ?>
 	  	</div>
 		</div>

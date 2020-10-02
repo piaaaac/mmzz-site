@@ -15,8 +15,13 @@ $blogPosts = $page->blogPosts()->toPages();
 	<section class="home-opening">
 	  <div class="container-fluid">
 	    <div class="row">
-	    	<div class="col">
+	    	<div class="col-12">
 	    		<img class="logo w-100" src="<?= kirby()->url('assets') ?>/images/logo.svg" />
+	    	</div>
+	    	<div class="col-12 d-flex justify-content-end">
+					<a class="menu-item" href="<?= page("collections")->url() ?>"><?= page("collections")->title() ?></a>
+					<a class="menu-item" href="<?= page("about")->url() ?>"><?= page("about")->title() ?></a>
+					<a class="menu-item" href="<?= page("blog")->url() ?>"><?= page("blog")->title() ?></a>
 	    	</div>
 	  	</div>
 		</div>

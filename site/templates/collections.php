@@ -24,7 +24,7 @@
             </div>
             <div class="collection-prev" data-url="<?= $collection->url() ?>">
               <div class="img-cover" style="background-image: url(<?= $collection->cover()->toFile()->url() ?>);"><br/></div>
-              <div class="img-cover cyan" style="background-image: url(<?= $collection->files()->filterBy("template", "cyan")->first()->url() ?>);"><br/></div>
+              <div class="img-cover" style="background-image: url(<?= $collection->files()->filterBy("template", "cyan")->first()->url() ?>);"><br/></div>
             </div>
           <?php endforeach ?>
 

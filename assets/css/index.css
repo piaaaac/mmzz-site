@@ -286,34 +286,36 @@ nav#menu a.menu-item, #home a.menu-item {
       #home .home-img-container .col-md-4:nth-of-type(3n+2) {
         margin-top: -10vw; } }
 
-#collections .collections-list .collection-list-item {
-  padding: 25px 0;
-  border-top: 1px solid black;
-  position: relative;
-  z-index: 2; }
-  #collections .collections-list .collection-list-item:hover + .collection-prev {
-    opacity: 1; }
-#collections .collections-list .collection-prev {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  opacity: 0;
-  z-index: 1;
-  -webkit-transition: opacity 0.2s linear;
-  -moz-transition: opacity 0.2s linear;
-  -ms-transition: opacity 0.2s linear;
-  -o-transition: opacity 0.2s linear;
-  transition: opacity 0.2s linear; }
-  #collections .collections-list .collection-prev .img-cover {
-    width: 50%;
-    height: 100vh;
-    background-size: 60%;
-    background-repeat: no-repeat;
-    background-position: center; }
+#collections {
+  padding-bottom: 50vh; }
+  #collections .collections-list .collection-list-item {
+    padding: 25px 0;
+    border-top: 1px solid black;
+    position: relative;
+    z-index: 2; }
+    #collections .collections-list .collection-list-item:hover + .collection-prev {
+      opacity: 1; }
+  #collections .collections-list .collection-prev {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    opacity: 0;
+    z-index: 1;
+    -webkit-transition: opacity 0.2s linear;
+    -moz-transition: opacity 0.2s linear;
+    -ms-transition: opacity 0.2s linear;
+    -o-transition: opacity 0.2s linear;
+    transition: opacity 0.2s linear; }
+    #collections .collections-list .collection-prev .img-cover {
+      width: 50%;
+      height: 100vh;
+      background-size: 60%;
+      background-repeat: no-repeat;
+      background-position: center; }
 
 #collection .collection-opening {
   height: 90vh;
@@ -354,7 +356,7 @@ nav#menu a.menu-item, #home a.menu-item {
     position: absolute;
     bottom: 0;
     left: 0;
-    height: 100vh;
+    height: 75vh;
     width: 100%;
     background: white;
     /* Old browsers */

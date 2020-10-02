@@ -154,6 +154,7 @@ nav#menu, #home {
 }
 
 #collections {
+	padding-bottom: 50vh;
 	.collections-list {
 		.collection-list-item {
 			padding: $padding 0;
@@ -234,7 +235,7 @@ nav#menu, #home {
 		position: absolute;
 		bottom: 0;
 		left:0;
-		height: 100vh;
+		height: 75vh;
 		width: 100%;
 		@include linearGradientV(white, $cyan);
 		z-index: -1;

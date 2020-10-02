@@ -5,7 +5,7 @@
 // ------------------------------------------------------------------------
 
 $cyan: #6eebde;
-$pink: #ffdada;
+$pink: #ffcaca;
 
 $padding: 25px;
 $double-padding: $padding*2;
@@ -67,8 +67,8 @@ a {
 		padding-right: $double-padding;
 	}	
 	.row {
-		padding-top: $double-padding;
-		padding-bottom: $double-padding;
+		padding-top: $padding;
+		padding-bottom: $padding;
 	}
 }
 
@@ -183,6 +183,19 @@ nav#menu, nav#menu-home {
 			}
 		}
 	}
+	.blog-preview {
+		padding: $double-padding 0;
+		position: relative;
+		&:before {
+			content:'';
+			position: absolute;
+			top: -25%;
+	    left: -25%;
+	    width: 100%;
+	    height: 150vh;
+			background: radial-gradient(50% 50% at center, $pink 0%, rgba(0,0,0,0) 100%);
+		} 
+	}
 }
 
 #collections {
@@ -271,6 +284,12 @@ nav#menu, nav#menu-home {
 		width: 100%;
 		@include linearGradientV(white, $cyan);
 		z-index: -1;
+	}
+}
+
+#blog {
+	.post-preview {
+		padding-bottom: $padding;
 	}
 }
 

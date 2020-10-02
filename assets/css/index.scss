@@ -34,8 +34,11 @@ $header-h: 60px;
   color: black;
 }
 
-main:not(#home) {
+main {
 	padding-top: $header-h;
+	&#home {
+		padding-top: 25vw;
+	}
 }
 
 a {
@@ -77,9 +80,8 @@ nav#menu {
 	z-index: 10;
 	top: 0; left: 0; right: 0;
 	height: $header-h;
-	// background-color: white;
 }
-nav#menu, #home {
+nav#menu, nav#menu-home {
 	a.menu-item {
 		@include font-sans-m;
 		display: inline-block;
@@ -117,13 +119,28 @@ nav#menu, #home {
 
 #home {
 	.home-opening {
-		position: relative;
+		position: fixed;
+		top: 0; left: 0; right: 0;
 		z-index: 9;
-		// @include transition(top 10ms);
-		.container-fluid {
-			.row {
-				padding-top: $padding;
-				padding-bottom: $padding;
+		.logo {
+			padding-top: $padding;
+			display: block;
+		}
+		nav#menu-home {
+			top: 0; left: 0; right: 0;
+			height: $header-h;
+			#home-small-logo {
+				position: relative;
+				opacity: 0;
+				top: 20px;
+				@include transition(opacity 400ms, top 400ms);
+			}
+		}
+		&.stick {
+			.logo { opacity: 0; }
+			nav#menu-home {
+				position: fixed;
+				#home-small-logo { opacity: 1; top: 0; }
 			}
 		}
 	}

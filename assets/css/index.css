@@ -176,8 +176,10 @@ html body input:-internal-autofill-selected {
   font-family: Hatton, serif;
   color: black; }
 
-main:not(#home) {
+main {
   padding-top: 60px; }
+  main#home {
+    padding-top: 25vw; }
 
 a {
   text-decoration: none; }
@@ -205,7 +207,7 @@ nav#menu {
   right: 0;
   height: 60px; }
 
-nav#menu a.menu-item, #home a.menu-item {
+nav#menu a.menu-item, nav#menu-home a.menu-item {
   font-family: "Work Sans", sans-serif;
   font-size: 20px;
   letter-spacing: 0;
@@ -216,16 +218,16 @@ nav#menu a.menu-item, #home a.menu-item {
   display: inline-block;
   margin-left: 15px; }
   @media (min-width: 576px) {
-    nav#menu a.menu-item, #home a.menu-item {
+    nav#menu a.menu-item, nav#menu-home a.menu-item {
       font-size: 20px; } }
   @media (min-width: 768px) {
-    nav#menu a.menu-item, #home a.menu-item {
+    nav#menu a.menu-item, nav#menu-home a.menu-item {
       font-size: 20px; } }
   @media (min-width: 992px) {
-    nav#menu a.menu-item, #home a.menu-item {
+    nav#menu a.menu-item, nav#menu-home a.menu-item {
       font-size: 20px; } }
   @media (min-width: 1200px) {
-    nav#menu a.menu-item, #home a.menu-item {
+    nav#menu a.menu-item, nav#menu-home a.menu-item {
       font-size: 20px; } }
 
 .link[data-url] {
@@ -262,11 +264,35 @@ nav#menu a.menu-item, #home a.menu-item {
   height: 50vh; }
 
 #home .home-opening {
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: 9; }
-  #home .home-opening .container-fluid .row {
+  #home .home-opening .logo {
     padding-top: 25px;
-    padding-bottom: 25px; }
+    display: block; }
+  #home .home-opening nav#menu-home {
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px; }
+    #home .home-opening nav#menu-home #home-small-logo {
+      position: relative;
+      opacity: 0;
+      top: 20px;
+      -webkit-transition: opacity 400ms, top 400ms;
+      -moz-transition: opacity 400ms, top 400ms;
+      -ms-transition: opacity 400ms, top 400ms;
+      -o-transition: opacity 400ms, top 400ms;
+      transition: opacity 400ms, top 400ms; }
+  #home .home-opening.stick .logo {
+    opacity: 0; }
+  #home .home-opening.stick nav#menu-home {
+    position: fixed; }
+    #home .home-opening.stick nav#menu-home #home-small-logo {
+      opacity: 1;
+      top: 0; }
 #home .home-img-container {
   margin-top: 10vw; }
   #home .home-img-container .col-md-4 {

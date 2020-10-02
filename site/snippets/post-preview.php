@@ -7,7 +7,7 @@
 ?>
 
 <div class="post-preview link" data-url="<?= $post->url() ?>">
-	<header class="font-sans-s mb-4">
+	<header class="font-sans-s mb-2">
 		<?= $post->postDate()->value() ?>
 		&nbsp; <?= "#". implode(", &nbsp; #", $post->tags()->split()) ?>
 	</header>

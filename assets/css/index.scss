@@ -62,8 +62,8 @@ a {
 	padding-left: $double-padding;
 	padding-right: $double-padding;
 	.row {
-		padding-top: $double-padding;
-		padding-bottom: $double-padding;
+		padding-top: $padding;
+		padding-bottom: $padding;
 	}
 }
 
@@ -239,6 +239,12 @@ nav#menu, #home {
 		width: 100%;
 		@include linearGradientV(white, $cyan);
 		z-index: -1;
+	}
+}
+
+#blog {
+	.post-preview {
+		padding-bottom: $padding;
 	}
 }
 

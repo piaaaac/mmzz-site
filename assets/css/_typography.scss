@@ -29,7 +29,7 @@ $font-sans:     "Work Sans", sans-serif;
 
 // --------------------------------------------------------- xs --- sm --- md --- lg --- xl ---- lsp -- lh ---- w --- style
 @mixin font-huge      { @include font-style($font-display,    5vw,   5vw,   5vw,   5vw,   5vw,   0,     1.2,  400,  normal); }
-@mixin font-large     { @include font-style($font-display, 2.81vw,2.81vw,2.81vw,2.81vw,2.81vw,   0,     1.3,  400,  normal); }
+@mixin font-large     { @include font-style($font-display,   35px,  35px,  35px,2.81vw,2.81vw,   0,     1.3,  400,  normal); }
 @mixin font-m         { @include font-style($font-display,   18px,  18px,  18px,  18px,  18px,   0,     1.3,  400,  normal); }
 @mixin font-sans-m    { @include font-style($font-sans,      20px,  20px,  20px,  20px,  20px,   0,     1.3em,  400,  normal); }
 @mixin font-sans-s    { @include font-style($font-sans,      14px,  14px,  14px,  14px,  14px,   0,     1.3em,  400,  normal); }

@@ -242,6 +242,24 @@ nav#menu, #home {
 	}
 }
 
+#about {
+	.bio-lists {
+		h2 {
+			@extend .font-sans-m;
+			font-weight: 600;
+			padding-top: $padding;
+		}
+		p {
+			@extend .font-sans-m;
+			padding-bottom: $padding/2;
+		}
+		a {
+			@extend .font-sans-m;
+			text-decoration: underline;
+		}
+	}
+}
+
 // ------------------------------------------------------------------------
 // BOOTSTRAP BREAKPOINTS
 

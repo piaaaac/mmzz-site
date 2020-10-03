@@ -55,15 +55,24 @@ $images2 = $page->images2()->toFiles();
     <div class="container-fluid">
       <div class="row">
 
-        <!-- smaller text 2 -->
+        <?php
+        $textExtists = $page->text2()->isNotEmpty();
+        $imagesClass = $textExtists ? "col-lg-4 offset-lg-2" : "col-lg-4 offset-lg-4 mt-5 pt-5";
+        ?>
 
-        <div class="col-lg-6 mb-5">
-        	<div class="font-large"><?= $page->text2()->kt() ?></div>
-        </div>
+        <?php if ($textExtists): ?>
+
+          <!-- smaller text 2 -->
+
+          <div class="col-lg-6 mb-5">
+          	<div class="font-large"><?= $page->text2()->kt() ?></div>
+          </div>
+
+        <?php endif ?>
 
         <!-- last images -->
         	
-        <div class="col-lg-4 offset-lg-2">
+        <div class="<?= $imagesClass ?>">
         	<?php foreach ($images2 as $img): ?>
         		<img class="img-fluid w-100 mb-5" src="<?= $img->url() ?>" />
         	<?php endforeach ?>

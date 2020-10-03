@@ -7,6 +7,8 @@ foreach (page("collections")->children()->listed() as $collection) {
 	$cyanImages->add($collection->files()->filterBy("template", "cyan")/*->toFile()*/);
 }
 $cyanImages = $cyanImages->shuffle();
+
+// kill($cyanImages);
 $cyanPositions = [1, 5, 6, 13/*, 17, 18*/];
 $emptyPositions = [15];
 $imgArray = [];

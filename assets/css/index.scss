@@ -147,6 +147,9 @@ nav#menu, nav#menu-home {
 		}
 	}
 	.home-img-container {
+		@include media-breakpoint-down(sm) {
+		  margin-bottom: 10vw;
+		}
 		margin-top: 10vw;
 		.col-md-4 {
 			margin-top: 10vw;
@@ -175,6 +178,11 @@ nav#menu, nav#menu-home {
 			.cyan-img {
 				width: 100%;
 				background-size: contain;
+			}
+			.empty {
+				@include media-breakpoint-down(sm) {
+				  padding-bottom: 0;
+				}
 			}
 			@include media-breakpoint-up(md) {
 				&:nth-of-type(3n+2) {

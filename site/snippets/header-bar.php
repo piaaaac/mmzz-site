@@ -2,7 +2,7 @@
   <div class="container-fluid h-100 d-flex justify-content-between align-items-center">
 		<div>
 			<!-- <img class="logo" src="<?= kirby()->url('assets') ?>/images/logo.svg" /> -->
-			<a class="font-m" href="<?= $site->url() ?>">&Ouml;MMZZ</a>
+			<a class="font-m" href="<?= $site->url() ?>"><?= randomLogo() ?></a>
 		</div>
 		<div>
 			<a class="menu-item" href="<?= page("collections")->url() ?>"><?= page("collections")->title() ?></a>

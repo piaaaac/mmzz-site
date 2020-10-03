@@ -9,6 +9,10 @@ Cover:
 
 ----
 
+Titlecolor: true
+
+----
+
 Introtext: The piece Celestial Body is an exploration and celebration of the material tinplate and its transformation. Once under a strong flame, it reveals extraordinary, unexpected properties one would not associate with a non-precious material.
 
 ----

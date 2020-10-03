@@ -6,7 +6,7 @@ $(".link[data-url]").click(function () {
 if ($(".home-opening").length > 0) {
 	$(window).scroll(function () {
     var scroll = $(window).scrollTop();
-    var offset = Math.round(scroll * 0.5);
+    var offset = Math.round(scroll * 0.4);
     var logo = $(".home-opening .logo");
     var logoBottom = logo.outerHeight() - offset;
     // console.log(logoBottom)

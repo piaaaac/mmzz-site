@@ -3,6 +3,7 @@
 
 <?php 
 $cover = $page->cover()->toFile();
+$titleClass = $page->titleColor()->toBool() ? "color-white" : "";
 $images1 = $page->images1()->toFiles();
 $mood = $page->mood()->toFile();
 $images2 = $page->images2()->toFiles();
@@ -14,7 +15,7 @@ $images2 = $page->images2()->toFiles();
     <div class="container-fluid">
       <div class="row">
         <div class="col-12">
-      		<h1 class="font-huge"><?= $page->title() ?></h1>
+      		<h1 class="font-huge <?= $titleClass ?>"><?= $page->title() ?></h1>
         </div>
       </div>
     </div>

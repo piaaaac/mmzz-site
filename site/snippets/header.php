@@ -28,6 +28,7 @@ $desc = "Lorem ipsum dolor sit amet.";
   <meta property="og:description" content="<?= $desc ?>" />
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
+  <!--
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-164599705-1"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -35,6 +36,7 @@ $desc = "Lorem ipsum dolor sit amet.";
     gtag('js', new Date());
     gtag('config', 'UA-XXXXXXXXXXXXX-1');
   </script>
+  -->
 
   <!-- Vendor -->
   <script src="<?= $kirby->url('assets') ?>/lib/jquery-3.5.1/jquery-3.5.1.min.js"></script>

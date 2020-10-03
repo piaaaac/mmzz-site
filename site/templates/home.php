@@ -50,7 +50,7 @@ $blogPosts = $page->blogPosts()->toPages();
 		  <div class="container-fluid h-100 d-flex justify-content-between align-items-center">
 				<div>
 					<!-- <img class="logo" src="<?= kirby()->url('assets') ?>/images/logo.svg" /> -->
-					<a id="home-small-logo" class="font-m" href="<?= $site->url() ?>">&Ouml;MMZZ</a>
+					<a id="home-small-logo" class="font-m" href="<?= $site->url() ?>"><?= randomLogo() ?></a>
 				</div>
 				<div>
 					<a class="menu-item" href="<?= page("collections")->url() ?>"><?= page("collections")->title() ?></a>

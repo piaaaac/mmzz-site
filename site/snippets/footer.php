@@ -1,8 +1,8 @@
 
 	<section class="footer">
 	  <div class="container-fluid">
-	    <div class="row">
-	    	<div class="col d-flex align-items-end justify-content-start">
+	    <div class="row my-0 py-0">
+	    	<div class="col d-flex align-items-center justify-content-start">
 
 	    		<p class="font-sans-m">&copy; Matilde Mozzanega 2020</p>
     			<a class="font-sans-m d-inline-block ml-3" href="<?= page("privacy")->url() ?>"><?= page("privacy")->title() ?></a>

@@ -15,7 +15,7 @@
 
 	<!-- intro text -->
 
-	<section>
+	<section class="mb-5 pb-5">
 	  <div class="container-fluid">
 	    <div class="row">
 	    	<div class="col">
@@ -25,7 +25,7 @@
 		</div>
 	</section>
 
-	<!-- intro text -->
+	<!-- text -->
 
 	<section>
 	  <div class="container-fluid">

@@ -9,6 +9,14 @@ fields:
     min: 1
     max: 1
 
+  titleColor:
+    label: Title color
+    type: toggle
+    text: 
+      - "Black"
+      - "White"
+    help: Use white for dark cover images
+
   introText:
     label: Intro text
     type: textarea
@@ -25,6 +33,8 @@ fields:
 
   mood:
     type: files
+    min: 1
+    max: 1
 
   text2:
     label: Text 2

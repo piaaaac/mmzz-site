@@ -43,12 +43,16 @@ $images2 = $page->images2()->toFiles();
         <div class="col-md-6 text-container">
         	<div class="font-large"><?= $page->text1()->kt() ?></div>
         </div>
+      </div>
+    </div>
+  </section>
 
-        <!-- moodboard -->
+  <!-- moodboard -->
+  <section class="moodboard-container" style="background-image: url(<?= $mood->url() ?>"></section>
 
-        <div class="col-12 moodboard-container">
-        	<div class="moodboard" style="background-image: url(<?= $mood->url() ?>"><br/><br/><br/></div>
-        </div>
+  <section>
+    <div class="container-fluid">
+      <div class="row">
 
         <!-- smaller text 2 -->
 

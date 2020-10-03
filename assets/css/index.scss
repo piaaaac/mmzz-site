@@ -258,13 +258,7 @@ nav#menu, nav#menu-home {
 			}
 		}
 	}
-	.text-container {
-		@include media-breakpoint-up(md) {
-			margin-top: -10vw;
-		}
-	}
-	.moodboard {
-		margin:$double-padding -#{$double-padding};
+	.moodboard-container {
 		height: 0;
 	  padding-bottom: 100%;
 		background-size: cover;

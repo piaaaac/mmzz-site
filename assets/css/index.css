@@ -377,7 +377,7 @@ nav#menu a.menu-item, nav#menu-home a.menu-item {
       background-position: center; }
 
 #collection .collection-opening {
-  height: 90vh;
+  height: 82vh;
   background-size: cover;
   background-position: center center; }
 #collection .img-container {
@@ -409,6 +409,10 @@ nav#menu a.menu-item, nav#menu-home a.menu-item {
 
 .footer {
   position: relative; }
+  .footer .col {
+    height: 120px;
+    position: relative;
+    z-index: 2; }
   .footer:before {
     content: '';
     display: inline-block;
@@ -435,8 +439,51 @@ nav#menu a.menu-item, nav#menu-home a.menu-item {
     /* IE6-9 */
     z-index: -1; }
 
-#blog .post-preview {
-  padding-bottom: 25px; }
+#blog {
+  position: relative;
+  z-index: 2; }
+  #blog::before {
+    position: absolute;
+    content: "";
+    z-index: -1;
+    top: 0;
+    height: 30vh;
+    width: 100%;
+    background: #ffcaca;
+    /* Old browsers */
+    background: -moz-linear-gradient(top, #ffcaca 0%, rgba(255, 202, 202, 0) 100%);
+    /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffcaca), color-stop(100%, rgba(255, 202, 202, 0)));
+    /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #ffcaca 0%, rgba(255, 202, 202, 0) 100%);
+    /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #ffcaca 0%, rgba(255, 202, 202, 0) 100%);
+    /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #ffcaca 0%, rgba(255, 202, 202, 0) 100%);
+    /* IE10+ */
+    background: linear-gradient(to bottom, #ffcaca 0%, rgba(255, 202, 202, 0) 100%);
+    /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#000000',GradientType=0 );
+    /* IE6-9 */ }
+  #blog::after {
+    position: absolute;
+    content: "";
+    z-index: -1;
+    top: 0;
+    width: 50vw;
+    height: calc(100% + 120px);
+    background: #ffcaca;
+    /* Old browsers */
+    background: -moz-linear-gradient(left, #ffcaca 0%, rgba(255, 202, 202, 0) 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, #ffcaca 0%, rgba(255, 202, 202, 0) 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, #ffcaca 0%, rgba(255, 202, 202, 0) 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='grey', endColorstr='grey',GradientType=1 );
+    /* IE6-9 */ }
+  #blog .post-preview {
+    padding-bottom: 100px; }
 
 #about .bio-lists h2 {
   font-weight: 600;

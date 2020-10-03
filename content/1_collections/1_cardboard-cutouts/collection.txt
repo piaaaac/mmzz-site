@@ -8,10 +8,6 @@ Cover:
 
 ----
 
-Cyanimage: 
-
-----
-
 Introtext: Using layers of industrial cardboard tubing, Matilde transforms a man-made material into an organic form.
 
 ----
@@ -40,11 +36,7 @@ Mood:
 
 ----
 
-Text2:
-
-TRANSFORMATION
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sed turpis sed ipsum vehicula bibendum imperdiet in orci. In vel vestibulum nisi. Donec sagittis nunc id erat aliquam blandit. Ut in sapien magna.
-Mauris lacus ex, pretium nec odio sit amet, gravida faucibus nisi. Fusce vel nisi scelerisque, gravida purus at, hendrerit purus. Nulla efficitur lorem sit amet scelerisque sagittis.
+Text2: 
 
 ----
 
@@ -52,6 +44,10 @@ Images2:
 
 - bitmap-2a.png
 - bitmap-2b.png
+
+----
+
+Cyanimage: 
 
 ----
 

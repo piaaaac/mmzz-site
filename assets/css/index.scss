@@ -11,6 +11,7 @@ $padding: 25px;
 $double-padding: $padding*2;
 
 $header-h: 60px;
+$footer-h: 120px;
 
 
 // ------------------------------------------------------------------------
@@ -242,7 +243,7 @@ nav#menu, nav#menu-home {
 
 #collection {
 	.collection-opening {
-		height: 90vh;
+		height: 82vh;
 		background-size: cover;
 		background-position: center center;
 	}
@@ -282,6 +283,10 @@ nav#menu, nav#menu-home {
 
 .footer {
 	position: relative;
+	.col { 
+		height: $footer-h; 
+    position: relative;
+    z-index: 2;}
 	&:before {
 		content:'';
 		display: inline-block;
@@ -296,8 +301,28 @@ nav#menu, nav#menu-home {
 }
 
 #blog {
+	position: relative;
+	z-index: 2;
+	&::before {
+		position: absolute;
+		content: "";
+		z-index: -1;
+		top: 0;
+		height: 30vh;
+		width: 100%;
+		@include linearGradientV($pink, rgba($pink, 0));
+	}
+	&::after {
+		position: absolute;
+		content: "";
+		z-index: -1;
+		top: 0;
+		width: 50vw;
+		height: calc(100% + #{$footer-h});
+		@include linearGradientH($pink, rgba($pink, 0));
+	}
 	.post-preview {
-		padding-bottom: $padding;
+		padding-bottom: $padding * 4;
 	}
 }
 

@@ -18,7 +18,7 @@ Text:
 
 "One of the students is taking objects that you’d expect to see carved out of stone or wood and making them from recycled cardboard tubes. It’s that kind of refinement; the magic of getting to know a material and a process, that forms the foundation for setting up your own business or your own design identity. The excitement is that it’s all equal now."
  
-(link: https://www.vitsoe.com/us/voice/gold-silver-plastic-and-cardboard text: Read full article →)
+(link: https://www.vitsoe.com/us/voice/gold-silver-plastic-and-cardboard target: _blank text: Read full article →)
 
 ----
 

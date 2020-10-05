@@ -8,6 +8,10 @@ Cover:
 
 ----
 
+Titlecolor: false
+
+----
+
 Introtext: The necklace piece -Cardboard Remineral- celebrates the beginning of my passion for the material industrial cardboard tubing and its magical transformative properties.
 
 ----
@@ -39,8 +43,6 @@ Images2:
 
 - >
   matildemozzanega_cardboard_remineral_sketch.jpg
-- >
-  matildemozzanega_cardboard_remineral_sketch_02.jpg
 - >
   matildemozzanega_cardboard_remineral_sketch_03.jpg
 - >

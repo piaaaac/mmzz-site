@@ -4,12 +4,12 @@ Title: Home
 
 Blogposts:
 
-- blog/lorem
-- blog/ipsum
+- blog/flexibility-and-fluidity
+- blog/new-concepts-from-waste-to-wonder
 
 ----
 
-Text: Matilde Mozzanega is a jewellery designer from Milan currently based in Florence. Her work sits within the context of sustainability and recycling. (link: about text: READ MORE)
+Text: Matilde Mozzanega is a contemporary Jewellery maker and designer based in London. Her work sits within the context of sustainability and recycling. (link: about text: READ MORE)
 
 ----
 

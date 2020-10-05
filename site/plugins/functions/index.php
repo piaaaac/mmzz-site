@@ -30,7 +30,7 @@ function spacer($n){
 // -------------------------------------
 
 function randomLogo () {
-  $options = ["&Ocirc;MMZZ", "&Ouml;MMZZ", "&Otilde;MMZZ", "&Oacute;MMZZ", "&Omacr;MMZZ"];
+  $options = ["&Ocirc;MMZZ", "&Ouml;MMZZ", "&Otilde;MMZZ", "&Omacr;MMZZ"];
   $i = rand(0, count($options) - 1);
   return $options[$i];
 }

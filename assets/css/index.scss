@@ -49,14 +49,24 @@ a {
 	}
 }
 
+p {
+	margin-bottom: 1em;
+}
+
+hr {
+	height: 0;
+	border: 0;
+	border-bottom: 1px solid black;
+}
+
 
 // ------------------------------------------------------------------------
 // Utilities
 // ------------------------------------------------------------------------
 
-.color-white	{ color: white; }
-.font-600   	{ font-weight: 600; }
-
+.color-white		{ color: white; }
+.font-600   		{ font-weight: 600; }
+.border-bottom	{ border-bottom: 1px solid black !important; }
 
 // ------------------------------------------------------------------------
 // GRID
@@ -103,7 +113,7 @@ nav#menu, nav#menu-home {
 
 .gradient-bknd {
 	position: relative;
-	&:before {
+	&::before {
 		content:'';
 		display: inline-block;
 		position: absolute;
@@ -128,6 +138,7 @@ nav#menu, nav#menu-home {
 		.logo {
 			padding-top: $padding;
 			display: block;
+			pointer-events: none;
 		}
 		nav#menu-home {
 			top: 0; left: 0; right: 0;
@@ -148,12 +159,19 @@ nav#menu, nav#menu-home {
 		}
 	}
 	.home-img-container {
+		position: relative;
+		z-index: 1;
 		@include media-breakpoint-down(sm) {
 		  margin-bottom: 10vw;
 		}
 		margin-top: 10vw;
 		.col-md-4 {
-			margin-top: 10vw;
+			&.margin {
+				margin-top: 10vw;
+				@include media-breakpoint-down(sm) {
+				  margin-bottom: 40px;
+				}
+			}
 			.cyan-img, .portrait-img, .empty {
 		    width: 80%;
 				height: 0;
@@ -182,6 +200,7 @@ nav#menu, nav#menu-home {
 			}
 			.empty {
 				@include media-breakpoint-down(sm) {
+			  	margin-bottom: 0;
 				  padding-bottom: 0;
 				}
 			}
@@ -195,8 +214,9 @@ nav#menu, nav#menu-home {
 	.blog-preview {
 		padding: $double-padding 0;
 		position: relative;
-		&:before {
+		&::before {
 			content:'';
+			z-index: 0;
 			position: absolute;
 			top: -25%;
 	    left: -25%;
@@ -243,7 +263,9 @@ nav#menu, nav#menu-home {
 
 #collection {
 	.collection-opening {
-		height: 82vh;
+		@include media-breakpoint-down(md) { height: 100vw; }
+		// height: 82vh;
+		height: calc(100vh - #{$header-h * 2});
 		background-size: cover;
 		background-position: center center;
 	}
@@ -272,6 +294,13 @@ nav#menu, nav#menu-home {
 	  padding-bottom: 100%;
 		background-size: cover;
 		background-position: center center;
+		margin: $padding 0;
+		@media (min-width: 1500px) {
+      padding-bottom: 100vh; 
+      padding-bottom: 1000px; 
+	    background-repeat-x: repeat;
+	    background-size: contain;			
+		}
 	}
 }
 
@@ -281,7 +310,7 @@ nav#menu, nav#menu-home {
 		height: $footer-h; 
     position: relative;
     z-index: 2;}
-	&:before {
+	&::before {
 		content:'';
 		display: inline-block;
 		position: absolute;
@@ -315,9 +344,9 @@ nav#menu, nav#menu-home {
 		height: calc(100% + #{$footer-h});
 		@include linearGradientH($pink, rgba($pink, 0));
 	}
-	.post-preview {
-		padding-bottom: $padding * 4;
-	}
+}
+.post-preview {
+	padding-bottom: $padding * 4;
 }
 
 #about {

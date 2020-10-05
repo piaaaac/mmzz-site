@@ -110,6 +110,7 @@ $blogPosts = $page->blogPosts()->toPages();
       		$type = 			$item["type"];
       		$imgUrl = 		$type != "empty" ? $item["img"]->url() : "none";
       		$class = 			$type == "cyan" ? "cyan-img" : ($type == "portrait-img" ? "portrait-img link" : "empty");
+      		$margin = 		$type == "empty" ? "" : "margin";
       		$collection = $type == "portrait-img" ? $item["img"]->collection()->toPages()->first() : "";
       		$linkUrl    = $type == "portrait-img" ? $collection->url() : "";
       		$text = 			$type == "portrait-img" ? (
@@ -118,7 +119,7 @@ $blogPosts = $page->blogPosts()->toPages();
       											: $collection->title()) : "";
       		?>
 
-	      	<div class="col-md-4">
+	      	<div class="col-md-4 <?= $margin ?>">
         		<div class="<?= $class ?>" data-url="<?= $linkUrl ?>"
         				 style="background-image: url(<?= $imgUrl ?>);">
 				  		<?php if ($type == "portrait-img"): ?>
@@ -138,7 +139,10 @@ $blogPosts = $page->blogPosts()->toPages();
 	  <div class="container-fluid">
 	    <div class="row">
 	    	<div class="col">
-	    		<h2 class="font-sans-m font-600">FROM THE BLOG</h2>
+	    		<!-- <h2 class="font-sans-m font-600">FROM THE BLOG</h2> -->
+	    		<h2 class="font-m">FROM THE BLOG</h2>
+	    		<!-- <h2 class="font-large mb-3">From the blog</h2> -->
+	    		<!-- <hr /> -->
 	    	</div>
 	    </div>
 	    <div class="row">

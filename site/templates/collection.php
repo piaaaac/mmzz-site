@@ -41,7 +41,7 @@ $images2 = $page->images2()->toFiles();
         
         <!-- smaller text 1 -->
 
-        <div class="col-md-6 text-container">
+        <div class="col-lg-6 text-container">
         	<div class="font-large"><?= $page->text1()->kt() ?></div>
         </div>
       </div>
@@ -57,7 +57,7 @@ $images2 = $page->images2()->toFiles();
 
         <?php
         $textExtists = $page->text2()->isNotEmpty();
-        $imagesClass = $textExtists ? "col-lg-4 offset-lg-2" : "col-lg-4 offset-lg-4 mt-5 pt-5";
+        $imagesClass = $textExtists ? "col-md-8 offset-md-2 col-lg-4 offset-lg-2" : "col-lg-4 offset-lg-4 mt-5 pt-5";
         ?>
 
         <?php if ($textExtists): ?>

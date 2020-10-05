@@ -1,8 +1,8 @@
 <?php
-$url = "https://www..net";
-$urlSocialImg = $url. "/assets/images/----card.jpg";
-$title = $page->title();
-$desc = "Lorem ipsum dolor sit amet.";
+$url = "https://matildemozzanega.com/";
+$urlSocialImg = $url. "/assets/images/mmzz-social-card.jpg";
+$title = randomLogo() ." ". $page->title();
+$desc = "Matilde Mozzanega Jewellery Designer";
 ?>
 
 <!DOCTYPE html><html><head>

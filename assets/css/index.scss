@@ -99,6 +99,16 @@ nav#menu, nav#menu-home {
 		@include font-sans-m;
 		display: inline-block;
 		margin-left: 15px;
+		pointer-events: all;
+		&:hover, &.active {
+	    text-decoration: none;
+    	border-bottom: 1px solid black;
+		}
+	}
+	.logo {
+		&:hover {
+			text-decoration: none;
+		}
 	}
 }
 
@@ -135,10 +145,10 @@ nav#menu, nav#menu-home {
 		position: fixed;
 		top: 0; left: 0; right: 0;
 		z-index: 9;
+		pointer-events: none;
 		.logo {
 			padding-top: $padding;
 			display: block;
-			pointer-events: none;
 		}
 		nav#menu-home {
 			top: 0; left: 0; right: 0;
@@ -146,8 +156,12 @@ nav#menu, nav#menu-home {
 			#home-small-logo {
 				position: relative;
 				opacity: 0;
+				pointer-events: all;
 				top: 20px;
 				@include transition(opacity 400ms, top 400ms);
+				&:hover {
+					text-decoration: none;
+				}
 			}
 		}
 		&.stick {
@@ -323,18 +337,18 @@ nav#menu, nav#menu-home {
 	}
 }
 
-#blog {
+#blog, #post {
 	position: relative;
 	z-index: 2;
-	&::before {
-		position: absolute;
-		content: "";
-		z-index: -1;
-		top: 0;
-		height: 30vh;
-		width: 100%;
-		@include linearGradientV($pink, rgba($pink, 0));
-	}
+	// &::before {
+	// 	position: absolute;
+	// 	content: "";
+	// 	z-index: -1;
+	// 	top: 0;
+	// 	height: 30vh;
+	// 	width: 100%;
+	// 	@include linearGradientV($pink, rgba($pink, 0));
+	// }
 	&::after {
 		position: absolute;
 		content: "";
@@ -344,9 +358,9 @@ nav#menu, nav#menu-home {
 		height: calc(100% + #{$footer-h});
 		@include linearGradientH($pink, rgba($pink, 0));
 	}
-}
-.post-preview {
-	padding-bottom: $padding * 4;
+	.post-preview {
+		padding-bottom: $padding * 4;
+	}
 }
 
 #about {

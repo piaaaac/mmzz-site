@@ -1,6 +1,6 @@
 Collection:
 
-- collections/celestial-body
+- collections/cardboard-cutouts
 
 ----
 

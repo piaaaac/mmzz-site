@@ -228,7 +228,8 @@ nav#menu a.menu-item, nav#menu-home a.menu-item {
   font-style: normal;
   font-stretch: normal;
   display: inline-block;
-  margin-left: 15px; }
+  margin-left: 15px;
+  pointer-events: all; }
   @media (min-width: 576px) {
     nav#menu a.menu-item, nav#menu-home a.menu-item {
       font-size: 18px; } }
@@ -241,6 +242,11 @@ nav#menu a.menu-item, nav#menu-home a.menu-item {
   @media (min-width: 1200px) {
     nav#menu a.menu-item, nav#menu-home a.menu-item {
       font-size: 20px; } }
+  nav#menu a.menu-item:hover, nav#menu a.menu-item.active, nav#menu-home a.menu-item:hover, nav#menu-home a.menu-item.active {
+    text-decoration: none;
+    border-bottom: 1px solid black; }
+nav#menu .logo:hover, nav#menu-home .logo:hover {
+  text-decoration: none; }
 
 .link[data-url] {
   cursor: pointer; }
@@ -280,11 +286,11 @@ nav#menu a.menu-item, nav#menu-home a.menu-item {
   top: 0;
   left: 0;
   right: 0;
-  z-index: 9; }
+  z-index: 9;
+  pointer-events: none; }
   #home .home-opening .logo {
     padding-top: 25px;
-    display: block;
-    pointer-events: none; }
+    display: block; }
   #home .home-opening nav#menu-home {
     top: 0;
     left: 0;
@@ -293,12 +299,15 @@ nav#menu a.menu-item, nav#menu-home a.menu-item {
     #home .home-opening nav#menu-home #home-small-logo {
       position: relative;
       opacity: 0;
+      pointer-events: all;
       top: 20px;
       -webkit-transition: opacity 400ms, top 400ms;
       -moz-transition: opacity 400ms, top 400ms;
       -ms-transition: opacity 400ms, top 400ms;
       -o-transition: opacity 400ms, top 400ms;
       transition: opacity 400ms, top 400ms; }
+      #home .home-opening nav#menu-home #home-small-logo:hover {
+        text-decoration: none; }
   #home .home-opening.stick .logo {
     opacity: 0; }
   #home .home-opening.stick nav#menu-home {
@@ -464,33 +473,10 @@ nav#menu a.menu-item, nav#menu-home a.menu-item {
     /* IE6-9 */
     z-index: -1; }
 
-#blog {
+#blog, #post {
   position: relative;
   z-index: 2; }
-  #blog::before {
-    position: absolute;
-    content: "";
-    z-index: -1;
-    top: 0;
-    height: 30vh;
-    width: 100%;
-    background: #ffcaca;
-    /* Old browsers */
-    background: -moz-linear-gradient(top, #ffcaca 0%, rgba(255, 202, 202, 0) 100%);
-    /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffcaca), color-stop(100%, rgba(255, 202, 202, 0)));
-    /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top, #ffcaca 0%, rgba(255, 202, 202, 0) 100%);
-    /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top, #ffcaca 0%, rgba(255, 202, 202, 0) 100%);
-    /* Opera 11.10+ */
-    background: -ms-linear-gradient(top, #ffcaca 0%, rgba(255, 202, 202, 0) 100%);
-    /* IE10+ */
-    background: linear-gradient(to bottom, #ffcaca 0%, rgba(255, 202, 202, 0) 100%);
-    /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#000000',GradientType=0 );
-    /* IE6-9 */ }
-  #blog::after {
+  #blog::after, #post::after {
     position: absolute;
     content: "";
     z-index: -1;
@@ -507,9 +493,8 @@ nav#menu a.menu-item, nav#menu-home a.menu-item {
     /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='grey', endColorstr='grey',GradientType=1 );
     /* IE6-9 */ }
-
-.post-preview {
-  padding-bottom: 100px; }
+  #blog .post-preview, #post .post-preview {
+    padding-bottom: 100px; }
 
 #about .bio-lists h2 {
   font-weight: 600;

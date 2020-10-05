@@ -1,6 +1,6 @@
 Collection:
 
-- collections/cardboard-remineral
+- collections/transparent-waste
 
 ----
 

@@ -43,7 +43,7 @@ $desc = "Matilde Mozzanega Jewellery Designer";
   
   <!-- Style -->
   <link rel="stylesheet" type="text/css" href="<?= $kirby->url("assets") ?>/css/bootstrap-custom.css">
-  <link rel="stylesheet" type="text/css" href="<?= $kirby->url("assets") ?>/css/index.css">
+  <link rel="stylesheet" type="text/css" href="<?= $kirby->url("assets") ?>/css/index.css?v=2">
 
 </head>
 <body>

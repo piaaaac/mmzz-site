@@ -44,22 +44,86 @@ $thumbOptionsSmall = [
 
         <!-- 2 cols images -->
 
+        <div class="col-12 spacer my-5 py-5"></div>
+        <?php
+        $num = $images1->count();
+        $firstColNum = floor($num/2);
+        $imagesCol1 = $images1->slice(0, $firstColNum);
+        $imagesCol2 = $images1->slice($firstColNum);
+        ?>
+        <div class="col-md-6">
+          <?php foreach ($imagesCol1 as $img): ?>
+            <div class="two-col-img">
+              <img src="<?= $img->thumb($thumbOptionsSmall)->url() ?>" />
+              <?php if ($img->text()->isNotEmpty()): ?>
+                <p class="caption font-sans-s"><?= $img->text()->value() ?></p>
+              <?php endif ?>
+            </div>
+          <?php endforeach ?>
+          <div class="text-container mt-5 d-none d-lg-block">
+            <div class="font-large"><?= $page->text1()->kt() ?></div>
+          </div>
+        </div>
+
+        <div class="col-md-6 second-col">
+          <?php foreach ($imagesCol2 as $img): ?>
+            <div class="two-col-img">
+              <img src="<?= $img->thumb($thumbOptionsSmall)->url() ?>" />
+              <?php if ($img->text()->isNotEmpty()): ?>
+                <p class="caption font-sans-s"><?= $img->text()->value() ?></p>
+              <?php endif ?>
+            </div>
+          <?php endforeach ?>
+        </div>
+
+        <?php /* V2
+        <div class="col-12 img-container"></div>
+        <?php foreach ($images1 as $img): ?>
+          <div class="col-md-6 two-col-img">
+            <img src="<?= $img->thumb($thumbOptionsSmall)->url() ?>" />
+            <?php if ($img->text()->isNotEmpty()): ?>
+              <p class="caption font-sans-s"><?= $img->text()->value() ?></p>
+            <?php endif ?>
+          </div>
+        <?php endforeach ?>
+        <div class="col-12"></div>
+        */ ?>
+
+        <?php /* V1
         <div class="col-12 img-container">
         	<?php foreach ($images1 as $img): ?>
-        		<div class="portrait-img" style="background-image: url(<?= $img->thumb($thumbOptionsSmall)->url() ?>);"><br/><br/><br/></div>
+        		<div class="portrait-img" 
+              style="background-image: url(<?= $img->thumb($thumbOptionsSmall)->url() ?>);"
+            >
+              <?php if ($img->text()->isNotEmpty()): ?>
+                <p class="caption font-sans-s"><?= $img->text()->value() ?></p>
+              <?php endif ?>
+              <br/><br/><br/>
+            </div>
         	<?php endforeach ?>
         </div>
+        */ ?>
         
         <!-- smaller text 1 -->
 
-        <div class="col-lg-6 text-container">
+        <div class="col-lg-6 text-container d-lg-none">
         	<div class="font-large"><?= $page->text1()->kt() ?></div>
         </div>
+
       </div>
     </div>
   </section>
 
   <!-- moodboard -->
+  <?php if ($page->moodTitle()->isNotEmpty()): ?>
+    <div class="container-fluid">
+      <div class="row pb-0">
+        <div class="col-12">
+          <h4 class="font-sans-m"><?= $page->moodTitle()->value() ?></h4>
+        </div>
+      </div>
+    </div>
+  <?php endif ?>
   <section class="moodboard-container" style="background-image: url(<?= $mood->thumb($thumbOptionsFull)->url() ?>"></section>
 
   <section>

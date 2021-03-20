@@ -1,0 +1,48 @@
+Title: Bling & Bloom
+
+----
+
+Cover:
+
+- house-of-flowers-lr.jpg
+
+----
+
+Titlecolor: true
+
+----
+
+Introtext:
+
+Transparent Waste Revival 
+Jewellery for the Eye & the Soul - MJW 2021
+
+----
+
+Images1:
+
+- house-of-flowers-lr-3.jpg
+- house-of-flowers-lr-1.jpg
+- house-of-flowers-lr-4.jpg
+- house-of-flowers-lr.jpg
+- house-of-flowers-lr-2.jpg
+
+----
+
+Text1: Pieces inspired by the series ‘The House of Flowers’ - Jewellery for the Eye and the Soul - a group exhibition as part of Munich Jewellery Week 2021, 8-14 March.
+
+----
+
+Mood:
+
+- bling-bloom.jpg
+
+----
+
+Text2: Necklace pieces, materials: vacuum sealed recycled Swarovski crystals/pearls, recycled fabrics and flowers within recycled plastic pouches, recycled acrylic chains
+
+----
+
+Images2:
+
+- pantone-flower.jpg

@@ -2,3 +2,10 @@ title: Default images
 accept:
   maxsize: 2000000
   maxwidth: 4000
+
+fields:
+
+  text:
+    label: Small text below the image (only for collection page)
+    type: text
+    help: If empty, no text is displayed

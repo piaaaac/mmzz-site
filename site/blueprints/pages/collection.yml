@@ -31,6 +31,11 @@ fields:
     type: textarea
     required: true
 
+  moodTitle:
+    label: Title of the moodboard image
+    type: text
+    help: Can be empty
+
   mood:
     type: files
     min: 1

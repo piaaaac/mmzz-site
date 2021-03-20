@@ -7,11 +7,22 @@ $titleClass = $page->titleColor()->toBool() ? "color-white" : "";
 $images1 = $page->images1()->toFiles();
 $mood = $page->mood()->toFile();
 $images2 = $page->images2()->toFiles();
+
+$thumbOptionsFull = [
+  "width" => 2000,
+  "height" => null,
+  "quality" => 80,
+];
+$thumbOptionsSmall = [
+  "width" => 900,
+  "height" => null,
+  "quality" => 80,
+];
 ?>
 
 <main id="collection">
 
-  <section class="collection-opening" style="background-image: url(<?= $cover->url() ?>">
+  <section class="collection-opening" style="background-image: url('<?= $cover->thumb($thumbOptionsFull)->url() ?>')">
     <div class="container-fluid">
       <div class="row">
         <div class="col-12">
@@ -35,7 +46,7 @@ $images2 = $page->images2()->toFiles();
 
         <div class="col-12 img-container">
         	<?php foreach ($images1 as $img): ?>
-        		<div class="portrait-img" style="background-image: url(<?= $img->url() ?>);"><br/><br/><br/></div>
+        		<div class="portrait-img" style="background-image: url(<?= $img->thumb($thumbOptionsSmall)->url() ?>);"><br/><br/><br/></div>
         	<?php endforeach ?>
         </div>
         
@@ -49,7 +60,7 @@ $images2 = $page->images2()->toFiles();
   </section>
 
   <!-- moodboard -->
-  <section class="moodboard-container" style="background-image: url(<?= $mood->url() ?>"></section>
+  <section class="moodboard-container" style="background-image: url(<?= $mood->thumb($thumbOptionsFull)->url() ?>"></section>
 
   <section>
     <div class="container-fluid">

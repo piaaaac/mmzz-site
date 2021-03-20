@@ -1,4 +1,7 @@
 title: Homepage image
+accept:
+  maxsize: 2000000
+  maxwidth: 4000
 
 fields:
 

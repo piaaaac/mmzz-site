@@ -8,7 +8,15 @@ Cover:
 
 ----
 
-Introtext: Using layers of industrial cardboard tubing, Matilde transforms a man-made material into an organic form.
+Titlecolor: false
+
+----
+
+Introtext:
+
+Using layers of industrial cardboard tubing, Matilde transforms a man-made material into an organic form.
+
+(Maison/0 Green Trail Winner CSM - LVMH Partnership)
 
 ----
 

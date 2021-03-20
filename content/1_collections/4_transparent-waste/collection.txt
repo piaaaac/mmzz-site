@@ -9,7 +9,15 @@ Cover:
 
 ----
 
-Introtext: The collection consists of playful and contemporary necklaces made out of Swarovski crystals, vacuum sealed within recyclable plastic pouches.
+Titlecolor: false
+
+----
+
+Introtext:
+
+The collection consists of playful and contemporary necklaces made out of Swarovski crystals, vacuum sealed within recyclable plastic pouches. 
+
+(Schmuck International Exhibition - 2019, Munich)
 
 ----
 

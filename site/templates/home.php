@@ -50,9 +50,10 @@ $blogPosts = $page->blogPosts()->toPages();
 
 		<nav id="menu-home">
 		  <div class="container-fluid h-100 d-flex justify-content-between align-items-center">
-				<div>
+				<div class="position-relative">
 					<!-- <img class="logo" src="<?= kirby()->url('assets') ?>/images/logo.svg" /> -->
 					<a id="home-small-logo" class="font-m" href="<?= $site->url() ?>"><?= randomLogo() ?></a>
+					<span id="home-small-name" class="font-m">Matilde&nbsp;Mozzanega&nbsp;Jewellery</span>
 				</div>
 				<div>
 					<a class="menu-item" href="<?= page("collections")->url() ?>"><?= page("collections")->title() ?></a>

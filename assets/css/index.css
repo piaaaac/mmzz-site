@@ -308,6 +308,12 @@ nav#menu .logo:hover, nav#menu-home .logo:hover {
       transition: opacity 400ms, top 400ms; }
       #home .home-opening nav#menu-home #home-small-logo:hover {
         text-decoration: none; }
+    #home .home-opening nav#menu-home #home-small-name {
+      position: absolute;
+      left: 0;
+      top: 0;
+      opacity: 1;
+      transition: opacity 200ms, top 200ms; }
   #home .home-opening.stick .logo {
     opacity: 0; }
   #home .home-opening.stick nav#menu-home {
@@ -315,6 +321,9 @@ nav#menu .logo:hover, nav#menu-home .logo:hover {
     #home .home-opening.stick nav#menu-home #home-small-logo {
       opacity: 1;
       top: 0; }
+    #home .home-opening.stick nav#menu-home #home-small-name {
+      opacity: 0;
+      top: -20px; }
 #home .home-img-container {
   position: relative;
   z-index: 1;

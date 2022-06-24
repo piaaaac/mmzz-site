@@ -1,6 +1,6 @@
 <?php
 
-use Kirby\Cms\Form;
+use Kirby\Form\Form;
 
 return [
     'props' => [
@@ -12,7 +12,8 @@ return [
         'form' => function () {
             $fields   = $this->fields;
             $disabled = $this->model->permissions()->update() === false;
-            $content  = $this->model->content()->toArray();
+            $lang     = $this->model->kirby()->languageCode();
+            $content  = $this->model->content($lang)->toArray();
 
             if ($disabled === true) {
                 foreach ($fields as $key => $props) {
@@ -41,25 +42,15 @@ return [
             }
 
             return $fields;
-        },
+        }
+    ],
+    'methods' => [
         'errors' => function () {
             return $this->form->errors();
-        },
-        'data' => function () {
-            $values = $this->form->values();
-
-            if (is_a($this->model, 'Kirby\Cms\Page') === true || is_a($this->model, 'Kirby\Cms\Site') === true) {
-                // the title should never be updated directly via
-                // fields section to avoid conflicts with the rename dialog
-                unset($values['title']);
-            }
-
-            return $values;
         }
     ],
     'toArray' => function () {
         return [
-            'errors' => $this->errors,
             'fields' => $this->fields,
         ];
     }

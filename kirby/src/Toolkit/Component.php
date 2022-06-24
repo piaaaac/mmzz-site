@@ -5,6 +5,7 @@ namespace Kirby\Toolkit;
 use ArgumentCountError;
 use Kirby\Exception\Exception;
 use Kirby\Exception\InvalidArgumentException;
+use Kirby\Filesystem\F;
 use TypeError;
 
 /**
@@ -13,7 +14,7 @@ use TypeError;
  * @package   Kirby Toolkit
  * @author    Bastian Allgeier <bastian@getkirby.com>
  * @link      https://getkirby.com
- * @copyright Bastian Allgeier GmbH
+ * @copyright Bastian Allgeier
  * @license   https://opensource.org/licenses/MIT
  */
 class Component
@@ -178,7 +179,7 @@ class Component
     protected function applyProps(array $props): void
     {
         foreach ($props as $propName => $propFunction) {
-            if (is_callable($propFunction) === true) {
+            if (is_a($propFunction, 'Closure') === true) {
                 if (isset($this->attrs[$propName]) === true) {
                     try {
                         $this->$propName = $this->props[$propName] = $propFunction->call($this, $this->attrs[$propName]);
@@ -208,7 +209,7 @@ class Component
     protected function applyComputed(array $computed): void
     {
         foreach ($computed as $computedName => $computedFunction) {
-            if (is_callable($computedFunction) === true) {
+            if (is_a($computedFunction, 'Closure') === true) {
                 $this->$computedName = $this->computed[$computedName] = $computedFunction->call($this);
             }
         }
@@ -262,6 +263,11 @@ class Component
         if (isset($options['mixins']) === true) {
             foreach ($options['mixins'] as $mixin) {
                 if (isset(static::$mixins[$mixin]) === true) {
+                    if (is_string(static::$mixins[$mixin]) === true) {
+                        // resolve a path to a mixin on demand
+                        static::$mixins[$mixin] = include static::$mixins[$mixin];
+                    }
+
                     $options = array_replace_recursive(static::$mixins[$mixin], $options);
                 }
             }

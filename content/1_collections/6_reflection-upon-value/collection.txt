@@ -1,4 +1,12 @@
-Title: Reflection Upon Value
+Title: Reflection Upon Value
+
+----
+
+Shopbutton: true
+
+----
+
+Shopurl: https://butdoesitfloat.com/
 
 ----
 
@@ -38,6 +46,10 @@ A commentary on our fast, consumerist society.
 Using as reference and tool 'fake', mass-produced jewellery
 transformed into unique, one of-a-kind pieces that highlight 
 the Value of handmade and bespoke objects.
+
+----
+
+Moodtitle: 
 
 ----
 

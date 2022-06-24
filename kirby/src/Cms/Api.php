@@ -3,9 +3,8 @@
 namespace Kirby\Cms;
 
 use Kirby\Api\Api as BaseApi;
-use Kirby\Exception\InvalidArgumentException;
 use Kirby\Exception\NotFoundException;
-use Kirby\Toolkit\Str;
+use Kirby\Form\Form;
 
 /**
  * Api
@@ -13,7 +12,7 @@ use Kirby\Toolkit\Str;
  * @package   Kirby Cms
  * @author    Bastian Allgeier <bastian@getkirby.com>
  * @link      https://getkirby.com
- * @copyright Bastian Allgeier GmbH
+ * @copyright Bastian Allgeier
  * @license   https://getkirby.com/license
  */
 class Api extends BaseApi
@@ -41,8 +40,11 @@ class Api extends BaseApi
 
         $allowImpersonation = $this->kirby()->option('api.allowImpersonation', false);
         if ($user = $this->kirby->user(null, $allowImpersonation)) {
-            $this->kirby->setCurrentTranslation($user->language());
+            $translation = $user->language();
+        } else {
+            $translation = $this->kirby->panelLanguage();
         }
+        $this->kirby->setCurrentTranslation($translation);
 
         return parent::call($path, $method, $requestData);
     }
@@ -56,33 +58,14 @@ class Api extends BaseApi
      */
     public function fieldApi($model, string $name, string $path = null)
     {
-        $form       = Form::for($model);
-        $fieldNames = Str::split($name, '+');
-        $index      = 0;
-        $count      = count($fieldNames);
-        $field      = null;
+        $field = Form::for($model)->field($name);
 
-        foreach ($fieldNames as $fieldName) {
-            $index++;
-
-            if ($field = $form->fields()->get($fieldName)) {
-                if ($count !== $index) {
-                    $form = $field->form();
-                }
-            } else {
-                throw new NotFoundException('The field "' . $fieldName . '" could not be found');
-            }
-        }
-
-        // it can get this error only if $name is an empty string as $name = ''
-        if ($field === null) {
-            throw new NotFoundException('No field could be loaded');
-        }
-
-        $fieldApi = $this->clone([
-            'routes' => $field->api(),
-            'data'   => array_merge($this->data(), ['field' => $field])
-        ]);
+        $fieldApi = new static(
+            array_merge($this->propertyData, [
+                'data'   => array_merge($this->data(), ['field' => $field]),
+                'routes' => $field->api(),
+            ]),
+        );
 
         return $fieldApi->call($path, $this->requestMethod(), $this->requestData());
     }
@@ -98,19 +81,7 @@ class Api extends BaseApi
      */
     public function file(string $path = null, string $filename)
     {
-        $filename = urldecode($filename);
-        $file     = $this->parent($path)->file($filename);
-
-        if ($file && $file->isReadable() === true) {
-            return $file;
-        }
-
-        throw new NotFoundException([
-            'key'  => 'file.notFound',
-            'data' => [
-                'filename' => $filename
-            ]
-        ]);
+        return Find::file($path, $filename);
     }
 
     /**
@@ -123,49 +94,7 @@ class Api extends BaseApi
      */
     public function parent(string $path)
     {
-        $modelType  = in_array($path, ['site', 'account']) ? $path : trim(dirname($path), '/');
-        $modelTypes = [
-            'site'    => 'site',
-            'users'   => 'user',
-            'pages'   => 'page',
-            'account' => 'account'
-        ];
-        $modelName = $modelTypes[$modelType] ?? null;
-
-        if (Str::endsWith($modelType, '/files') === true) {
-            $modelName = 'file';
-        }
-
-        $kirby = $this->kirby();
-
-        switch ($modelName) {
-            case 'site':
-                $model = $kirby->site();
-                break;
-            case 'account':
-                $model = $kirby->user(null, $kirby->option('api.allowImpersonation', false));
-                break;
-            case 'page':
-                $id    = str_replace(['+', ' '], '/', basename($path));
-                $model = $kirby->page($id);
-                break;
-            case 'file':
-                $model = $this->file(...explode('/files/', $path));
-                break;
-            case 'user':
-                $model = $kirby->user(basename($path));
-                break;
-            default:
-                throw new InvalidArgumentException('Invalid model type: ' . $modelType);
-        }
-
-        if ($model) {
-            return $model;
-        }
-
-        throw new NotFoundException([
-            'key' => $modelName . '.undefined'
-        ]);
+        return Find::parent($path);
     }
 
     /**
@@ -197,19 +126,54 @@ class Api extends BaseApi
      */
     public function page(string $id)
     {
-        $id   = str_replace('+', '/', $id);
-        $page = $this->kirby->page($id);
+        return Find::page($id);
+    }
 
-        if ($page && $page->isReadable() === true) {
-            return $page;
+    /**
+     * Returns the subpages for the given
+     * parent. The subpages can be filtered
+     * by status (draft, listed, unlisted, published, all)
+     *
+     * @param string|null $parentId
+     * @param string|null $status
+     * @return \Kirby\Cms\Pages
+     */
+    public function pages(string $parentId = null, string $status = null)
+    {
+        $parent = $parentId === null ? $this->site() : $this->page($parentId);
+
+        switch ($status) {
+            case 'all':
+                return $parent->childrenAndDrafts();
+            case 'draft':
+            case 'drafts':
+                return $parent->drafts();
+            case 'listed':
+                return $parent->children()->listed();
+            case 'unlisted':
+                return $parent->children()->unlisted();
+            case 'published':
+            default:
+                return $parent->children();
+        }
+    }
+
+    /**
+     * Search for direct subpages of the
+     * given parent
+     *
+     * @param string|null $parent
+     * @return \Kirby\Cms\Pages
+     */
+    public function searchPages(string $parent = null)
+    {
+        $pages = $this->pages($parent, $this->requestQuery('status'));
+
+        if ($this->requestMethod() === 'GET') {
+            return $pages->search($this->requestQuery('q'));
         }
 
-        throw new NotFoundException([
-            'key'  => 'page.notFound',
-            'data' => [
-                'slug' => $id
-            ]
-        ]);
+        return $pages->query($this->requestBody());
     }
 
     /**
@@ -229,7 +193,7 @@ class Api extends BaseApi
      * Setter for the parent Kirby instance
      *
      * @param \Kirby\Cms\App $kirby
-     * @return self
+     * @return $this
      */
     protected function setKirby(App $kirby)
     {
@@ -258,22 +222,15 @@ class Api extends BaseApi
      */
     public function user(string $id = null)
     {
-        // get the authenticated user
-        if ($id === null) {
-            return $this->kirby->auth()->user(null, $this->kirby()->option('api.allowImpersonation', false));
-        }
+        try {
+            return Find::user($id);
+        } catch (NotFoundException $e) {
+            if ($id === null) {
+                return null;
+            }
 
-        // get a specific user by id
-        if ($user = $this->kirby->users()->find($id)) {
-            return $user;
+            throw $e;
         }
-
-        throw new NotFoundException([
-            'key'  => 'user.notFound',
-            'data' => [
-                'name' => $id
-            ]
-        ]);
     }
 
     /**

@@ -9,7 +9,7 @@ namespace Kirby\Cms;
  * @package   Kirby Cms
  * @author    Bastian Allgeier <bastian@getkirby.com>
  * @link      https://getkirby.com
- * @copyright Bastian Allgeier GmbH
+ * @copyright Bastian Allgeier
  * @license   https://getkirby.com/license
  */
 class Response extends \Kirby\Http\Response
@@ -19,12 +19,12 @@ class Response extends \Kirby\Http\Response
      * parses locations with the Url::to method
      * first.
      *
-     * @param string|null $location
-     * @param int|null $code
-     * @return self
+     * @param string $location
+     * @param int $code
+     * @return static
      */
-    public static function redirect(?string $location = null, ?int $code = null)
+    public static function redirect(string $location = '/', int $code = 302)
     {
-        return parent::redirect(Url::to($location ?? '/'), $code);
+        return parent::redirect(Url::to($location), $code);
     }
 }

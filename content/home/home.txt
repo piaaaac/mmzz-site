@@ -2,6 +2,32 @@ Title: Home
 
 ----
 
+Highlight: true
+
+----
+
+Highlightimage:
+
+- chromodope-highlight.jpg
+
+----
+
+Highlighttext:
+
+**Chromodope**
+
+Non-precious materials, how to transform and repurpose them
+
+----
+
+Highlightbuttontext: View collection
+
+----
+
+Highlightbuttonurl: https://butdoesitfloat.com/
+
+----
+
 Blogposts:
 
 - blog/flexibility-and-fluidity

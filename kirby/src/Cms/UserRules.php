@@ -15,7 +15,7 @@ use Kirby\Toolkit\V;
  * @package   Kirby Cms
  * @author    Bastian Allgeier <bastian@getkirby.com>
  * @link      https://getkirby.com
- * @copyright Bastian Allgeier GmbH
+ * @copyright Bastian Allgeier
  * @license   https://getkirby.com/license
  */
 class UserRules
@@ -165,6 +165,12 @@ class UserRules
         static::validEmail($user, $user->email(), true);
         static::validLanguage($user, $user->language());
 
+        // the first user must have a password
+        if ($user->kirby()->users()->count() === 0 && empty($props['password'])) {
+            // trigger invalid password error
+            static::validPassword($user, ' ');
+        }
+
         if (empty($props['password']) === false) {
             static::validPassword($user, $props['password']);
         }
@@ -293,6 +299,10 @@ class UserRules
      */
     public static function validId(User $user, string $id): bool
     {
+        if ($id === 'account') {
+            throw new InvalidArgumentException('"account" is a reserved word and cannot be used as user id');
+        }
+
         if ($user->kirby()->users()->find($id)) {
             throw new DuplicateException('A user with this id exists');
         }

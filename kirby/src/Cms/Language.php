@@ -4,9 +4,9 @@ namespace Kirby\Cms;
 
 use Kirby\Data\Data;
 use Kirby\Exception\Exception;
-use Kirby\Exception\InvalidArgumentException;
 use Kirby\Exception\PermissionException;
-use Kirby\Toolkit\F;
+use Kirby\Filesystem\F;
+use Kirby\Toolkit\Locale;
 use Kirby\Toolkit\Str;
 use Throwable;
 
@@ -23,7 +23,7 @@ use Throwable;
  * @package   Kirby Cms
  * @author    Bastian Allgeier <bastian@getkirby.com>
  * @link      https://getkirby.com
- * @copyright Bastian Allgeier GmbH
+ * @copyright Bastian Allgeier
  * @license   https://getkirby.com/license
  */
 class Language extends Model
@@ -197,7 +197,7 @@ class Language extends Model
      *
      * @internal
      * @param array $props
-     * @return self
+     * @return static
      */
     public static function create(array $props)
     {
@@ -221,6 +221,9 @@ class Language extends Model
             static::converter('', $language->code());
         }
 
+        // update the main languages collection in the app instance
+        App::instance()->languages(false)->append($language->code(), $language);
+
         return $language;
     }
 
@@ -234,23 +237,25 @@ class Language extends Model
      */
     public function delete(): bool
     {
-        if ($this->exists() === false) {
-            return true;
-        }
-
         $kirby     = App::instance();
         $languages = $kirby->languages();
         $code      = $this->code();
+        $isLast    = $languages->count() === 1;
 
         if (F::remove($this->root()) !== true) {
             throw new Exception('The language could not be deleted');
         }
 
-        if ($languages->count() === 1) {
-            return $this->converter($code, '');
+        if ($isLast === true) {
+            $this->converter($code, '');
         } else {
-            return $this->deleteContentFiles($code);
+            $this->deleteContentFiles($code);
         }
+
+        // get the original language collection and remove the current language
+        $kirby->languages(false)->remove($code);
+
+        return true;
     }
 
     /**
@@ -329,6 +334,28 @@ class Language extends Model
     }
 
     /**
+     * Loads the language rules for provided locale code
+     *
+     * @param string $code
+     */
+    public static function loadRules(string $code)
+    {
+        $kirby = kirby();
+        $code  = Str::contains($code, '.') ? Str::before($code, '.') : $code;
+        $file  = $kirby->root('i18n:rules') . '/' . $code . '.json';
+
+        if (F::exists($file) === false) {
+            $file = $kirby->root('i18n:rules') . '/' . Str::before($code, '_') . '.json';
+        }
+
+        try {
+            return Data::read($file);
+        } catch (\Exception $e) {
+            return [];
+        }
+    }
+
+    /**
      * Returns the PHP locale setting array
      *
      * @param int $category If passed, returns the locale for the specified category (e.g. LC_ALL) as string
@@ -341,45 +368,6 @@ class Language extends Model
         } else {
             return $this->locale;
         }
-    }
-
-    /**
-     * Returns the locale array but with the locale
-     * constants replaced with their string representations
-     *
-     * @return array
-     */
-    protected function localeExport(): array
-    {
-        // list of all possible constant names
-        $constantNames = [
-            'LC_ALL', 'LC_COLLATE', 'LC_CTYPE', 'LC_MONETARY',
-            'LC_NUMERIC', 'LC_TIME', 'LC_MESSAGES'
-        ];
-
-        // build an associative array with the locales
-        // that are actually supported on this system
-        $constants = [];
-        foreach ($constantNames as $name) {
-            if (defined($name) === true) {
-                $constants[constant($name)] = $name;
-            }
-        }
-
-        // replace the keys in the locale data array with the locale names
-        $return = [];
-        foreach ($this->locale() as $key => $value) {
-            if (isset($constants[$key]) === true) {
-                // the key is a valid constant,
-                // replace it with its string representation
-                $return[$constants[$key]] = $value;
-            } else {
-                // not found, keep it as-is
-                $return[$key] = $value;
-            }
-        }
-
-        return $return;
     }
 
     /**
@@ -454,19 +442,7 @@ class Language extends Model
     public function rules(): array
     {
         $code = $this->locale(LC_CTYPE);
-        $code = Str::contains($code, '.') ? Str::before($code, '.') : $code;
-        $file = $this->kirby()->root('i18n:rules') . '/' . $code . '.json';
-
-        if (F::exists($file) === false) {
-            $file = $this->kirby()->root('i18n:rules') . '/' . Str::before($code, '_') . '.json';
-        }
-
-        try {
-            $data = Data::read($file);
-        } catch (\Exception $e) {
-            $data = [];
-        }
-
+        $data = static::loadRules($code);
         return array_merge($data, $this->slugs());
     }
 
@@ -474,7 +450,7 @@ class Language extends Model
      * Saves the language settings in the languages folder
      *
      * @internal
-     * @return self
+     * @return $this
      */
     public function save()
     {
@@ -488,7 +464,7 @@ class Language extends Model
             'code'         => $this->code(),
             'default'      => $this->isDefault(),
             'direction'    => $this->direction(),
-            'locale'       => $this->localeExport(),
+            'locale'       => Locale::export($this->locale()),
             'name'         => $this->name(),
             'translations' => $this->translations(),
             'url'          => $this->url,
@@ -505,7 +481,7 @@ class Language extends Model
 
     /**
      * @param string $code
-     * @return self
+     * @return $this
      */
     protected function setCode(string $code)
     {
@@ -515,7 +491,7 @@ class Language extends Model
 
     /**
      * @param bool $default
-     * @return self
+     * @return $this
      */
     protected function setDefault(bool $default = false)
     {
@@ -525,7 +501,7 @@ class Language extends Model
 
     /**
      * @param string $direction
-     * @return self
+     * @return $this
      */
     protected function setDirection(string $direction = 'ltr')
     {
@@ -535,28 +511,14 @@ class Language extends Model
 
     /**
      * @param string|array $locale
-     * @return self
+     * @return $this
      */
     protected function setLocale($locale = null)
     {
-        if (is_array($locale)) {
-            // replace string constant keys with the constant values
-            $convertedLocale = [];
-            foreach ($locale as $key => $value) {
-                if (is_string($key) === true && Str::startsWith($key, 'LC_') === true) {
-                    $key = constant($key);
-                }
-
-                $convertedLocale[$key] = $value;
-            }
-
-            $this->locale = $convertedLocale;
-        } elseif (is_string($locale)) {
-            $this->locale = [LC_ALL => $locale];
-        } elseif ($locale === null) {
+        if ($locale === null) {
             $this->locale = [LC_ALL => $this->code];
         } else {
-            throw new InvalidArgumentException('Locale must be string or array');
+            $this->locale = Locale::normalize($locale);
         }
 
         return $this;
@@ -564,7 +526,7 @@ class Language extends Model
 
     /**
      * @param string $name
-     * @return self
+     * @return $this
      */
     protected function setName(string $name = null)
     {
@@ -574,7 +536,7 @@ class Language extends Model
 
     /**
      * @param array $slugs
-     * @return self
+     * @return $this
      */
     protected function setSlugs(array $slugs = null)
     {
@@ -584,7 +546,7 @@ class Language extends Model
 
     /**
      * @param array $smartypants
-     * @return self
+     * @return $this
      */
     protected function setSmartypants(array $smartypants = null)
     {
@@ -594,7 +556,7 @@ class Language extends Model
 
     /**
      * @param array $translations
-     * @return self
+     * @return $this
      */
     protected function setTranslations(array $translations = null)
     {
@@ -604,7 +566,7 @@ class Language extends Model
 
     /**
      * @param string $url
-     * @return self
+     * @return $this
      */
     protected function setUrl(string $url = null)
     {
@@ -682,7 +644,7 @@ class Language extends Model
      *
      * @internal
      * @param array $props
-     * @return self
+     * @return static
      */
     public function update(array $props = null)
     {
@@ -722,6 +684,11 @@ class Language extends Model
             throw new PermissionException('Please select another language to be the primary language');
         }
 
-        return $updated->save();
+        $language = $updated->save();
+
+        // make sure the language is also updated in the Kirby language collection
+        App::instance()->languages(false)->set($language->code(), $language);
+
+        return $language;
     }
 }

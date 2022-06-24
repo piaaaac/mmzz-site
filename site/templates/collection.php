@@ -18,15 +18,16 @@ $thumbOptionsSmall = [
   "height" => null,
   "quality" => 80,
 ];
-?>
 
+$showShopButton = $page->shopButton()->toBool() === true && $page->shopUrl()->isNotEmpty();
+?>
 <main id="collection">
 
   <section class="collection-opening" style="background-image: url('<?= $cover->thumb($thumbOptionsFull)->url() ?>')">
     <div class="container-fluid">
       <div class="row">
         <div class="col-12">
-      		<h1 class="font-huge <?= $titleClass ?>"><?= $page->title() ?></h1>
+      		<h1 class="font-huge <?= $titleClass ?>"><?= Str::replace($page->title(), " ", "<br />") ?></h1>
         </div>
       </div>
     </div>
@@ -158,5 +159,9 @@ $thumbOptionsSmall = [
   </section>
 
 </main>
+
+<?php if ($showShopButton): ?>
+  <a class="button large" id="shop-button" href="<?= $page->shopUrl()->value() ?>">Shop now</a>
+<?php endif ?>
 
 <?php snippet("footer") ?>

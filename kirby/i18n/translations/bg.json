@@ -1,12 +1,20 @@
 {
+  "account.changeName": "Change your name",
+  "account.delete": "Delete your account",
+  "account.delete.confirm": "Do you really want to delete your account? You will be logged out immediately. Your account cannot be recovered.",
+
   "add": "\u0414\u043e\u0431\u0430\u0432\u0438",
+  "author": "Author",
   "avatar": "Профилна снимка",
   "back": "Назад",
   "cancel": "\u041e\u0442\u043a\u0430\u0436\u0438",
   "change": "\u041f\u0440\u043e\u043c\u0435\u043d\u0438",
   "close": "\u0417\u0430\u0442\u0432\u043e\u0440\u0438",
   "confirm": "Ок",
+  "collapse": "Collapse",
+  "collapse.all": "Collapse All",
   "copy": "Копирай",
+  "copy.all": "Copy all",
   "create": "Създай",
 
   "date": "Дата",
@@ -21,21 +29,29 @@
   "days.tue": "\u0412\u0442",
   "days.wed": "\u0421\u0440",
 
+  "debugging": "Debugging",
+
   "delete": "\u0418\u0437\u0442\u0440\u0438\u0439",
-  "dimensions": "Размери",
-  "disabled": "Disabled",
-  "discard": "\u041e\u0442\u043c\u0435\u043d\u0438",
-  "download": "Download",
-  "duplicate": "Duplicate",
-  "edit": "\u0420\u0435\u0434\u0430\u043a\u0442\u0438\u0440\u0430\u0439",
+  "delete.all": "Delete all",
 
   "dialog.files.empty": "No files to select",
   "dialog.pages.empty": "No pages to select",
   "dialog.users.empty": "No users to select",
 
+  "dimensions": "Размери",
+  "disabled": "Disabled",
+  "discard": "\u041e\u0442\u043c\u0435\u043d\u0438",
+  "download": "Download",
+  "duplicate": "Duplicate",
+
+  "edit": "\u0420\u0435\u0434\u0430\u043a\u0442\u0438\u0440\u0430\u0439",
+
   "email": "Email",
   "email.placeholder": "mail@example.com",
 
+  "environment": "Environment",
+
+  "error.access.code": "Invalid code",
   "error.access.login": "Invalid login",
   "error.access.panel": "Нямате права за достъп до панела",
   "error.access.view": "You are not allowed to access this part of the panel",
@@ -47,6 +63,12 @@
 
   "error.blueprint.notFound": "Образецът \"{name}\" не може да бъде зареден",
 
+  "error.blocks.max.plural": "You must not add more than {max} blocks",
+  "error.blocks.max.singular": "You must not add more than one block",
+  "error.blocks.min.plural": "You must add at least {min} blocks",
+  "error.blocks.min.singular": "You must add at least one block",
+  "error.blocks.validation": "There's an error in block {index}",
+
   "error.email.preset.notFound": "Email шаблонът \"{name}\" не може да бъде открит",
 
   "error.field.converter.invalid": "Невалиден конвертор \"{converter}\"",
@@ -55,6 +77,7 @@
   "error.file.changeName.permission": "Не можете да смените името на \"{filename}\"",
   "error.file.duplicate": "Файл с име \"{filename}\" вече съществува",
   "error.file.extension.forbidden": "Файловото разширение \"{extension}\" не е позволено",
+  "error.file.extension.invalid": "Invalid extension: {extension}",
   "error.file.extension.missing": "Липсва файлово разширение за файла \"{filename}\"",
   "error.file.maxheight": "The height of the image must not exceed {height} pixels",
   "error.file.maxsize": "The file is too large",
@@ -70,6 +93,7 @@
   "error.file.notFound": "Файлът \"{filename}\" не може да бъде намерен",
   "error.file.orientation": "The orientation of the image must be \"{orientation}\"",
   "error.file.type.forbidden": "Не е позволен ъплоуда на файлове от тип {type}",
+  "error.file.type.invalid": "Invalid file type: {type}",
   "error.file.undefined": "\u0424\u0430\u0439\u043b\u044a\u0442 \u043d\u0435 \u043c\u043e\u0436\u0435 \u0434\u0430 \u0431\u044a\u0434\u0435 \u043d\u0430\u043c\u0435\u0440\u0435\u043d",
 
   "error.form.incomplete": "Моля коригирайте всички грешки във формата...",
@@ -78,10 +102,16 @@
   "error.language.code": "Please enter a valid code for the language",
   "error.language.duplicate": "The language already exists",
   "error.language.name": "Please enter a valid name for the language",
+  "error.language.notFound": "The language could not be found",
+
+  "error.layout.validation.block": "There's an error in block {blockIndex} in layout {layoutIndex}",
+  "error.layout.validation.settings": "There's an error in layout {index} settings",
 
   "error.license.format": "Please enter a valid license key",
   "error.license.email": "Моля въведете валиден email адрес",
   "error.license.verification": "The license could not be verified",
+
+  "error.offline": "The Panel is currently offline",
 
   "error.page.changeSlug.permission": "Не можете да смените URL на \"{slug}\"",
   "error.page.changeStatus.incomplete": "Страницата съдържа грешки и не може да бъде публикувана",
@@ -101,7 +131,8 @@
   "error.page.duplicate.permission": "You are not allowed to duplicate \"{slug}\"",
   "error.page.notFound": "Страницата \"{slug}\" не може да бъде намерена",
   "error.page.num.invalid": "Моля въведете валидно число за сортиране. Числата не трябва да са негативни.",
-  "error.page.slug.invalid": "Моля въведете валиден URL префикс",
+  "error.page.slug.invalid": "Please enter a valid URL appendix",
+  "error.page.slug.maxlength": "Slug length must be less than \"{length}\" characters",
   "error.page.sort.permission": "Страницата \"{slug}\" не може да бъде сортирана",
   "error.page.status.invalid": "Моля изберете валиден статус на страницата",
   "error.page.undefined": "\u0421\u0442\u0440\u0430\u043d\u0438\u0446\u0430\u0442\u0430 \u043d\u0435 \u043c\u043e\u0436\u0435 \u0434\u0430 \u0431\u044a\u0434\u0435 \u043d\u0430\u043c\u0435\u0440\u0435\u043d\u0430",
@@ -126,6 +157,8 @@
 
   "error.template.default.notFound": "Стандартният шаблон не съществува",
 
+  "error.unexpected": "An unexpected error occurred! Enable debug mode for more info: https://getkirby.com/docs/reference/system/options/debug",
+
   "error.user.changeEmail.permission": "Нямате права да промените имейла на този потребител \"{name}\"",
   "error.user.changeLanguage.permission": "Нямате права да промените езика за този потребител \"{name}\"",
   "error.user.changeName.permission": "Нямате права да промените името на този потребител \"{name}\"",
@@ -145,7 +178,9 @@
   "error.user.password.invalid": "Моля въведете валидна парола. Тя трабва да съдържа поне 8 символа.",
   "error.user.password.notSame": "\u041c\u043e\u043b\u044f, \u043f\u043e\u0442\u0432\u044a\u0440\u0434\u0435\u0442\u0435 \u043f\u0430\u0440\u043e\u043b\u0430\u0442\u0430",
   "error.user.password.undefined": "Потребителят няма парола",
+  "error.user.password.wrong": "Wrong password",
   "error.user.role.invalid": "Моля въведете валидна роля",
+  "error.user.undefined": "Потребителят не може да бъде намерен.",
   "error.user.update.permission": "Нямате права да обновите този потребител \"{name}\"",
 
   "error.validation.accepted": "Моля потвърдете",
@@ -184,22 +219,84 @@
   "error.validation.size": "Размерът на стойността трябва да бъде \"{size}\"",
   "error.validation.startswith": "Стойността трябва да започва с \"{start}\"",
   "error.validation.time": "Моля въведете валидно време",
+  "error.validation.time.after": "Please enter a time after {time}",
+  "error.validation.time.before": "Please enter a time before {time}",
+  "error.validation.time.between": "Please enter a time between {min} and {max}",
   "error.validation.url": "Моля въведете валиден URL",
 
+  "expand": "Expand",
+  "expand.all": "Expand All",
+
   "field.required": "The field is required",
+  "field.blocks.changeType": "Change type",
+  "field.blocks.code.name": "Код",
+  "field.blocks.code.language": "Език",
+  "field.blocks.code.placeholder": "Your code …",
+  "field.blocks.delete.confirm": "Do you really want to delete this block?",
+  "field.blocks.delete.confirm.all": "Do you really want to delete all blocks?",
+  "field.blocks.delete.confirm.selected": "Do you really want to delete the selected blocks?",
+  "field.blocks.empty": "No blocks yet",
+  "field.blocks.fieldsets.label": "Please select a block type …",
+  "field.blocks.fieldsets.paste": "Press <kbd>{{ shortcut }}</kbd> to paste/import blocks from your clipboard",
+  "field.blocks.gallery.name": "Gallery",
+  "field.blocks.gallery.images.empty": "No images yet",
+  "field.blocks.gallery.images.label": "Images",
+  "field.blocks.heading.level": "Level",
+  "field.blocks.heading.name": "Heading",
+  "field.blocks.heading.text": "Text",
+  "field.blocks.heading.placeholder": "Heading …",
+  "field.blocks.image.alt": "Alternative text",
+  "field.blocks.image.caption": "Caption",
+  "field.blocks.image.crop": "Crop",
+  "field.blocks.image.link": "Връзка",
+  "field.blocks.image.location": "Location",
+  "field.blocks.image.name": "Изображение",
+  "field.blocks.image.placeholder": "Select an image",
+  "field.blocks.image.ratio": "Ratio",
+  "field.blocks.image.url": "Image URL",
+  "field.blocks.line.name": "Line",
+  "field.blocks.list.name": "List",
+  "field.blocks.markdown.name": "Markdown",
+  "field.blocks.markdown.label": "Text",
+  "field.blocks.markdown.placeholder": "Markdown …",
+  "field.blocks.quote.name": "Quote",
+  "field.blocks.quote.text.label": "Text",
+  "field.blocks.quote.text.placeholder": "Quote …",
+  "field.blocks.quote.citation.label": "Citation",
+  "field.blocks.quote.citation.placeholder": "by …",
+  "field.blocks.text.name": "Text",
+  "field.blocks.text.placeholder": "Text …",
+  "field.blocks.video.caption": "Caption",
+  "field.blocks.video.name": "Video",
+  "field.blocks.video.placeholder": "Enter a video URL",
+  "field.blocks.video.url.label": "Video-URL",
+  "field.blocks.video.url.placeholder": "https://youtube.com/?v=",
+
   "field.files.empty": "Все още не са избрани файлове",
+
+  "field.layout.delete": "Delete layout",
+  "field.layout.delete.confirm": "Do you really want to delete this layout?",
+  "field.layout.empty": "No rows yet",
+  "field.layout.select": "Select a layout",
+
   "field.pages.empty": "Все още не са избрани страници",
   "field.structure.delete.confirm": "Сигурни ли сте, че искате да изтриете това вписване?",
   "field.structure.empty": "Все още няма статии",
   "field.users.empty": "Все още не са избрани потребители",
 
+  "file.blueprint": "This file has no blueprint yet. You can define the setup in <strong>/site/blueprints/files/{blueprint}.yml</strong>",
   "file.delete.confirm": "Сигурни ли сте, че искате да изтриете <br><strong>{filename}</strong>?",
+  "file.sort": "Change position",
 
   "files": "Файлове",
   "files.empty": "Няма файлове",
 
+  "hide": "Hide",
   "hour": "Hour",
+  "import": "Import",
   "insert": "\u0412\u043c\u044a\u043a\u043d\u0438",
+  "insert.after": "Insert after",
+  "insert.before": "Insert before",
   "install": "Инсталирай",
 
   "installation": "Инсталация",
@@ -258,7 +355,20 @@
   "lock.isUnlocked": "Your unsaved changes have been overwritten by another user. You can download your changes to merge them manually.",
 
   "login": "Вход",
+  "login.code.label.login": "Login code",
+  "login.code.label.password-reset": "Password reset code",
+  "login.code.placeholder.email": "000 000",
+  "login.code.text.email": "If your email address is registered, the requested code was sent via email.",
+  "login.email.login.body": "Hi {user.nameOrEmail},\n\nYou recently requested a login code for the Panel of {site}.\nThe following login code will be valid for {timeout} minutes:\n\n{code}\n\nIf you did not request a login code, please ignore this email or contact your administrator if you have questions.\nFor security, please DO NOT forward this email.",
+  "login.email.login.subject": "Your login code",
+  "login.email.password-reset.body": "Hi {user.nameOrEmail},\n\nYou recently requested a password reset code for the Panel of {site}.\nThe following password reset code will be valid for {timeout} minutes:\n\n{code}\n\nIf you did not request a password reset code, please ignore this email or contact your administrator if you have questions.\nFor security, please DO NOT forward this email.",
+  "login.email.password-reset.subject": "Your password reset code",
   "login.remember": "Keep me logged in",
+  "login.reset": "Reset password",
+  "login.toggleText.code.email": "Login via email",
+  "login.toggleText.code.email-password": "Login with password",
+  "login.toggleText.password-reset.email": "Forgot your password?",
+  "login.toggleText.password-reset.email-password": "← Back to login",
 
   "logout": "Изход",
 
@@ -284,16 +394,20 @@
   "more": "Още",
   "name": "Име",
   "next": "Next",
+  "no": "no",
   "off": "off",
   "on": "on",
   "open": "Отвори",
+  "open.newWindow": "Open in new window",
   "options": "Options",
+  "options.none": "No options",
 
   "orientation": "Ориентация",
   "orientation.landscape": "Пейзаж",
   "orientation.portrait": "Портрет",
   "orientation.square": "Квадрат",
 
+  "page.blueprint": "This page has no blueprint yet. You can define the setup in <strong>/site/blueprints/pages/{blueprint}.yml</strong>",
   "page.changeSlug": "\u041f\u0440\u043e\u043c\u0435\u043d\u0438 URL",
   "page.changeSlug.fromTitle": "\u0421\u044a\u0437\u0434\u0430\u0439\u0442\u0435 \u043e\u0442 \u0437\u0430\u0433\u043b\u0430\u0432\u0438\u0435\u0442\u043e",
   "page.changeStatus": "Промени статус",
@@ -307,6 +421,7 @@
   "page.duplicate.appendix": "Копирай",
   "page.duplicate.files": "Copy files",
   "page.duplicate.pages": "Copy pages",
+  "page.sort": "Change position",
   "page.status": "Status",
   "page.status.draft": "Чернова",
   "page.status.draft.description": "The page is in draft mode and only visible for logged in editors or via secret link",
@@ -324,8 +439,12 @@
   "pagination.page": "Страница",
 
   "password": "\u041f\u0430\u0440\u043e\u043b\u0430",
+  "paste": "Paste",
+  "paste.after": "Paste after",
   "pixel": "Пиксел",
+  "plugins": "Plugins",
   "prev": "Previous",
+  "preview": "Preview",
   "remove": "Премахни",
   "rename": "Преименувай",
   "replace": "\u0417\u0430\u043c\u0435\u0441\u0442\u0438",
@@ -344,17 +463,25 @@
 
   "save": "\u0417\u0430\u043f\u0438\u0448\u0438",
   "search": "Търси",
+  "search.min": "Enter {min} characters to search",
+  "search.all": "Show all",
+  "search.results.none": "No results",
 
   "section.required": "The section is required",
 
   "select": "Избери",
   "settings": "Настройки",
+  "show": "Show",
   "size": "Размер",
   "slug": "URL-\u0434\u043e\u0431\u0430\u0432\u043a\u0430",
   "sort": "Сортирай",
   "title": "Заглавие",
   "template": "Образец",
   "today": "Днес",
+
+  "server": "Server",
+
+  "site.blueprint": "The site has no blueprint yet. You can define the setup in <strong>/site/blueprints/site.yml</strong>",
 
   "toolbar.button.code": "Код",
   "toolbar.button.bold": "\u041f\u043e\u043b\u0443\u0447\u0435\u0440 \u0448\u0440\u0438\u0444\u0442",
@@ -363,12 +490,18 @@
   "toolbar.button.heading.1": "Заглавие 1",
   "toolbar.button.heading.2": "Заглавие 2",
   "toolbar.button.heading.3": "Заглавие 3",
+  "toolbar.button.heading.4": "Heading 4",
+  "toolbar.button.heading.5": "Heading 5",
+  "toolbar.button.heading.6": "Heading 6",
   "toolbar.button.italic": "\u041d\u0430\u043a\u043b\u043e\u043d\u0435\u043d \u0448\u0440\u0438\u0444\u0442",
   "toolbar.button.file": "Файл",
   "toolbar.button.file.select": "Select a file",
   "toolbar.button.file.upload": "Upload a file",
   "toolbar.button.link": "\u0412\u0440\u044a\u0437\u043a\u0430",
+  "toolbar.button.paragraph": "Paragraph",
+  "toolbar.button.strike": "Strike-through",
   "toolbar.button.ol": "Подреден списък",
+  "toolbar.button.underline": "Underline",
   "toolbar.button.ul": "Списък",
 
   "translation.author": "Kirby екип",
@@ -395,7 +528,7 @@
   "url.placeholder": "https://example.com",
 
   "user": "Потребител",
-  "user.blueprint": "Можете да дефинирате допълнителни секции и полета на форми за тази потребителска роля в <strong>/site/blueprints/users/{role}.yml</strong>",
+  "user.blueprint": "You can define additional sections and form fields for this user role in <strong>/site/blueprints/users/{blueprint}.yml</strong>",
   "user.changeEmail": "Промени email",
   "user.changeLanguage": "Промени език",
   "user.changeName": "Преименувай този потребител",
@@ -414,10 +547,13 @@
 
   "view.account": "\u0412\u0430\u0448\u0438\u044f \u0430\u043a\u0430\u0443\u043d\u0442",
   "view.installation": "\u0418\u043d\u0441\u0442\u0430\u043b\u0430\u0446\u0438\u044f",
-  "view.settings": "Настройки",
+  "view.languages": "Езици",
+  "view.resetPassword": "Reset password",
   "view.site": "Сайт",
+  "view.system": "System",
   "view.users": "\u041f\u043e\u0442\u0440\u0435\u0431\u0438\u0442\u0435\u043b\u0438",
 
   "welcome": "Добре дошли",
-  "year": "Year"
+  "year": "Year",
+  "yes": "yes"
 }

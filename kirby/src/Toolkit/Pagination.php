@@ -11,7 +11,7 @@ use Kirby\Exception\Exception;
  * @package   Kirby Toolkit
  * @author    Bastian Allgeier <bastian@getkirby.com>
  * @link      https://getkirby.com
- * @copyright Bastian Allgeier GmbH
+ * @copyright Bastian Allgeier
  * @license   https://opensource.org/licenses/MIT
  */
 class Pagination
@@ -66,7 +66,7 @@ class Pagination
      *
      * @param \Kirby\Toolkit\Collection $collection
      * @param mixed ...$arguments
-     * @return self
+     * @return static
      */
     public static function for(Collection $collection, ...$arguments)
     {
@@ -75,7 +75,12 @@ class Pagination
 
         $params = [];
 
-        if (is_array($a) === true) {
+        if (is_a($a, static::class) === true) {
+            /**
+             * First argument is a pagination/self object
+             */
+            return $a;
+        } elseif (is_array($a) === true) {
 
             /**
              * First argument is an option array
@@ -126,48 +131,30 @@ class Pagination
     /**
      * Getter for the current page
      *
-     * @deprecated 3.3.0 Setter is no longer supported, use $pagination->clone()
      * @return int
-     * @codeCoverageIgnore
      */
-    public function page(int $page = null): int
+    public function page(): int
     {
-        if ($page !== null) {
-            throw new Exception('$pagination->page() setter is no longer supported, use $pagination->clone()'); // @codeCoverageIgnore
-        }
-
         return $this->page;
     }
 
     /**
      * Getter for the total number of items
      *
-     * @deprecated 3.3.0 Setter is no longer supported, use $pagination->clone()
      * @return int
-     * @codeCoverageIgnore
      */
-    public function total(int $total = null): int
+    public function total(): int
     {
-        if ($total !== null) {
-            throw new Exception('$pagination->total() setter is no longer supported, use $pagination->clone()'); // @codeCoverageIgnore
-        }
-
         return $this->total;
     }
 
     /**
      * Getter for the number of items per page
      *
-     * @deprecated 3.3.0 Setter is no longer supported, use $pagination->clone()
      * @return int
-     * @codeCoverageIgnore
      */
-    public function limit(int $limit = null): int
+    public function limit(): int
     {
-        if ($limit !== null) {
-            throw new Exception('$pagination->limit() setter is no longer supported, use $pagination->clone()'); // @codeCoverageIgnore
-        }
-
         return $this->limit;
     }
 
@@ -214,7 +201,7 @@ class Pagination
             return 0;
         }
 
-        return ceil($this->total() / $this->limit());
+        return (int)ceil($this->total() / $this->limit());
     }
 
     /**
@@ -353,17 +340,18 @@ class Pagination
             return range($start, $end);
         }
 
-        $start = $page - (int)floor($range/2);
-        $end   = $page + (int)floor($range/2);
+        $middle = (int)floor($range/2);
+        $start  = $page - $middle + ($range % 2 === 0);
+        $end    = $start + $range - 1;
 
         if ($start <= 0) {
-            $end   += abs($start);
-            $start  = 1;
+            $end   = $range;
+            $start = 1;
         }
 
         if ($end > $pages) {
-            $start -= $end - $pages;
-            $end    = $pages;
+            $start = $pages - $range + 1;
+            $end   = $pages;
         }
 
         return range($start, $end);
@@ -397,7 +385,7 @@ class Pagination
      * and validates that the properties match
      *
      * @param array $props Array with keys limit, total and/or page
-     * @return self
+     * @return $this
      */
     protected function setProperties(array $props)
     {
@@ -434,7 +422,7 @@ class Pagination
      * Sets the number of items per page
      *
      * @param int $limit
-     * @return self
+     * @return $this
      */
     protected function setLimit(int $limit = 20)
     {
@@ -450,7 +438,7 @@ class Pagination
      * Sets the total number of items
      *
      * @param int $total
-     * @return self
+     * @return $this
      */
     protected function setTotal(int $total = 0)
     {
@@ -467,7 +455,7 @@ class Pagination
      *
      * @param int|string|null $page Int or int in string form;
      *                              automatically determined if null
-     * @return self
+     * @return $this
      */
     protected function setPage($page = null)
     {

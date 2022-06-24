@@ -12,7 +12,7 @@ use Kirby\Toolkit\Str;
  * @package   Kirby Http
  * @author    Bastian Allgeier <bastian@getkirby.com>
  * @link      https://getkirby.com
- * @copyright Bastian Allgeier GmbH
+ * @copyright Bastian Allgeier
  * @license   https://opensource.org/licenses/MIT
  */
 class Params extends Query
@@ -69,10 +69,13 @@ class Params extends Query
                 }
 
                 $paramParts = Str::split($p, $separator);
-                $paramKey   = $paramParts[0];
+                $paramKey   = $paramParts[0] ?? null;
                 $paramValue = $paramParts[1] ?? null;
 
-                $params[$paramKey] = $paramValue;
+                if ($paramKey !== null) {
+                    $params[$paramKey] = $paramValue;
+                }
+
                 unset($path[$index]);
             }
 
@@ -119,6 +122,12 @@ class Params extends Query
      * @param bool $leadingSlash
      * @param bool $trailingSlash
      * @return string|null
+     *
+     * @todo The argument $leadingSlash is incompatible with
+     *       Query::toString($questionMark = false); the Query class
+     *       should be extracted into a common parent class for both
+     *       Query and Params
+     * @psalm-suppress ParamNameMismatch
      */
     public function toString($leadingSlash = false, $trailingSlash = false): string
     {

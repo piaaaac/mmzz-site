@@ -8,7 +8,7 @@ use Closure;
  * @package   Kirby Http
  * @author    Bastian Allgeier <bastian@getkirby.com>
  * @link      https://getkirby.com
- * @copyright Bastian Allgeier GmbH
+ * @copyright Bastian Allgeier
  * @license   https://opensource.org/licenses/MIT
  */
 class Route
@@ -93,7 +93,7 @@ class Route
      * @param Closure $action
      * @param array $attributes
      */
-    public function __construct($pattern, $method = 'GET', Closure $action, array $attributes = [])
+    public function __construct($pattern, $method, Closure $action, array $attributes = [])
     {
         $this->action     = $action;
         $this->attributes = $attributes;

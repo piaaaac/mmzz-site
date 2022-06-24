@@ -12,6 +12,8 @@ $double-padding: $padding*2;
 
 $header-h: 60px;
 $footer-h: 120px;
+$button-h: 40px;
+$button-h-l: 60px;
 
 
 // ------------------------------------------------------------------------
@@ -27,11 +29,30 @@ $footer-h: 120px;
 
 
 // ------------------------------------------------------------------------
+// Utilities
+// ------------------------------------------------------------------------
+
+.color-white		{ color: white; }
+.font-600   		{ font-weight: 600; }
+.border-bottom	{ border-bottom: 1px solid black !important; }
+.lh-0 					{ line-height: 0; }
+img.full-w			{ width: 100%; max-width: 100%; }
+
+
+@mixin underline {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 10%;
+}
+
+
+// ------------------------------------------------------------------------
 // General tags & classes
 // ------------------------------------------------------------------------
 
 * {
   font-family: Hatton, serif;
+  text-rendering: geometricPrecision; // OK on chrome
   color: black;
 }
 
@@ -45,7 +66,8 @@ main {
 a {
 	text-decoration: none;
 	&.active, &:hover {
-		text-decoration: underline;
+		// text-decoration: underline;
+		@include underline;
 	}
 }
 
@@ -59,14 +81,6 @@ hr {
 	border-bottom: 1px solid black;
 }
 
-
-// ------------------------------------------------------------------------
-// Utilities
-// ------------------------------------------------------------------------
-
-.color-white		{ color: white; }
-.font-600   		{ font-weight: 600; }
-.border-bottom	{ border-bottom: 1px solid black !important; }
 
 // ------------------------------------------------------------------------
 // GRID
@@ -100,6 +114,7 @@ nav#menu, nav#menu-home {
 		display: inline-block;
 		margin-left: 15px;
 		pointer-events: all;
+  	border-bottom: 1px solid rgba(0,0,0,0);
 		&:hover, &.active {
 	    text-decoration: none;
     	border-bottom: 1px solid black;
@@ -116,6 +131,34 @@ nav#menu, nav#menu-home {
 	cursor: pointer;
 }
 
+.button {
+  display: inline-flex; align-items: center; justify-content: center;
+  height: $button-h;
+  position: relative;
+  color: white;
+  background-color: black;
+  @include font-sans-s;
+  // font-weight: 700;
+  text-decoration: none !important;
+  padding: 0 $double-padding;
+  transition: background-color 400ms, color 400ms;
+  // &:hover, &.active {
+  // 	text-decoration: none;
+  //   background-color: rgba(black, 0.7);
+  // }
+  &.large {
+    height: $button-h-l;
+  	@include font-m;
+  }
+  &.cyan {
+    background-color: $cyan;
+  	color: black;
+	  // &:hover, &.active {
+	  //   background-color: $cyan;
+	  // 	color: black;
+	  // }
+  }
+}
 
 // ------------------------------------------------------------------------
 // PAGES
@@ -180,6 +223,20 @@ nav#menu, nav#menu-home {
 			}
 		}
 	}
+	
+	.home-highlight {
+		@include linearGradientV(white, $cyan);
+		.home-highlight-text {
+			p {
+				@include font-large;
+				margin-bottom: 20px;
+			}
+			strong {
+				@include font-huge;
+			}
+		}
+	}
+
 	.home-img-container {
 		position: relative;
 		z-index: 1;
@@ -398,6 +455,24 @@ nav#menu, nav#menu-home {
 	}
 }
 
+#shop-button {
+	position: fixed;
+	width: 100%;
+	bottom: 0; left: 0; 
+	@include media-breakpoint-down(sm) {
+		padding-bottom: 20px;
+		height: #{$button-h-l + 20px};
+	}
+	@include media-breakpoint-up(md) {
+		top: 75px; 
+		bottom: auto; right: $double-padding; left: auto;
+		width: auto;
+	}
+	@include media-breakpoint-up(lg) {
+		top: 95px; 
+	}
+}
+
 .footer {
 	position: relative;
 	.col { 
@@ -456,7 +531,8 @@ nav#menu, nav#menu-home {
 		}
 		a {
 			@extend .font-sans-m;
-			text-decoration: underline;
+			// text-decoration: underline;
+			@include underline;
 		}
 	}
 }

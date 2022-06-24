@@ -1,12 +1,20 @@
 {
+  "account.changeName": "Change your name",
+  "account.delete": "Delete your account",
+  "account.delete.confirm": "Do you really want to delete your account? You will be logged out immediately. Your account cannot be recovered.",
+
   "add": "Add",
+  "author": "Author",
   "avatar": "Profile picture",
   "back": "Back",
   "cancel": "Cancel",
   "change": "Change",
   "close": "Close",
   "confirm": "Ok",
+  "collapse": "Collapse",
+  "collapse.all": "Collapse All",
   "copy": "Copy",
+  "copy.all": "Copy all",
   "create": "Create",
 
   "date": "Date",
@@ -21,21 +29,29 @@
   "days.tue": "Tue",
   "days.wed": "Wed",
 
+  "debugging": "Debugging",
+
   "delete": "Delete",
-  "dimensions": "Dimensions",
-  "disabled": "Disabled",
-  "discard": "Discard",
-  "download": "Download",
-  "duplicate": "Duplicate",
-  "edit": "Edit",
+  "delete.all": "Delete all",
 
   "dialog.files.empty": "No files to select",
   "dialog.pages.empty": "No pages to select",
   "dialog.users.empty": "No users to select",
 
+  "dimensions": "Dimensions",
+  "disabled": "Disabled",
+  "discard": "Discard",
+  "download": "Download",
+  "duplicate": "Duplicate",
+
+  "edit": "Edit",
+
   "email": "Email",
   "email.placeholder": "mail@example.com",
 
+  "environment": "Environment",
+
+  "error.access.code": "Invalid code",
   "error.access.login": "Invalid login",
   "error.access.panel": "You are not allowed to access the panel",
   "error.access.view": "You are not allowed to access this part of the panel",
@@ -47,6 +63,12 @@
 
   "error.blueprint.notFound": "The blueprint \"{name}\" could not be loaded",
 
+  "error.blocks.max.plural": "You must not add more than {max} blocks",
+  "error.blocks.max.singular": "You must not add more than one block",
+  "error.blocks.min.plural": "You must add at least {min} blocks",
+  "error.blocks.min.singular": "You must add at least one block",
+  "error.blocks.validation": "There's an error in block {index}",
+
   "error.email.preset.notFound": "The email preset \"{name}\" cannot be found",
 
   "error.field.converter.invalid": "Invalid converter \"{converter}\"",
@@ -55,6 +77,7 @@
   "error.file.changeName.permission": "You are not allowed to change the name of \"{filename}\"",
   "error.file.duplicate": "A file with the name \"{filename}\" already exists",
   "error.file.extension.forbidden": "The extension \"{extension}\" is not allowed",
+  "error.file.extension.invalid": "Invalid extension: {extension}",
   "error.file.extension.missing": "The extensions for \"{filename}\" is missing",
   "error.file.maxheight": "The height of the image must not exceed {height} pixels",
   "error.file.maxsize": "The file is too large",
@@ -70,6 +93,7 @@
   "error.file.notFound": "The file \"{filename}\" cannot be found",
   "error.file.orientation": "The orientation of the image must be \"{orientation}\"",
   "error.file.type.forbidden": "You are not allowed to upload {type} files",
+  "error.file.type.invalid": "Invalid file type: {type}",
   "error.file.undefined": "The file cannot be found",
 
   "error.form.incomplete": "Please fix all form errors…",
@@ -78,10 +102,16 @@
   "error.language.code": "Please enter a valid code for the language",
   "error.language.duplicate": "The language already exists",
   "error.language.name": "Please enter a valid name for the language",
+  "error.language.notFound": "The language could not be found",
+
+  "error.layout.validation.block": "There's an error in block {blockIndex} in layout {layoutIndex}",
+  "error.layout.validation.settings": "There's an error in layout {index} settings",
 
   "error.license.format": "Please enter a valid license key",
   "error.license.email": "Please enter a valid email address",
   "error.license.verification": "The license could not be verified",
+
+  "error.offline": "The Panel is currently offline",
 
   "error.page.changeSlug.permission": "You are not allowed to change the URL appendix for \"{slug}\"",
   "error.page.changeStatus.incomplete": "The page has errors and cannot be published",
@@ -101,7 +131,7 @@
   "error.page.duplicate.permission": "You are not allowed to duplicate \"{slug}\"",
   "error.page.notFound": "The page \"{slug}\" cannot be found",
   "error.page.num.invalid": "Please enter a valid sorting number. Numbers must not be negative.",
-  "error.page.slug.invalid": "Please enter a valid URL prefix",
+  "error.page.slug.invalid": "Please enter a valid URL appendix",
   "error.page.slug.maxlength": "Slug length must be less than \"{length}\" characters",
   "error.page.sort.permission": "The page \"{slug}\" cannot be sorted",
   "error.page.status.invalid": "Please set a valid page status",
@@ -127,6 +157,8 @@
 
   "error.template.default.notFound": "The default template does not exist",
 
+  "error.unexpected": "An unexpected error occurred! Enable debug mode for more info: https://getkirby.com/docs/reference/system/options/debug",
+
   "error.user.changeEmail.permission": "You are not allowed to change the email for the user \"{name}\"",
   "error.user.changeLanguage.permission": "You are not allowed to change the language for the user \"{name}\"",
   "error.user.changeName.permission": "You are not allowed to change the name for the user \"{name}\"",
@@ -146,7 +178,9 @@
   "error.user.password.invalid": "Please enter a valid password. Passwords must be at least 8 characters long.",
   "error.user.password.notSame": "The passwords do not match",
   "error.user.password.undefined": "The user does not have a password",
+  "error.user.password.wrong": "Wrong password",
   "error.user.role.invalid": "Please enter a valid role",
+  "error.user.undefined": "The user cannot be found",
   "error.user.update.permission": "You are not allowed to update the user \"{name}\"",
 
   "error.validation.accepted": "Please confirm",
@@ -185,22 +219,84 @@
   "error.validation.size": "The size of the value must be \"{size}\"",
   "error.validation.startswith": "The value must start with \"{start}\"",
   "error.validation.time": "Please enter a valid time",
+  "error.validation.time.after": "Please enter a time after {time}",
+  "error.validation.time.before": "Please enter a time before {time}",
+  "error.validation.time.between": "Please enter a time between {min} and {max}",
   "error.validation.url": "Please enter a valid URL",
 
+  "expand": "Expand",
+  "expand.all": "Expand All",
+
   "field.required": "The field is required",
+  "field.blocks.changeType": "Change type",
+  "field.blocks.code.name": "Code",
+  "field.blocks.code.language": "Language",
+  "field.blocks.code.placeholder": "Your code …",
+  "field.blocks.delete.confirm": "Do you really want to delete this block?",
+  "field.blocks.delete.confirm.all": "Do you really want to delete all blocks?",
+  "field.blocks.delete.confirm.selected": "Do you really want to delete the selected blocks?",
+  "field.blocks.empty": "No blocks yet",
+  "field.blocks.fieldsets.label": "Please select a block type …",
+  "field.blocks.fieldsets.paste": "Press <kbd>{{ shortcut }}</kbd> to paste/import blocks from your clipboard",
+  "field.blocks.gallery.name": "Gallery",
+  "field.blocks.gallery.images.empty": "No images yet",
+  "field.blocks.gallery.images.label": "Images",
+  "field.blocks.heading.level": "Level",
+  "field.blocks.heading.name": "Heading",
+  "field.blocks.heading.text": "Text",
+  "field.blocks.heading.placeholder": "Heading …",
+  "field.blocks.image.alt": "Alternative text",
+  "field.blocks.image.caption": "Caption",
+  "field.blocks.image.crop": "Crop",
+  "field.blocks.image.link": "Link",
+  "field.blocks.image.location": "Location",
+  "field.blocks.image.name": "Image",
+  "field.blocks.image.placeholder": "Select an image",
+  "field.blocks.image.ratio": "Ratio",
+  "field.blocks.image.url": "Image URL",
+  "field.blocks.line.name": "Line",
+  "field.blocks.list.name": "List",
+  "field.blocks.markdown.name": "Markdown",
+  "field.blocks.markdown.label": "Text",
+  "field.blocks.markdown.placeholder": "Markdown …",
+  "field.blocks.quote.name": "Quote",
+  "field.blocks.quote.text.label": "Text",
+  "field.blocks.quote.text.placeholder": "Quote …",
+  "field.blocks.quote.citation.label": "Citation",
+  "field.blocks.quote.citation.placeholder": "by …",
+  "field.blocks.text.name": "Text",
+  "field.blocks.text.placeholder": "Text …",
+  "field.blocks.video.caption": "Caption",
+  "field.blocks.video.name": "Video",
+  "field.blocks.video.placeholder": "Enter a video URL",
+  "field.blocks.video.url.label": "Video-URL",
+  "field.blocks.video.url.placeholder": "https://youtube.com/?v=",
+
   "field.files.empty": "No files selected yet",
+
+  "field.layout.delete": "Delete layout",
+  "field.layout.delete.confirm": "Do you really want to delete this layout?",
+  "field.layout.empty": "No rows yet",
+  "field.layout.select": "Select a layout",
+
   "field.pages.empty": "No pages selected yet",
   "field.structure.delete.confirm": "Do you really want to delete this row?",
   "field.structure.empty": "No entries yet",
   "field.users.empty": "No users selected yet",
 
+  "file.blueprint": "This file has no blueprint yet. You can define the setup in <strong>/site/blueprints/files/{blueprint}.yml</strong>",
   "file.delete.confirm": "Do you really want to delete <br><strong>{filename}</strong>?",
+  "file.sort": "Change position",
 
   "files": "Files",
   "files.empty": "No files yet",
 
+  "hide": "Hide",
   "hour": "Hour",
+  "import": "Import",
   "insert": "Insert",
+  "insert.after": "Insert after",
+  "insert.before": "Insert before",
   "install": "Install",
 
   "installation": "Installation",
@@ -259,7 +355,20 @@
   "lock.isUnlocked": "Your unsaved changes have been overwritten by another user. You can download your changes to merge them manually.",
 
   "login": "Login",
+  "login.code.label.login": "Login code",
+  "login.code.label.password-reset": "Password reset code",
+  "login.code.placeholder.email": "000 000",
+  "login.code.text.email": "If your email address is registered, the requested code was sent via email.",
+  "login.email.login.body": "Hi {user.nameOrEmail},\n\nYou recently requested a login code for the Panel of {site}.\nThe following login code will be valid for {timeout} minutes:\n\n{code}\n\nIf you did not request a login code, please ignore this email or contact your administrator if you have questions.\nFor security, please DO NOT forward this email.",
+  "login.email.login.subject": "Your login code",
+  "login.email.password-reset.body": "Hi {user.nameOrEmail},\n\nYou recently requested a password reset code for the Panel of {site}.\nThe following password reset code will be valid for {timeout} minutes:\n\n{code}\n\nIf you did not request a password reset code, please ignore this email or contact your administrator if you have questions.\nFor security, please DO NOT forward this email.",
+  "login.email.password-reset.subject": "Your password reset code",
   "login.remember": "Keep me logged in",
+  "login.reset": "Reset password",
+  "login.toggleText.code.email": "Login via email",
+  "login.toggleText.code.email-password": "Login with password",
+  "login.toggleText.password-reset.email": "Forgot your password?",
+  "login.toggleText.password-reset.email-password": "← Back to login",
 
   "logout": "Logout",
 
@@ -285,9 +394,11 @@
   "more": "More",
   "name": "Name",
   "next": "Next",
+  "no": "no",
   "off": "off",
   "on": "on",
   "open": "Open",
+  "open.newWindow": "Open in new window",
   "options": "Options",
   "options.none": "No options",
 
@@ -296,6 +407,7 @@
   "orientation.portrait": "Portrait",
   "orientation.square": "Square",
 
+  "page.blueprint": "This page has no blueprint yet. You can define the setup in <strong>/site/blueprints/pages/{blueprint}.yml</strong>",
   "page.changeSlug": "Change URL",
   "page.changeSlug.fromTitle": "Create from title",
   "page.changeStatus": "Change status",
@@ -309,6 +421,7 @@
   "page.duplicate.appendix": "Copy",
   "page.duplicate.files": "Copy files",
   "page.duplicate.pages": "Copy pages",
+  "page.sort": "Change position",
   "page.status": "Status",
   "page.status.draft": "Draft",
   "page.status.draft.description": "The page is in draft mode and only visible for logged in editors or via secret link",
@@ -326,8 +439,12 @@
   "pagination.page": "Page",
 
   "password": "Password",
+  "paste": "Paste",
+  "paste.after": "Paste after",
   "pixel": "Pixel",
+  "plugins": "Plugins",
   "prev": "Previous",
+  "preview": "Preview",
   "remove": "Remove",
   "rename": "Rename",
   "replace": "Replace",
@@ -354,12 +471,17 @@
 
   "select": "Select",
   "settings": "Settings",
+  "show": "Show",
   "size": "Size",
   "slug": "URL appendix",
   "sort": "Sort",
   "title": "Title",
   "template": "Template",
   "today": "Today",
+
+  "server": "Server",
+
+  "site.blueprint": "The site has no blueprint yet. You can define the setup in <strong>/site/blueprints/site.yml</strong>",
 
   "toolbar.button.code": "Code",
   "toolbar.button.bold": "Bold",
@@ -368,12 +490,18 @@
   "toolbar.button.heading.1": "Heading 1",
   "toolbar.button.heading.2": "Heading 2",
   "toolbar.button.heading.3": "Heading 3",
+  "toolbar.button.heading.4": "Heading 4",
+  "toolbar.button.heading.5": "Heading 5",
+  "toolbar.button.heading.6": "Heading 6",
   "toolbar.button.italic": "Italic",
   "toolbar.button.file": "File",
   "toolbar.button.file.select": "Select a file",
   "toolbar.button.file.upload": "Upload a file",
   "toolbar.button.link": "Link",
+  "toolbar.button.paragraph": "Paragraph",
+  "toolbar.button.strike": "Strike-through",
   "toolbar.button.ol": "Ordered list",
+  "toolbar.button.underline": "Underline",
   "toolbar.button.ul": "Bullet list",
 
   "translation.author": "Kirby Team",
@@ -400,7 +528,7 @@
   "url.placeholder": "https://example.com",
 
   "user": "User",
-  "user.blueprint": "You can define additional sections and form fields for this user role in <strong>/site/blueprints/users/{role}.yml</strong>",
+  "user.blueprint": "You can define additional sections and form fields for this user role in <strong>/site/blueprints/users/{blueprint}.yml</strong>",
   "user.changeEmail": "Change email",
   "user.changeLanguage": "Change language",
   "user.changeName": "Rename this user",
@@ -419,10 +547,13 @@
 
   "view.account": "Your account",
   "view.installation": "Installation",
-  "view.settings": "Settings",
+  "view.languages": "Languages",
+  "view.resetPassword": "Reset password",
   "view.site": "Site",
+  "view.system": "System",
   "view.users": "Users",
 
   "welcome": "Welcome",
-  "year": "Year"
+  "year": "Year",
+  "yes": "yes"
 }

@@ -8,7 +8,7 @@ namespace Kirby\Cms;
  * @package   Kirby Cms
  * @author    Bastian Allgeier <bastian@getkirby.com>
  * @link      https://getkirby.com
- * @copyright Bastian Allgeier GmbH
+ * @copyright Bastian Allgeier
  * @license   https://getkirby.com/license
  */
 trait HasFiles
@@ -27,7 +27,7 @@ trait HasFiles
      */
     public function audio()
     {
-        return $this->files()->filterBy('type', '==', 'audio');
+        return $this->files()->filter('type', '==', 'audio');
     }
 
     /**
@@ -37,7 +37,7 @@ trait HasFiles
      */
     public function code()
     {
-        return $this->files()->filterBy('type', '==', 'code');
+        return $this->files()->filter('type', '==', 'code');
     }
 
     /**
@@ -74,7 +74,7 @@ trait HasFiles
      */
     public function documents()
     {
-        return $this->files()->filterBy('type', '==', 'document');
+        return $this->files()->filter('type', '==', 'document');
     }
 
     /**
@@ -196,14 +196,14 @@ trait HasFiles
      */
     public function images()
     {
-        return $this->files()->filterBy('type', '==', 'image');
+        return $this->files()->filter('type', '==', 'image');
     }
 
     /**
      * Sets the Files collection
      *
      * @param \Kirby\Cms\Files|null $files
-     * @return self
+     * @return $this
      */
     protected function setFiles(array $files = null)
     {
@@ -221,6 +221,6 @@ trait HasFiles
      */
     public function videos()
     {
-        return $this->files()->filterBy('type', '==', 'video');
+        return $this->files()->filter('type', '==', 'video');
     }
 }

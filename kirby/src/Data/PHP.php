@@ -4,7 +4,7 @@ namespace Kirby\Data;
 
 use Kirby\Exception\BadMethodCallException;
 use Kirby\Exception\Exception;
-use Kirby\Toolkit\F;
+use Kirby\Filesystem\F;
 
 /**
  * Reader and write of PHP files with data in a returned array
@@ -12,7 +12,7 @@ use Kirby\Toolkit\F;
  * @package   Kirby Data
  * @author    Bastian Allgeier <bastian@getkirby.com>
  * @link      https://getkirby.com
- * @copyright Bastian Allgeier GmbH
+ * @copyright Bastian Allgeier
  * @license   https://opensource.org/licenses/MIT
  */
 class PHP extends Handler
@@ -38,7 +38,7 @@ class PHP extends Handler
                 return "[\n" . implode(",\n", $array) . "\n" . $indent . ']';
             case 'boolean':
                 return $data ? 'true' : 'false';
-            case 'int':
+            case 'integer':
             case 'double':
                 return $data;
             default:
@@ -49,10 +49,10 @@ class PHP extends Handler
     /**
      * PHP strings shouldn't be decoded manually
      *
-     * @param mixed $array
+     * @param mixed $string
      * @return array
      */
-    public static function decode($array): array
+    public static function decode($string): array
     {
         throw new BadMethodCallException('The PHP::decode() method is not implemented');
     }

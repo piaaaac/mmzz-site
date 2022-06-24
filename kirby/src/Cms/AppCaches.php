@@ -2,7 +2,6 @@
 
 namespace Kirby\Cms;
 
-use Kirby\Cache\Cache;
 use Kirby\Cache\NullCache;
 use Kirby\Exception\InvalidArgumentException;
 
@@ -12,7 +11,7 @@ use Kirby\Exception\InvalidArgumentException;
  * @package   Kirby Cms
  * @author    Bastian Allgeier <bastian@getkirby.com>
  * @link      https://getkirby.com
- * @copyright Bastian Allgeier GmbH
+ * @copyright Bastian Allgeier
  * @license   https://getkirby.com/license
  */
 trait AppCaches
@@ -54,7 +53,7 @@ trait AppCaches
         // initialize the cache class
         $cache = new $className($options);
 
-        // check if it is a useable cache object
+        // check if it is a usable cache object
         if (is_a($cache, 'Kirby\Cache\Cache') !== true) {
             throw new InvalidArgumentException([
                 'key'  => 'app.invalid.cacheType',
@@ -73,7 +72,7 @@ trait AppCaches
      */
     protected function cacheOptions(string $key): array
     {
-        $options = $this->option($cacheKey = $this->cacheOptionsKey($key), false);
+        $options = $this->option($this->cacheOptionsKey($key), false);
 
         if ($options === false) {
             return [

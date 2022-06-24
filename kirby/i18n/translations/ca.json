@@ -1,12 +1,20 @@
 {
+  "account.changeName": "Change your name",
+  "account.delete": "Delete your account",
+  "account.delete.confirm": "Do you really want to delete your account? You will be logged out immediately. Your account cannot be recovered.",
+
   "add": "Afegir",
+  "author": "Author",
   "avatar": "Imatge del perfil",
   "back": "Tornar",
   "cancel": "Cancel\u00b7lar",
   "change": "Canviar",
   "close": "Tancar",
   "confirm": "Ok",
+  "collapse": "Col·lapsar",
+  "collapse.all": "Col·lapsar tot",
   "copy": "Copiar",
+  "copy.all": "Copy all",
   "create": "Crear",
 
   "date": "Data",
@@ -21,21 +29,29 @@
   "days.tue": "dt.",
   "days.wed": "dc.",
 
+  "debugging": "Debugging",
+
   "delete": "Eliminar",
-  "dimensions": "Dimensions",
-  "disabled": "Desactivat",
-  "discard": "Descartar",
-  "download": "Descarregar",
-  "duplicate": "Duplicar",
-  "edit": "Editar",
+  "delete.all": "Eliminar tot",
 
   "dialog.files.empty": "No hi ha cap fitxer per seleccionar",
   "dialog.pages.empty": "No hi ha cap pàgina per seleccionar",
   "dialog.users.empty": "No hi ha cap usuari per seleccionar",
 
+  "dimensions": "Dimensions",
+  "disabled": "Desactivat",
+  "discard": "Descartar",
+  "download": "Descarregar",
+  "duplicate": "Duplicar",
+
+  "edit": "Editar",
+
   "email": "Email",
   "email.placeholder": "mail@exemple.com",
 
+  "environment": "Environment",
+
+  "error.access.code": "Codi invàlid",
   "error.access.login": "Inici de sessió no vàlid",
   "error.access.panel": "No tens permís per accedir al panell",
   "error.access.view": "No tens accés a aquesta part del tauler",
@@ -47,6 +63,12 @@
 
   "error.blueprint.notFound": "No s'ha potgut carregar el blueprint \"{name}\"",
 
+  "error.blocks.max.plural": "You must not add more than {max} blocks",
+  "error.blocks.max.singular": "You must not add more than one block",
+  "error.blocks.min.plural": "You must add at least {min} blocks",
+  "error.blocks.min.singular": "You must add at least one block",
+  "error.blocks.validation": "There's an error in block {index}",
+
   "error.email.preset.notFound": "No es pot trobar la configuració de correu electrònic \"{name}\"",
 
   "error.field.converter.invalid": "Convertidor no vàlid \"{converter}\"",
@@ -55,6 +77,7 @@
   "error.file.changeName.permission": "No tens permís per canviar el nom de \"{filename}\"",
   "error.file.duplicate": "Ja existeix un fitxer amb el nom \"{filename}\"",
   "error.file.extension.forbidden": "L'extensió de l'arxiu \"{extension}\" no està permesa",
+  "error.file.extension.invalid": "Invalid extension: {extension}",
   "error.file.extension.missing": "Falta l'extensió de l'arxiu \"{filename}\"",
   "error.file.maxheight": "L'alçada de la imatge no ha de ser superior a {height} píxels",
   "error.file.maxsize": "El fitxer és massa gran",
@@ -70,6 +93,7 @@
   "error.file.notFound": "L'arxiu \"{filename}\" no s'ha trobat",
   "error.file.orientation": "L’orientació de la imatge ha de ser \"{orientation}\"",
   "error.file.type.forbidden": "No tens permís per penjar fitxers {type}",
+  "error.file.type.invalid": "Invalid file type: {type}",
   "error.file.undefined": "L'arxiu no s'ha trobat",
 
   "error.form.incomplete": "Si us plau, corregeix els errors del formulari ...",
@@ -78,10 +102,16 @@
   "error.language.code": "Introdueix un codi vàlid per a l’idioma",
   "error.language.duplicate": "L'idioma ja existeix",
   "error.language.name": "Introdueix un nom vàlid per a l'idioma",
+  "error.language.notFound": "The language could not be found",
+
+  "error.layout.validation.block": "There's an error in block {blockIndex} in layout {layoutIndex}",
+  "error.layout.validation.settings": "There's an error in layout {index} settings",
 
   "error.license.format": "Introduïu una clau de llicència vàlida",
   "error.license.email": "Si us plau, introdueix una adreça de correu electrònic vàlida",
   "error.license.verification": "No s’ha pogut verificar la llicència",
+
+  "error.offline": "The Panel is currently offline",
 
   "error.page.changeSlug.permission": "No teniu permís per canviar l'apèndix d'URL per a \"{slug}\"",
   "error.page.changeStatus.incomplete": "La pàgina té errors i no es pot publicar",
@@ -101,7 +131,8 @@
   "error.page.duplicate.permission": "No tens permís per duplicar \"{slug}\"",
   "error.page.notFound": "La pàgina \"{slug}\" no s'ha trobat",
   "error.page.num.invalid": "Si us plau, introdueix un número d 'ordenació vàlid. Els números no poden ser negatius.",
-  "error.page.slug.invalid": "Introduïu un prefix d'URL vàlid",
+  "error.page.slug.invalid": "Please enter a valid URL appendix",
+  "error.page.slug.maxlength": "La longitud del nom ha de tenir menys de caràcters \"{length}\"",
   "error.page.sort.permission": "La pàgina \"{slug}\" no es pot ordenar",
   "error.page.status.invalid": "Si us plau, estableix un estat de pàgina vàlid",
   "error.page.undefined": "La p\u00e0gina no s'ha trobat",
@@ -126,6 +157,8 @@
 
   "error.template.default.notFound": "La plantilla predeterminada no existeix",
 
+  "error.unexpected": "An unexpected error occurred! Enable debug mode for more info: https://getkirby.com/docs/reference/system/options/debug",
+
   "error.user.changeEmail.permission": "No tens permís per canviar el correu electrònic per a l'usuari \"{name}\"",
   "error.user.changeLanguage.permission": "No tens permís per canviar l'idioma de l'usuari \"{name}\"",
   "error.user.changeName.permission": "No tens permís per canviar el nom de l'usuari \"{name}\"",
@@ -145,7 +178,9 @@
   "error.user.password.invalid": "Introduïu una contrasenya vàlida. Les contrasenyes han de tenir com a mínim 8 caràcters.",
   "error.user.password.notSame": "Les contrasenyes no coincideixen",
   "error.user.password.undefined": "L'usuari no té una contrasenya",
+  "error.user.password.wrong": "Wrong password",
   "error.user.role.invalid": "Si us plau, introdueix un rol vàlid",
+  "error.user.undefined": "L'usuari no s'ha trobat",
   "error.user.update.permission": "No tens permís per actualitzar l'usuari \"{name}\"",
 
   "error.validation.accepted": "Si us plau confirma",
@@ -184,22 +219,84 @@
   "error.validation.size": "La mida del valor ha de ser \"{size}\"",
   "error.validation.startswith": "El valor ha de començar amb \"{start}\"",
   "error.validation.time": "Si us plau, introduïu una hora vàlida",
+  "error.validation.time.after": "Please enter a time after {time}",
+  "error.validation.time.before": "Please enter a time before {time}",
+  "error.validation.time.between": "Please enter a time between {min} and {max}",
   "error.validation.url": "Si us plau, introduïu una URL vàlida",
 
+  "expand": "Expandir",
+  "expand.all": "Expandir tot",
+
   "field.required": "El camp és obligatori",
+  "field.blocks.changeType": "Change type",
+  "field.blocks.code.name": "Codi",
+  "field.blocks.code.language": "Idioma",
+  "field.blocks.code.placeholder": "Your code …",
+  "field.blocks.delete.confirm": "Do you really want to delete this block?",
+  "field.blocks.delete.confirm.all": "Do you really want to delete all blocks?",
+  "field.blocks.delete.confirm.selected": "Do you really want to delete the selected blocks?",
+  "field.blocks.empty": "No blocks yet",
+  "field.blocks.fieldsets.label": "Please select a block type …",
+  "field.blocks.fieldsets.paste": "Press <kbd>{{ shortcut }}</kbd> to paste/import blocks from your clipboard",
+  "field.blocks.gallery.name": "Gallery",
+  "field.blocks.gallery.images.empty": "No images yet",
+  "field.blocks.gallery.images.label": "Images",
+  "field.blocks.heading.level": "Level",
+  "field.blocks.heading.name": "Heading",
+  "field.blocks.heading.text": "Text",
+  "field.blocks.heading.placeholder": "Heading …",
+  "field.blocks.image.alt": "Alternative text",
+  "field.blocks.image.caption": "Caption",
+  "field.blocks.image.crop": "Crop",
+  "field.blocks.image.link": "Enllaç",
+  "field.blocks.image.location": "Location",
+  "field.blocks.image.name": "Imatge",
+  "field.blocks.image.placeholder": "Select an image",
+  "field.blocks.image.ratio": "Ratio",
+  "field.blocks.image.url": "Image URL",
+  "field.blocks.line.name": "Line",
+  "field.blocks.list.name": "List",
+  "field.blocks.markdown.name": "Markdown",
+  "field.blocks.markdown.label": "Text",
+  "field.blocks.markdown.placeholder": "Markdown …",
+  "field.blocks.quote.name": "Quote",
+  "field.blocks.quote.text.label": "Text",
+  "field.blocks.quote.text.placeholder": "Quote …",
+  "field.blocks.quote.citation.label": "Citation",
+  "field.blocks.quote.citation.placeholder": "by …",
+  "field.blocks.text.name": "Text",
+  "field.blocks.text.placeholder": "Text …",
+  "field.blocks.video.caption": "Caption",
+  "field.blocks.video.name": "Video",
+  "field.blocks.video.placeholder": "Enter a video URL",
+  "field.blocks.video.url.label": "Video-URL",
+  "field.blocks.video.url.placeholder": "https://youtube.com/?v=",
+
   "field.files.empty": "Encara no hi ha cap fitxer seleccionat",
+
+  "field.layout.delete": "Delete layout",
+  "field.layout.delete.confirm": "Do you really want to delete this layout?",
+  "field.layout.empty": "No rows yet",
+  "field.layout.select": "Select a layout",
+
   "field.pages.empty": "Encara no s'ha seleccionat cap pàgina",
   "field.structure.delete.confirm": "Segur que voleu eliminar aquesta fila?",
   "field.structure.empty": "Encara no hi ha entrades.",
   "field.users.empty": "Encara no s'ha seleccionat cap usuari",
 
+  "file.blueprint": "This file has no blueprint yet. You can define the setup in <strong>/site/blueprints/files/{blueprint}.yml</strong>",
   "file.delete.confirm": "Esteu segurs d'eliminar <br><strong>{filename}</strong>?",
+  "file.sort": "Change position",
 
   "files": "Arxius",
   "files.empty": "Encara no hi ha fitxers",
 
+  "hide": "Hide",
   "hour": "Hora",
+  "import": "Import",
   "insert": "Insertar",
+  "insert.after": "Insert after",
+  "insert.before": "Insert before",
   "install": "Instal·lar",
 
   "installation": "Instal·lació",
@@ -258,7 +355,20 @@
   "lock.isUnlocked": "Els teus canvis sense guardar han estat sobreescrits per a un altra usuario. Pots descarregar els teus canvis per combinar-los manualment.",
 
   "login": "Entrar",
+  "login.code.label.login": "Login code",
+  "login.code.label.password-reset": "Password reset code",
+  "login.code.placeholder.email": "000 000",
+  "login.code.text.email": "If your email address is registered, the requested code was sent via email.",
+  "login.email.login.body": "Hi {user.nameOrEmail},\n\nYou recently requested a login code for the Panel of {site}.\nThe following login code will be valid for {timeout} minutes:\n\n{code}\n\nIf you did not request a login code, please ignore this email or contact your administrator if you have questions.\nFor security, please DO NOT forward this email.",
+  "login.email.login.subject": "Your login code",
+  "login.email.password-reset.body": "Hi {user.nameOrEmail},\n\nYou recently requested a password reset code for the Panel of {site}.\nThe following password reset code will be valid for {timeout} minutes:\n\n{code}\n\nIf you did not request a password reset code, please ignore this email or contact your administrator if you have questions.\nFor security, please DO NOT forward this email.",
+  "login.email.password-reset.subject": "Your password reset code",
   "login.remember": "Manten-me connectat",
+  "login.reset": "Reset password",
+  "login.toggleText.code.email": "Login via email",
+  "login.toggleText.code.email-password": "Login with password",
+  "login.toggleText.password-reset.email": "Forgot your password?",
+  "login.toggleText.password-reset.email-password": "← Back to login",
 
   "logout": "Tancar sessi\u00f3",
 
@@ -284,16 +394,20 @@
   "more": "Més",
   "name": "Nom",
   "next": "Següent",
+  "no": "no",
   "off": "apagat",
   "on": "encès",
   "open": "Obrir",
+  "open.newWindow": "Open in new window",
   "options": "Opcions",
+  "options.none": "Sense opcions",
 
   "orientation": "Orientació",
   "orientation.landscape": "Horitzontal",
   "orientation.portrait": "Vertical",
   "orientation.square": "Quadrat",
 
+  "page.blueprint": "This page has no blueprint yet. You can define the setup in <strong>/site/blueprints/pages/{blueprint}.yml</strong>",
   "page.changeSlug": "Canviar URL",
   "page.changeSlug.fromTitle": "Crear a partir del t\u00edtol",
   "page.changeStatus": "Canviar l'estat",
@@ -307,6 +421,7 @@
   "page.duplicate.appendix": "Copiar",
   "page.duplicate.files": "Copiar fitxers",
   "page.duplicate.pages": "Copiar pàgines",
+  "page.sort": "Change position",
   "page.status": "Estat",
   "page.status.draft": "Esborrany",
   "page.status.draft.description": "La pàgina està en mode d'esborrany i només és visible per als editors registrats o a través d'un enllaç secret",
@@ -324,8 +439,12 @@
   "pagination.page": "Pàgina",
 
   "password": "Contrasenya",
+  "paste": "Paste",
+  "paste.after": "Paste after",
   "pixel": "Pixel",
+  "plugins": "Plugins",
   "prev": "Anterior",
+  "preview": "Preview",
   "remove": "Eliminar",
   "rename": "Canviar el nom",
   "replace": "Reempla\u00e7ar",
@@ -344,17 +463,25 @@
 
   "save": "Desar",
   "search": "Cercar",
+  "search.min": "Introduïu {min} caràcters per cercar",
+  "search.all": "Mostrar tots",
+  "search.results.none": "Sense resultats",
 
   "section.required": "La secció és obligatòria",
 
   "select": "Seleccionar",
   "settings": "Configuració",
+  "show": "Show",
   "size": "Tamany",
   "slug": "URL-ap\u00e8ndix",
   "sort": "Ordenar",
   "title": "Títol",
   "template": "Plantilla",
   "today": "Avui",
+
+  "server": "Server",
+
+  "site.blueprint": "The site has no blueprint yet. You can define the setup in <strong>/site/blueprints/site.yml</strong>",
 
   "toolbar.button.code": "Codi",
   "toolbar.button.bold": "Negreta",
@@ -363,12 +490,18 @@
   "toolbar.button.heading.1": "Encapçalament 1",
   "toolbar.button.heading.2": "Encapçalament 2",
   "toolbar.button.heading.3": "Encapçalament 3",
+  "toolbar.button.heading.4": "Heading 4",
+  "toolbar.button.heading.5": "Heading 5",
+  "toolbar.button.heading.6": "Heading 6",
   "toolbar.button.italic": "Cursiva",
   "toolbar.button.file": "Arxiu",
   "toolbar.button.file.select": "Selecciona un fitxer",
   "toolbar.button.file.upload": "Carrega un fitxer",
   "toolbar.button.link": "Enlla\u00e7",
+  "toolbar.button.paragraph": "Paragraph",
+  "toolbar.button.strike": "Strike-through",
   "toolbar.button.ol": "Llista ordenada",
+  "toolbar.button.underline": "Underline",
   "toolbar.button.ul": "Llista de vinyetes",
 
   "translation.author": "Equip Kirby",
@@ -395,7 +528,7 @@
   "url.placeholder": "https://example.com",
 
   "user": "Usuari",
-  "user.blueprint": "Podeu definir seccions addicionals i camps de formulari per a aquest rol d'usuari a <strong>/site/blueprints/users/{role}.yml</strong>",
+  "user.blueprint": "You can define additional sections and form fields for this user role in <strong>/site/blueprints/users/{blueprint}.yml</strong>",
   "user.changeEmail": "Canviar e-mail",
   "user.changeLanguage": "Canviar idioma",
   "user.changeName": "Canviar el nom d'aquest usuari",
@@ -414,10 +547,13 @@
 
   "view.account": "La teva compta",
   "view.installation": "Instal·lació",
-  "view.settings": "Configuració",
+  "view.languages": "Idiomes",
+  "view.resetPassword": "Reset password",
   "view.site": "Lloc web",
+  "view.system": "System",
   "view.users": "Usuaris",
 
   "welcome": "Benvinguda",
-  "year": "Any"
+  "year": "Any",
+  "yes": "yes"
 }

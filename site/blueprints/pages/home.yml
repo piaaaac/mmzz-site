@@ -4,6 +4,60 @@ pages: false
 
 sections:
 
+  # ---------------------------------------
+  # Highlight
+  # ---------------------------------------
+
+  meta0:
+
+    type: fields
+    fields:
+      
+      highlight:
+        label: Show highlighted section
+        type: toggle
+        default: false
+        text: 
+          - "No"
+          - "Yes"
+
+      highlightImage:
+        label: Highlight image
+        type: files
+        max: 1
+        when: 
+          highlight: true
+        width: 1/2
+        help: Works best with a square or vertical image (not landscape)
+  
+      highlightText:
+        label: Highlight text
+        type: textarea
+        when: 
+          highlight: true
+        help: Use **bold** for the title (larger text)
+        width: 1/2
+    
+      highlightButtonText:
+        label: Highlight button text
+        type: text
+        default: "Shop now"
+        when: 
+          highlight: true
+        width: 1/2
+
+      highlightButtonUrl:
+        label: Highlight button url
+        type: url
+        when: 
+          highlight: true
+        width: 1/2
+        help: Link of the button
+
+  # ---------------------------------------
+  # Images
+  # ---------------------------------------
+
   meta1:
     headline: images
     type: files
@@ -15,6 +69,10 @@ sections:
     image:
       cover: true
       ratio: 2/3
+
+  # ---------------------------------------
+  # Other
+  # ---------------------------------------
       
   meta2:
     type: fields

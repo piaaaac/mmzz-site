@@ -5,7 +5,9 @@ namespace Kirby\Cms;
 use Exception;
 use Kirby\Exception\InvalidArgumentException;
 use Kirby\Exception\NotFoundException;
-use Kirby\Toolkit\F;
+use Kirby\Filesystem\Dir;
+use Kirby\Filesystem\F;
+use Kirby\Panel\User as Panel;
 use Kirby\Toolkit\Str;
 
 /**
@@ -15,22 +17,17 @@ use Kirby\Toolkit\Str;
  * @package   Kirby Cms
  * @author    Bastian Allgeier <bastian@getkirby.com>
  * @link      https://getkirby.com
- * @copyright Bastian Allgeier GmbH
+ * @copyright Bastian Allgeier
  * @license   https://getkirby.com/license
  */
 class User extends ModelWithContent
 {
-    const CLASS_ALIAS = 'user';
-
     use HasFiles;
     use HasMethods;
     use HasSiblings;
     use UserActions;
 
-    /**
-     * @var File
-     */
-    protected $avatar;
+    public const CLASS_ALIAS = 'user';
 
     /**
      * @var UserBlueprint
@@ -119,7 +116,7 @@ class User extends ModelWithContent
         }
 
         // return site content otherwise
-        return $this->content()->get($method, $arguments);
+        return $this->content()->get($method);
     }
 
     /**
@@ -129,7 +126,8 @@ class User extends ModelWithContent
      */
     public function __construct(array $props)
     {
-        $props['id'] = $props['id'] ?? $this->createId();
+        // TODO: refactor later to avoid redundant prop setting
+        $this->setProperty('id', $props['id'] ?? $this->createId(), true);
         $this->setProperties($props);
     }
 
@@ -230,7 +228,7 @@ class User extends ModelWithContent
 
     protected function credentials(): array
     {
-        return $this->credentials = $this->credentials ?? $this->readCredentials();
+        return $this->credentials ??= $this->readCredentials();
     }
 
     /**
@@ -240,7 +238,7 @@ class User extends ModelWithContent
      */
     public function email(): ?string
     {
-        return $this->email = $this->email ?? $this->credentials()['email'] ?? null;
+        return $this->email ??= $this->credentials()['email'] ?? null;
     }
 
     /**
@@ -259,7 +257,7 @@ class User extends ModelWithContent
      *
      * @internal
      * @param mixed $props
-     * @return self
+     * @return static
      */
     public static function factory($props)
     {
@@ -373,7 +371,8 @@ class User extends ModelWithContent
      */
     public function isLastAdmin(): bool
     {
-        return $this->role()->isAdmin() === true && $this->kirby()->users()->filterBy('role', 'admin')->count() <= 1;
+        return $this->role()->isAdmin() === true &&
+               $this->kirby()->users()->filter('role', 'admin')->count() <= 1;
     }
 
     /**
@@ -387,13 +386,24 @@ class User extends ModelWithContent
     }
 
     /**
+     * Checks if the current user is the virtual
+     * Nobody user
+     *
+     * @return bool
+     */
+    public function isNobody(): bool
+    {
+        return $this->email() === 'nobody@getkirby.com';
+    }
+
+    /**
      * Returns the user language
      *
      * @return string
      */
     public function language(): string
     {
-        return $this->language ?? $this->language = $this->credentials()['language'] ?? $this->kirby()->option('panel.language', 'en');
+        return $this->language ??= $this->credentials()['language'] ?? $this->kirby()->panelLanguage();
     }
 
     /**
@@ -426,7 +436,7 @@ class User extends ModelWithContent
         $kirby->trigger('user.login:before', ['user' => $this, 'session' => $session]);
 
         $session->regenerateToken(); // privilege change
-        $session->data()->set('user.id', $this->id());
+        $session->data()->set('kirby.userId', $this->id());
         $this->kirby()->auth()->setUser($this);
 
         $kirby->trigger('user.login:after', ['user' => $this, 'session' => $session]);
@@ -446,7 +456,7 @@ class User extends ModelWithContent
         $kirby->trigger('user.logout:before', ['user' => $this, 'session' => $session]);
 
         // remove the user from the session for future requests
-        $session->data()->remove('user.id');
+        $session->data()->remove('kirby.userId');
 
         // clear the cached user object from the app state of the current request
         $this->kirby()->auth()->flush();
@@ -520,9 +530,9 @@ class User extends ModelWithContent
         $modifiedContent = F::modified($this->contentFile($languageCode));
         $modifiedIndex   = F::modified($this->root() . '/index.php');
         $modifiedTotal   = max([$modifiedContent, $modifiedIndex]);
-        $handler         = $handler ?? $this->kirby()->option('date.handler', 'date');
+        $handler       ??= $this->kirby()->option('date.handler', 'date');
 
-        return $handler($format, $modifiedTotal);
+        return Str::date($modifiedTotal, $format, $handler);
     }
 
     /**
@@ -544,10 +554,22 @@ class User extends ModelWithContent
     }
 
     /**
+     * Returns the user's name or,
+     * if empty, the email address
+     *
+     * @return \Kirby\Cms\Field
+     */
+    public function nameOrEmail()
+    {
+        $name = $this->name();
+        return $name->isNotEmpty() ? $name : new Field($this, 'email', $this->email());
+    }
+
+    /**
      * Create a dummy nobody
      *
      * @internal
-     * @return self
+     * @return static
      */
     public static function nobody()
     {
@@ -558,84 +580,13 @@ class User extends ModelWithContent
     }
 
     /**
-     * Panel icon definition
+     * Returns the panel info object
      *
-     * @internal
-     * @param array $params
-     * @return array
+     * @return \Kirby\Panel\User
      */
-    public function panelIcon(array $params = null): array
+    public function panel()
     {
-        $params['type'] = 'user';
-
-        return parent::panelIcon($params);
-    }
-
-    /**
-     * Returns the image file object based on provided query
-     *
-     * @internal
-     * @param string|null $query
-     * @return \Kirby\Cms\File|\Kirby\Cms\Asset|null
-     */
-    protected function panelImageSource(string $query = null)
-    {
-        if ($query === null) {
-            return $this->avatar();
-        }
-
-        return parent::panelImageSource($query);
-    }
-
-    /**
-     * Returns the full path without leading slash
-     *
-     * @internal
-     * @return string
-     */
-    public function panelPath(): string
-    {
-        return 'users/' . $this->id();
-    }
-
-    /**
-     * Returns prepared data for the panel user picker
-     *
-     * @param array|null $params
-     * @return array
-     */
-    public function panelPickerData(array $params = null): array
-    {
-        $image = $this->panelImage($params['image'] ?? []);
-        $icon  = $this->panelIcon($image);
-
-        return [
-            'icon'     => $icon,
-            'id'       => $this->id(),
-            'image'    => $image,
-            'email'    => $this->email(),
-            'info'     => $this->toString($params['info'] ?? false),
-            'link'     => $this->panelUrl(true),
-            'text'     => $this->toString($params['text'] ?? '{{ user.username }}'),
-            'username' => $this->username(),
-        ];
-    }
-
-    /**
-     * Returns the url to the editing view
-     * in the panel
-     *
-     * @internal
-     * @param bool $relative
-     * @return string
-     */
-    public function panelUrl(bool $relative = false): string
-    {
-        if ($relative === true) {
-            return '/' . $this->panelPath();
-        } else {
-            return $this->kirby()->url('panel') . '/' . $this->panelPath();
-        }
+        return new Panel($this);
     }
 
     /**
@@ -693,7 +644,7 @@ class User extends ModelWithContent
         $roles = $kirby->roles();
 
         // a collection with just the one role of the user
-        $myRole = $roles->filterBy('id', $this->role()->id());
+        $myRole = $roles->filter('id', $this->role()->id());
 
         // if there's an authenticated user …
         if ($user = $kirby->user()) {
@@ -740,7 +691,7 @@ class User extends ModelWithContent
      * Sets the Blueprint object
      *
      * @param array|null $blueprint
-     * @return self
+     * @return $this
      */
     protected function setBlueprint(array $blueprint = null)
     {
@@ -756,7 +707,7 @@ class User extends ModelWithContent
      * Sets the user email
      *
      * @param string $email|null
-     * @return self
+     * @return $this
      */
     protected function setEmail(string $email = null)
     {
@@ -770,7 +721,7 @@ class User extends ModelWithContent
      * Sets the user id
      *
      * @param string $id|null
-     * @return self
+     * @return $this
      */
     protected function setId(string $id = null)
     {
@@ -782,7 +733,7 @@ class User extends ModelWithContent
      * Sets the user language
      *
      * @param string $language|null
-     * @return self
+     * @return $this
      */
     protected function setLanguage(string $language = null)
     {
@@ -794,11 +745,11 @@ class User extends ModelWithContent
      * Sets the user name
      *
      * @param string $name|null
-     * @return self
+     * @return $this
      */
     protected function setName(string $name = null)
     {
-        $this->name = $name !== null ? trim($name) : null;
+        $this->name = $name !== null ? trim(strip_tags($name)) : null;
         return $this;
     }
 
@@ -806,7 +757,7 @@ class User extends ModelWithContent
      * Sets the user's password hash
      *
      * @param string $password|null
-     * @return self
+     * @return $this
      */
     protected function setPassword(string $password = null)
     {
@@ -818,7 +769,7 @@ class User extends ModelWithContent
      * Sets the user role
      *
      * @param string $role|null
-     * @return self
+     * @return $this
      */
     protected function setRole(string $role = null)
     {
@@ -881,13 +832,13 @@ class User extends ModelWithContent
      * @param string $fallback Fallback for tokens in the template that cannot be replaced
      * @return string
      */
-    public function toString(string $template = null, array $data = [], string $fallback = ''): string
+    public function toString(string $template = null, array $data = [], string $fallback = '', string $handler = 'template'): string
     {
         if ($template === null) {
             $template = $this->email();
         }
 
-        return parent::toString($template, $data);
+        return parent::toString($template, $data, $fallback, $handler);
     }
 
     /**
@@ -923,9 +874,61 @@ class User extends ModelWithContent
         }
 
         if (password_verify($password, $this->password()) !== true) {
-            throw new InvalidArgumentException(['key' => 'user.password.notSame']);
+            throw new InvalidArgumentException(['key' => 'user.password.wrong', 'httpCode' => 401]);
         }
 
         return true;
+    }
+
+
+    /**
+     * Deprecated!
+     */
+
+    /**
+     * Returns the full path without leading slash
+     *
+     * @todo Add `deprecated()` helper warning in 3.7.0
+     * @todo Remove in 3.8.0
+     *
+     * @internal
+     * @return string
+     * @codeCoverageIgnore
+     */
+    public function panelPath(): string
+    {
+        return $this->panel()->path();
+    }
+
+    /**
+     * Returns prepared data for the panel user picker
+     *
+     * @todo Add `deprecated()` helper warning in 3.7.0
+     * @todo Remove in 3.8.0
+     *
+     * @param array|null $params
+     * @return array
+     * @codeCoverageIgnore
+     */
+    public function panelPickerData(array $params = null): array
+    {
+        return $this->panel()->pickerData($params);
+    }
+
+    /**
+     * Returns the url to the editing view
+     * in the panel
+     *
+     * @todo Add `deprecated()` helper warning in 3.7.0
+     * @todo Remove in 3.8.0
+     *
+     * @internal
+     * @param bool $relative
+     * @return string
+     * @codeCoverageIgnore
+     */
+    public function panelUrl(bool $relative = false): string
+    {
+        return $this->panel()->url($relative);
     }
 }

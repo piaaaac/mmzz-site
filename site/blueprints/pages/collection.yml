@@ -3,6 +3,23 @@ preset: page
 pages: false
 
 fields:
+
+  shopButton:
+    label: Show shop button
+    type: toggle
+    default: false
+    text: 
+      - "No"
+      - "Yes"
+    width: 1/2
+
+  shopUrl:
+    label: Shop url
+    type: url
+    when: 
+      shopButton: true
+    width: 1/2
+    help: Link to the product page on the shop
   
   cover:
     type: files

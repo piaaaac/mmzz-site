@@ -16,7 +16,7 @@ use Throwable;
  * @package   Kirby Session
  * @author    Lukas Bestle <lukas@getkirby.com>
  * @link      https://getkirby.com
- * @copyright Bastian Allgeier GmbH
+ * @copyright Bastian Allgeier
  * @license   https://opensource.org/licenses/MIT
  */
 class Session
@@ -335,6 +335,10 @@ class Session
     public function commit()
     {
         // nothing to do if nothing changed or the session has been just created or destroyed
+        /**
+         * @todo The $this->destroyed check gets flagged by Psalm for unknown reasons
+         * @psalm-suppress ParadoxicalCondition
+         */
         if ($this->writeMode !== true || $this->tokenExpiry === null || $this->destroyed === true) {
             return;
         }
@@ -515,12 +519,20 @@ class Session
         //   using $session->ensureToken() -> lazy session creation
         // - destroyed sessions are never written to
         // - no need to lock and re-init if we are already in write mode
+        /**
+         * @todo The $this->destroyed check gets flagged by Psalm for unknown reasons
+         * @psalm-suppress ParadoxicalCondition
+         */
         if ($this->tokenExpiry === null || $this->destroyed === true || $this->writeMode === true) {
             return;
         }
 
         // don't allow writing for read-only sessions
         // (only the case for moved sessions)
+        /**
+         * @todo This check gets flagged by Psalm for unknown reasons
+         * @psalm-suppress ParadoxicalCondition
+         */
         if ($this->tokenKey === null) {
             throw new LogicException([
                 'key'       => 'session.readonly',
@@ -548,7 +560,7 @@ class Session
         $parts = explode('.', $token);
 
         // only continue if the token has exactly the right amount of parts
-        $expectedParts = ($withoutKey === true)? 2 : 3;
+        $expectedParts = ($withoutKey === true) ? 2 : 3;
         if (count($parts) !== $expectedParts) {
             throw new InvalidArgumentException([
                 'data'      => ['method' => 'Session::parseToken', 'argument' => '$token'],
@@ -558,7 +570,7 @@ class Session
 
         $tokenExpiry = (int)$parts[0];
         $tokenId     = $parts[1];
-        $tokenKey    = ($withoutKey === true)? null : $parts[2];
+        $tokenKey    = ($withoutKey === true) ? null : $parts[2];
 
         // verify that all parts were parsed correctly using reassembly
         $expectedToken = $tokenExpiry . '.' . $tokenId;

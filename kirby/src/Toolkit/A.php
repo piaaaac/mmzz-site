@@ -14,7 +14,7 @@ use Exception;
  * @package   Kirby Toolkit
  * @author    Bastian Allgeier <bastian@getkirby.com>
  * @link      https://getkirby.com
- * @copyright Bastian Allgeier GmbH
+ * @copyright Bastian Allgeier
  * @license   https://opensource.org/licenses/MIT
  */
 class A
@@ -29,6 +29,27 @@ class A
     public static function append(array $array, array $append): array
     {
         return $array + $append;
+    }
+
+    /**
+     * Recursively loops through the array and
+     * resolves any item defined as `Closure`,
+     * applying the passed parameters
+     * @since 3.5.6
+     *
+     * @param array $array
+     * @param mixed ...$args Parameters to pass to the closures
+     * @return array
+     */
+    public static function apply(array $array, ...$args): array
+    {
+        array_walk_recursive($array, function (&$item) use ($args) {
+            if (is_a($item, 'Closure')) {
+                $item = $item(...$args);
+            }
+        });
+
+        return $array;
     }
 
     /**
@@ -132,22 +153,22 @@ class A
         return implode($separator, $value);
     }
 
-    const MERGE_OVERWRITE = 0;
-    const MERGE_APPEND    = 1;
-    const MERGE_REPLACE   = 2;
+    public const MERGE_OVERWRITE = 0;
+    public const MERGE_APPEND    = 1;
+    public const MERGE_REPLACE   = 2;
 
     /**
      * Merges arrays recursively
      *
      * @param array $array1
      * @param array $array2
-     * @param bool $mode Behavior for elements with numeric keys;
-     *                   A::MERGE_APPEND:    elements are appended, keys are reset;
-     *                   A::MERGE_OVERWRITE: elements are overwritten, keys are preserved
-     *                   A::MERGE_REPLACE:   non-associative arrays are completely replaced
+     * @param int $mode Behavior for elements with numeric keys;
+     *                  A::MERGE_APPEND:    elements are appended, keys are reset;
+     *                  A::MERGE_OVERWRITE: elements are overwritten, keys are preserved
+     *                  A::MERGE_REPLACE:   non-associative arrays are completely replaced
      * @return array
      */
-    public static function merge($array1, $array2, $mode = A::MERGE_APPEND)
+    public static function merge($array1, $array2, int $mode = A::MERGE_APPEND)
     {
         $merged = $array1;
 
@@ -158,7 +179,7 @@ class A
         foreach ($array2 as $key => $value) {
 
             // append to the merged array, don't overwrite numeric keys
-            if (is_int($key) === true && $mode == static::MERGE_APPEND) {
+            if (is_int($key) === true && $mode === static::MERGE_APPEND) {
                 $merged[] = $value;
 
             // recursively merge the two array values
@@ -171,7 +192,7 @@ class A
             }
         }
 
-        if ($mode == static::MERGE_APPEND) {
+        if ($mode === static::MERGE_APPEND) {
             // the keys don't make sense anymore, reset them
             // array_merge() is the simplest way to renumber
             // arrays that have both numeric and string keys;
@@ -315,6 +336,29 @@ class A
     }
 
     /**
+     * Returns a number of random elements from an array,
+     * either in original or shuffled order
+     *
+     * @param array $array
+     * @param int $count
+     * @param bool $shuffle
+     * @return array
+     */
+    public static function random(array $array, int $count = 1, bool $shuffle = false): array
+    {
+        if ($shuffle) {
+            return array_slice(self::shuffle($array), 0, $count);
+        }
+
+        if ($count === 1) {
+            $key = array_rand($array);
+            return [$key => $array[$key]];
+        }
+
+        return self::get($array, array_rand($array, $count));
+    }
+
+    /**
      * Fills an array up with additional elements to certain amount.
      *
      * <code>
@@ -351,6 +395,20 @@ class A
             }
         }
         return $array;
+    }
+
+    /**
+     * A simple wrapper around array_map
+     * with a sane argument order
+     * @since 3.6.0
+     *
+     * @param array $array
+     * @param callable $map
+     * @return array
+     */
+    public static function map(array $array, callable $map): array
+    {
+        return array_map($map, $array);
     }
 
     /**
@@ -397,7 +455,7 @@ class A
      *
      * $required = ['cat', 'elephant'];
      *
-     * $missng = A::missing($array, $required);
+     * $missing = A::missing($array, $required);
      * // missing: [
      * //    'elephant'
      * // ];
@@ -432,10 +490,7 @@ class A
     {
         // convert a simple ignore list to a nested $key => true array
         if (isset($ignore[0]) === true) {
-            $ignore = array_map(function () {
-                return true;
-            }, array_flip($ignore));
-
+            $ignore = array_map(fn () => true, array_flip($ignore));
             $ignore = A::nest($ignore);
         }
 
@@ -553,7 +608,7 @@ class A
      */
     public static function sort(array $array, string $field, string $direction = 'desc', $method = SORT_REGULAR): array
     {
-        $direction = strtolower($direction) == 'desc' ? SORT_DESC : SORT_ASC;
+        $direction = strtolower($direction) === 'desc' ? SORT_DESC : SORT_ASC;
         $helper    = [];
         $result    = [];
 
@@ -578,7 +633,7 @@ class A
     }
 
     /**
-     * Checks wether an array is associative or not
+     * Checks whether an array is associative or not
      *
      * <code>
      * $array = ['a', 'b', 'c'];
@@ -597,7 +652,7 @@ class A
      */
     public static function isAssociative(array $array): bool
     {
-        return ctype_digit(implode(null, array_keys($array))) === false;
+        return ctype_digit(implode('', array_keys($array))) === false;
     }
 
     /**
@@ -693,5 +748,38 @@ class A
         } else {
             return $array;
         }
+    }
+
+    /**
+     * Filter the array using the given callback
+     * using both value and key
+     * @since 3.6.5
+     *
+     * @param array $array
+     * @param callable $callback
+     * @return array
+     */
+    public static function filter(array $array, callable $callback): array
+    {
+        return array_filter($array, $callback, ARRAY_FILTER_USE_BOTH);
+    }
+
+    /**
+     * Remove key(s) from an array
+     * @since 3.6.5
+     *
+     * @param array $array
+     * @param int|string|array $keys
+     * @return array
+     */
+    public static function without(array $array, $keys): array
+    {
+        if (is_int($keys) || is_string($keys)) {
+            $keys = static::wrap($keys);
+        }
+
+        return static::filter($array, function ($value, $key) use ($keys) {
+            return in_array($key, $keys, true) === false;
+        });
     }
 }

@@ -2,6 +2,14 @@ Title: Cardboard Cutouts
 
 ----
 
+Shopbutton: false
+
+----
+
+Shopurl: https://butdoesitfloat.com/
+
+----
+
 Cover:
 
 - bitmap.jpg
@@ -35,6 +43,10 @@ In a kind of reversed alchemy that uses resin, her work creates a state-change; 
 Putting nature against machine, she hardens paper so that is feels like rock yet looks like driftwood. By breaking down the industrial structure, the material begins to return to its original form.
 Preciousness is added through veins of recycled silver: the resulting pieces are as light as air and eminently wearable.
 Ellie Higgins
+
+----
+
+Moodtitle: 
 
 ----
 

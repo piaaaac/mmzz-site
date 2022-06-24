@@ -3,7 +3,6 @@
 namespace Kirby\Cms;
 
 use Closure;
-use Exception;
 use Kirby\Exception\InvalidArgumentException;
 use Kirby\Toolkit\Collection as BaseCollection;
 use Kirby\Toolkit\Str;
@@ -20,7 +19,7 @@ use Kirby\Toolkit\Str;
  * @package   Kirby Cms
  * @author    Bastian Allgeier <bastian@getkirby.com>
  * @link      https://getkirby.com
- * @copyright Bastian Allgeier GmbH
+ * @copyright Bastian Allgeier
  * @license   https://getkirby.com/license
  */
 class Collection extends BaseCollection
@@ -87,9 +86,9 @@ class Collection extends BaseCollection
      */
     public function add($object)
     {
-        if (is_a($object, static::class) === true) {
+        if (is_a($object, self::class) === true) {
             $this->data = array_merge($this->data, $object->data);
-        } elseif (method_exists($object, 'id') === true) {
+        } elseif (is_object($object) === true && method_exists($object, 'id') === true) {
             $this->__set($object->id(), $object);
         } else {
             $this->append($object);
@@ -121,61 +120,61 @@ class Collection extends BaseCollection
     }
 
     /**
-     * Groups the items by a given field. Returns a collection
+     * Groups the items by a given field or callback. Returns a collection
      * with an item for each group and a collection for each group.
      *
-     * @param string $field
+     * @param string|Closure $field
      * @param bool $i Ignore upper/lowercase for group names
      * @return \Kirby\Cms\Collection
      * @throws \Kirby\Exception\Exception
      */
-    public function groupBy($field, bool $i = true)
+    public function group($field, bool $i = true)
     {
-        if (is_string($field) === false) {
-            throw new Exception('Cannot group by non-string values. Did you mean to call group()?');
+        if (is_string($field) === true) {
+            $groups = new Collection([], $this->parent());
+
+            foreach ($this->data as $key => $item) {
+                $value = $this->getAttribute($item, $field);
+
+                // make sure that there's always a proper value to group by
+                if (!$value) {
+                    throw new InvalidArgumentException('Invalid grouping value for key: ' . $key);
+                }
+
+                // ignore upper/lowercase for group names
+                if ($i) {
+                    $value = Str::lower($value);
+                }
+
+                if (isset($groups->data[$value]) === false) {
+                    // create a new entry for the group if it does not exist yet
+                    $groups->data[$value] = new static([$key => $item]);
+                } else {
+                    // add the item to an existing group
+                    $groups->data[$value]->set($key, $item);
+                }
+            }
+
+            return $groups;
         }
 
-        $groups = new Collection([], $this->parent());
-
-        foreach ($this->data as $key => $item) {
-            $value = $this->getAttribute($item, $field);
-
-            // make sure that there's always a proper value to group by
-            if (!$value) {
-                throw new InvalidArgumentException('Invalid grouping value for key: ' . $key);
-            }
-
-            // ignore upper/lowercase for group names
-            if ($i) {
-                $value = Str::lower($value);
-            }
-
-            if (isset($groups->data[$value]) === false) {
-                // create a new entry for the group if it does not exist yet
-                $groups->data[$value] = new static([$key => $item]);
-            } else {
-                // add the item to an existing group
-                $groups->data[$value]->set($key, $item);
-            }
-        }
-
-        return $groups;
+        return parent::group($field, $i);
     }
 
     /**
      * Checks if the given object or id
      * is in the collection
      *
-     * @param string|object $id
+     * @param string|object $key
      * @return bool
      */
-    public function has($id): bool
+    public function has($key): bool
     {
-        if (is_object($id) === true) {
-            $id = $id->id();
+        if (is_object($key) === true) {
+            $key = $key->id();
         }
 
-        return parent::has($id);
+        return parent::has($key);
     }
 
     /**
@@ -183,16 +182,16 @@ class Collection extends BaseCollection
      * The method will automatically detect objects
      * or ids and then search accordingly.
      *
-     * @param string|object $object
+     * @param string|object $needle
      * @return int
      */
-    public function indexOf($object): int
+    public function indexOf($needle): int
     {
-        if (is_string($object) === true) {
-            return array_search($object, $this->keys());
+        if (is_string($needle) === true) {
+            return array_search($needle, $this->keys());
         }
 
-        return array_search($object->id(), $this->keys());
+        return array_search($needle->id(), $this->keys());
     }
 
     /**
@@ -204,6 +203,7 @@ class Collection extends BaseCollection
     public function not(...$keys)
     {
         $collection = $this->clone();
+
         foreach ($keys as $key) {
             if (is_array($key) === true) {
                 return $this->not(...$key);
@@ -212,8 +212,10 @@ class Collection extends BaseCollection
             } elseif (is_object($key) === true) {
                 $key = $key->id();
             }
-            unset($collection->$key);
+
+            unset($collection->{$key});
         }
+
         return $collection;
     }
 
@@ -264,21 +266,21 @@ class Collection extends BaseCollection
     }
 
     /**
-     * Runs a combination of filterBy, sortBy, not
+     * Runs a combination of filter, sort, not,
      * offset, limit, search and paginate on the collection.
      * Any part of the query is optional.
      *
-     * @param array $query
-     * @return self
+     * @param array $arguments
+     * @return static
      */
-    public function query(array $query = [])
+    public function query(array $arguments = [])
     {
-        $paginate = $query['paginate'] ?? null;
-        $search   = $query['search'] ?? null;
+        $paginate = $arguments['paginate'] ?? null;
+        $search   = $arguments['search'] ?? null;
 
-        unset($query['paginate']);
+        unset($arguments['paginate']);
 
-        $result = parent::query($query);
+        $result = parent::query($arguments);
 
         if (empty($search) === false) {
             if (is_array($search) === true) {
@@ -331,8 +333,6 @@ class Collection extends BaseCollection
      */
     public function toArray(Closure $map = null): array
     {
-        return parent::toArray($map ?? function ($object) {
-            return $object->toArray();
-        });
+        return parent::toArray($map ?? fn ($object) => $object->toArray());
     }
 }

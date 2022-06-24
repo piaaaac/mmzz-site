@@ -18,41 +18,85 @@ use Kirby\Toolkit\Str;
  * @package   Kirby Form
  * @author    Bastian Allgeier <bastian@getkirby.com>
  * @link      https://getkirby.com
- * @copyright Bastian Allgeier GmbH
+ * @copyright Bastian Allgeier
  * @license   https://opensource.org/licenses/MIT
  */
 class OptionsApi
 {
     use Properties;
 
+    /**
+     * @var array
+     */
     protected $data;
+
+    /**
+     * @var string|null
+     */
     protected $fetch;
+
+    /**
+     * @var array|string|null
+     */
     protected $options;
+
+    /**
+     * @var string
+     */
     protected $text = '{{ item.value }}';
+
+    /**
+     * @var string
+     */
     protected $url;
+
+    /**
+     * @var string
+     */
     protected $value = '{{ item.key }}';
 
+    /**
+     * OptionsApi constructor
+     *
+     * @param array $props
+     */
     public function __construct(array $props)
     {
         $this->setProperties($props);
     }
 
+    /**
+     * @return array
+     */
     public function data(): array
     {
         return $this->data;
     }
 
+    /**
+     * @return mixed
+     */
     public function fetch()
     {
         return $this->fetch;
     }
 
-    protected function field(string $field, array $data)
+    /**
+     * @param string $field
+     * @param array $data
+     * @return string
+     */
+    protected function field(string $field, array $data): string
     {
         $value = $this->$field();
-        return Str::template($value, $data);
+        return Str::safeTemplate($value, $data);
     }
 
+    /**
+     * @return array
+     * @throws \Exception
+     * @throws \Kirby\Exception\InvalidArgumentException
+     */
     public function options(): array
     {
         if (is_array($this->options) === true) {
@@ -103,52 +147,95 @@ class OptionsApi
         return $options;
     }
 
+    /**
+     * @param array $data
+     * @return $this
+     */
     protected function setData(array $data)
     {
         $this->data = $data;
         return $this;
     }
 
-    protected function setFetch(string $fetch = null)
+    /**
+     * @param string|null $fetch
+     * @return $this
+     */
+    protected function setFetch(?string $fetch = null)
     {
         $this->fetch = $fetch;
         return $this;
     }
 
-    protected function setText($text = null)
+    /**
+     * @param array|string|null $options
+     * @return $this
+     */
+    protected function setOptions($options = null)
+    {
+        $this->options = $options;
+        return $this;
+    }
+
+    /**
+     * @param string $text
+     * @return $this
+     */
+    protected function setText(?string $text = null)
     {
         $this->text = $text;
         return $this;
     }
 
-    protected function setUrl($url)
+    /**
+     * @param string $url
+     * @return $this
+     */
+    protected function setUrl(string $url)
     {
         $this->url = $url;
         return $this;
     }
 
-    protected function setValue($value = null)
+    /**
+     * @param string|null $value
+     * @return $this
+     */
+    protected function setValue(?string $value = null)
     {
         $this->value = $value;
         return $this;
     }
 
-    public function text()
+    /**
+     * @return string
+     */
+    public function text(): string
     {
         return $this->text;
     }
 
+    /**
+     * @return array
+     * @throws \Kirby\Exception\InvalidArgumentException
+     */
     public function toArray(): array
     {
         return $this->options();
     }
 
+    /**
+     * @return string
+     */
     public function url(): string
     {
         return Str::template($this->url, $this->data());
     }
 
-    public function value()
+    /**
+     * @return string
+     */
+    public function value(): string
     {
         return $this->value;
     }

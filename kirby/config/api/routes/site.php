@@ -22,7 +22,7 @@ return [
         'pattern' => 'site/children',
         'method'  => 'GET',
         'action'  => function () {
-            return $this->site()->children();
+            return $this->pages(null, $this->requestQuery('status'));
         }
     ],
     [
@@ -34,9 +34,9 @@ return [
     ],
     [
         'pattern' => 'site/children/search',
-        'method'  => 'POST',
+        'method'  => 'GET|POST',
         'action'  => function () {
-            return $this->site()->children()->query($this->requestBody());
+            return $this->searchPages();
         }
     ],
     [
@@ -49,11 +49,19 @@ return [
     [
         'pattern' => [
             'site/blueprints',
-            // Deprecated: remove in 3.6.0
+            /**
+             * @deprecated
+             * @todo remove in 3.7.0
+             */
             'site/children/blueprints',
         ],
         'method'  => 'GET',
         'action'  => function () {
+            // @codeCoverageIgnoreStart
+            if ($this->route->pattern() === 'site/children/blueprints') {
+                deprecated('`GET site/children/blueprints` API endpoint has been deprecated and will be removed in 3.7.0. Use `GET site/blueprints` instead.');
+            }
+            // @codeCoverageIgnoreEnd
             return $this->site()->blueprints($this->requestQuery('section'));
         }
     ],
@@ -78,7 +86,7 @@ return [
             $pages = $this
                 ->site()
                 ->index(true)
-                ->filterBy('isReadable', true);
+                ->filter('isReadable', true);
 
             if ($this->requestMethod() === 'GET') {
                 return $pages->search($this->requestQuery('q'));

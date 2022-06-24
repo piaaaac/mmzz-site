@@ -12,11 +12,18 @@ use PHPMailer\PHPMailer\PHPMailer as Mailer;
  * @author    Bastian Allgeier <bastian@getkirby.com>,
  *            Nico Hoffmann <nico@getkirby.com>
  * @link      https://getkirby.com
- * @copyright Bastian Allgeier GmbH
+ * @copyright Bastian Allgeier
  * @license   https://opensource.org/licenses/MIT
  */
 class PHPMailer extends Email
 {
+    /**
+     * Sends email via PHPMailer library
+     *
+     * @param bool $debug
+     * @return bool
+     * @throws \Kirby\Exception\InvalidArgumentException
+     */
     public function send(bool $debug = false): bool
     {
         $mailer = new Mailer(true);
@@ -29,7 +36,7 @@ class PHPMailer extends Email
             $mailer->addReplyTo($replyTo, $this->replyToName() ?? '');
         }
 
-        // add (multiple) recepient, CC & BCC addresses
+        // add (multiple) recipient, CC & BCC addresses
         foreach ($this->to() as $email => $name) {
             $mailer->addAddress($email, $name ?? '');
         }
@@ -66,6 +73,24 @@ class PHPMailer extends Email
             $mailer->Password   = $this->transport()['password'] ?? null;
             $mailer->SMTPSecure = $this->transport()['security'] ?? 'ssl';
             $mailer->Port       = $this->transport()['port'] ?? null;
+
+            if ($mailer->SMTPSecure === true) {
+                switch ($mailer->Port) {
+                    case null:
+                    case 587:
+                        $mailer->SMTPSecure = 'tls';
+                        $mailer->Port = 587;
+                        break;
+                    case 465:
+                        $mailer->SMTPSecure = 'ssl';
+                        break;
+                    default:
+                        throw new InvalidArgumentException(
+                            'Could not automatically detect the "security" protocol from the ' .
+                            '"port" option, please set it explicitly to "tls" or "ssl".'
+                        );
+                }
+            }
         }
 
         // accessible phpMailer instance
@@ -83,6 +108,6 @@ class PHPMailer extends Email
             return $this->isSent = true;
         }
 
-        return $this->isSent = $mailer->send();
+        return $this->isSent = $mailer->send(); // @codeCoverageIgnore
     }
 }

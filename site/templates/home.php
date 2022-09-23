@@ -61,10 +61,13 @@ $blogPosts = $page->blogPosts()->toPages();
           <a id="home-small-logo" class="font-m" href="<?= $site->url() ?>"><?= randomLogo() ?></a>
           <span id="home-small-name" class="font-m d-none d-md-inline">Matilde&nbsp;Mozzanega&nbsp;Jewellery</span>
         </div>
-        <div>
+
+        <div class="d-flex align-items-center">
           <a class="menu-item" href="<?= page("collections")->url() ?>"><?= page("collections")->title() ?></a>
           <a class="menu-item" href="<?= page("about")->url() ?>"><?= page("about")->title() ?></a>
           <a class="menu-item" href="<?= page("blog")->url() ?>"><?= page("blog")->title() ?></a>
+          <a class="ml-2 ml-sm-4" href="https://shop.matildemozzanega.com/collections" target="_blank"><img src="<?= kirby()->url('assets') ?>/images/icon-shop.svg"></a>
+
         </div>
       </div>
     </nav>

@@ -172,6 +172,9 @@ html body input:-internal-autofill-selected {
   @include animation('slide-down 5s 3');
 }
 */
+.pointer-events-all {
+  pointer-events: all; }
+
 .color-white {
   color: white; }
 

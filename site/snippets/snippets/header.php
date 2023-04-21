@@ -1,7 +1,8 @@
 <?php
+$url = "https://matildemozzanega.com/";
 $url = $site->url();
 $urlSocialImg = $url. "/assets/images/mmzz-social-card.jpg";
-$title = "Matilde Mozzanega&#174; ". randomLogo() ." ". $page->title();
+$title = randomLogo() ." ". $page->title();
 $safeTitle = "MMZZZ ". $page->title();
 $desc = "Matilde Mozzanega Jewellery Designer";
 ?>
